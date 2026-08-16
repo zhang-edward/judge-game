@@ -1,18 +1,26 @@
 class_name Law
 
-# A rule: doing this action in this place is illegal.
+# A rule. It always names an action. It can also require the object to be in a
+# category and/or the act to happen in a location. null means "don't care".
 
-var action: Vocab.Action
-var location: Vocab.Location
+var action: ActionDef
 var description: String
+var category: CategoryDef = null
+var location: LocationDef = null
 
 
-func _init(a: Vocab.Action, l: Vocab.Location, desc: String) -> void:
-	action = a
-	location = l
-	description = desc
+func _init(action_: ActionDef, description_: String, category_: CategoryDef = null, location_: LocationDef = null) -> void:
+	action = action_
+	description = description_
+	category = category_
+	location = location_
 
 
-# Does this single piece of evidence break the law?
 func is_broken_by(e: Evidence) -> bool:
-	return e.action == action and e.location == location
+	if e.action != action:
+		return false
+	if category != null and not e.has_category(category):
+		return false
+	if location != null and e.location != location:
+		return false
+	return true

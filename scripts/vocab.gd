@@ -1,39 +1,54 @@
-class_name Vocab
+extends Node
 
-enum Action {
-	SING,
-	DANCE,
-	SLEEP,
-	SHOUT,
-}
+# The game's whole vocabulary in one place. Each value bundles its own display text
+# and flags. The lists are @export so they show in the inspector; they are defined
+# inline below. Look a value up by its id, e.g. Vocab.action(&"carry").
 
-enum Location {
-	PARK,
-	BANK,
-	STREET,
-	LIBRARY,
-}
+var actions: Array[ActionDef] = [
+	ActionDef.new(&"sing", "Sang", "singing", false),
+	ActionDef.new(&"dance", "Danced", "dancing", false),
+	ActionDef.new(&"sleep", "Slept", "sleeping", false),
+	ActionDef.new(&"shout", "Shouted", "shouting", false),
+	ActionDef.new(&"possess", "Possessed", "possessing", true),
+	ActionDef.new(&"carry", "Carried", "carrying", true),
+	ActionDef.new(&"use", "Used", "using", true),
+	ActionDef.new(&"purchase", "Purchased", "purchasing", true),
+	ActionDef.new(&"sell", "Sold", "selling", true),
+	ActionDef.new(&"take", "Took", "taking", true),
+	ActionDef.new(&"give", "Gave", "giving", true),
+]
 
-# Past tense, for evidence sentences: "Sang in the park."
-const ACTION_PAST := {
-	Action.SING: "Sang",
-	Action.DANCE: "Danced",
-	Action.SLEEP: "Slept",
-	Action.SHOUT: "Shouted",
-}
+var locations: Array[LocationDef] = [
+	LocationDef.new(&"park", "in the park"),
+	LocationDef.new(&"bank", "at the bank"),
+	LocationDef.new(&"street", "on the street"),
+	LocationDef.new(&"library", "in the library"),
+]
 
-# "-ing" form, for charge sentences: "illegal singing in the park".
-const ACTION_GERUND := {
-	Action.SING: "singing",
-	Action.DANCE: "dancing",
-	Action.SLEEP: "sleeping",
-	Action.SHOUT: "shouting",
-}
+var categories: Array[CategoryDef] = [
+	CategoryDef.new(&"weapon", "weapons"),
+	CategoryDef.new(&"animal", "animals"),
+	CategoryDef.new(&"vehicle", "vehicles"),
+	CategoryDef.new(&"food", "food"),
+]
 
-# Location with its preposition, used by both kinds of sentence.
-const LOCATION_PHRASE := {
-	Location.PARK: "in the park",
-	Location.BANK: "at the bank",
-	Location.STREET: "on the street",
-	Location.LIBRARY: "in the library",
-}
+
+func action(id: StringName) -> ActionDef:
+	for a in actions:
+		if a.id == id:
+			return a
+	return null
+
+
+func location(id: StringName) -> LocationDef:
+	for l in locations:
+		if l.id == id:
+			return l
+	return null
+
+
+func category(id: StringName) -> CategoryDef:
+	for c in categories:
+		if c.id == id:
+			return c
+	return null

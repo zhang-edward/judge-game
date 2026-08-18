@@ -1,13 +1,21 @@
-[gd_scene format=3 uid="uid://g8e3q5be8y6k"]
+[gd_scene load_steps=5 format=3 uid="uid://g8e3q5be8y6k"]
 
 [ext_resource type="Texture2D" uid="uid://b6dj1p1t7vdo4" path="res://document.png" id="1_6p8xx"]
 [ext_resource type="FontFile" uid="uid://cbl12pbc5rma5" path="res://alagard.ttf" id="2_1o5rj"]
-[ext_resource type="Script" uid="uid://vhlehd3vj88p" path="res://scripts/draggable.gd" id="3_drag"]
+[ext_resource type="Script" uid="uid://c8gna7kosva7x" path="res://scripts/document.gd" id="3_drag"]
 
-[node name="WitnessStatement" type="NinePatchRect" unique_id=1458647613]
-offset_right = 266.0
-offset_bottom = 215.0
-mouse_filter = 1
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_doc"]
+size = Vector2(266, 215)
+
+[node name="WitnessStatement" type="Node2D"]
+script = ExtResource("3_drag")
+
+[node name="Paper" type="NinePatchRect" parent="."]
+offset_left = -133.0
+offset_top = -107.5
+offset_right = 133.0
+offset_bottom = 107.5
+mouse_filter = 2
 texture = ExtResource("1_6p8xx")
 patch_margin_left = 8
 patch_margin_top = 8
@@ -15,45 +23,49 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
-script = ExtResource("3_drag")
 
-[node name="Header" type="Label" parent="." unique_id=2047278825]
+[node name="Header" type="Label" parent="Paper"]
 modulate = Color(0.35, 0.21845832, 0.1575, 1)
-layout_mode = 0
 offset_left = 21.0
 offset_top = 19.0
 offset_right = 254.0
 offset_bottom = 53.0
 rotation = -0.0067459783
+mouse_filter = 2
 theme_override_fonts/font = ExtResource("2_1o5rj")
 text = "-- WITNESS STATEMENT --
 JOHN DOE"
 
-[node name="Body" type="Label" parent="." unique_id=1314118435]
+[node name="Body" type="Label" parent="Paper"]
 modulate = Color(0.35, 0.21845832, 0.1575, 1)
 custom_minimum_size = Vector2(200, 0)
 custom_maximum_size = Vector2(200, -1)
-layout_mode = 0
 offset_left = 31.0
 offset_top = 84.0
 offset_right = 231.0
 offset_bottom = 135.0
 rotation = 0.0023063119
+mouse_filter = 2
 theme_override_fonts/font = ExtResource("2_1o5rj")
 text = "\"I saw Bob go to the bank and he fucking killed that dude\""
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="Signature" type="Label" parent="." unique_id=2027446102]
+[node name="Signature" type="Label" parent="Paper"]
 modulate = Color(0.35, 0.21845832, 0.1575, 1)
-layout_mode = 0
 offset_left = 33.0
 offset_top = 146.0
 offset_right = 233.0
 offset_bottom = 197.0
 rotation = 0.00725447
+mouse_filter = 2
 theme_override_fonts/font = ExtResource("2_1o5rj")
 text = "-signed,
 John Doe
 Aug 14"
 horizontal_alignment = 2
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_doc")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coo2xqclpf22a"
-path="res://.godot/imported/outbox.png-f0f3369ab3a8a6d75a0b014b4480fedd.ctex"
+uid="uid://bj8sw1v7nmxwd"
+path="res://.godot/imported/cloud.png-e04140f272f7320884c061f2fc3adef1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://outbox.png"
-dest_files=["res://.godot/imported/outbox.png-f0f3369ab3a8a6d75a0b014b4480fedd.ctex"]
+source_file="res://assets/sprites/cloud.png"
+dest_files=["res://.godot/imported/cloud.png-e04140f272f7320884c061f2fc3adef1.ctex"]
 
 [params]
 

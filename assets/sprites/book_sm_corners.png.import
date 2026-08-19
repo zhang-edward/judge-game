@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkyuudii5rmvs"
-path="res://.godot/imported/book_sm_corners.png-d6d80b41b32d49c8d348b1fd0d25051e.ctex"
+path="res://.godot/imported/book_sm_corners.png-2e0cbe0b7b2efc37ba2a5085c1da1f2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://book_sm_corners.png"
-dest_files=["res://.godot/imported/book_sm_corners.png-d6d80b41b32d49c8d348b1fd0d25051e.ctex"]
+source_file="res://assets/sprites/book_sm_corners.png"
+dest_files=["res://.godot/imported/book_sm_corners.png-2e0cbe0b7b2efc37ba2a5085c1da1f2e.ctex"]
 
 [params]
 

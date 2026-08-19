@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj8sw1v7nmxwd"
-path="res://.godot/imported/cloud.png-dee661b88ca2a546a70f524ffe8e0d75.ctex"
+uid="uid://dwk70i37wilih"
+path="res://.godot/imported/quill-in-inkpot.png-7df2f43179f858111fea4dcb9840a558.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cloud.png"
-dest_files=["res://.godot/imported/cloud.png-dee661b88ca2a546a70f524ffe8e0d75.ctex"]
+source_file="res://assets/sprites/quill-in-inkpot.png"
+dest_files=["res://.godot/imported/quill-in-inkpot.png-7df2f43179f858111fea4dcb9840a558.ctex"]
 
 [params]
 

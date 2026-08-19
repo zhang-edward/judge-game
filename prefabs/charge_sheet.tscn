@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://36o42tbaosqf"]
 
-[ext_resource type="Texture2D" uid="uid://c7x1bsgkpmn8i" path="res://document2.png" id="1_650ho"]
-[ext_resource type="FontFile" uid="uid://cbl12pbc5rma5" path="res://alagard.ttf" id="2_650ho"]
-[ext_resource type="FontFile" uid="uid://decfvn28iawol" path="res://Alkhemikal.ttf" id="2_xica2"]
-[ext_resource type="Texture2D" uid="uid://c6gtbia5xdvfk" path="res://document_outline.png" id="3_xica2"]
-[ext_resource type="Script" uid="uid://dliv1mxgo2mdp" path="res://scripts/draggable.gd" id="4_drag"]
+[ext_resource type="Texture2D" uid="uid://c7x1bsgkpmn8i" path="res://assets/sprites/document2.png" id="1_650ho"]
+[ext_resource type="FontFile" uid="uid://cbl12pbc5rma5" path="res://assets/fonts/alagard.ttf" id="2_650ho"]
+[ext_resource type="FontFile" uid="uid://decfvn28iawol" path="res://assets/fonts/Alkhemikal.ttf" id="2_xica2"]
+[ext_resource type="Texture2D" uid="uid://c6gtbia5xdvfk" path="res://assets/sprites/document_outline.png" id="3_xica2"]
+[ext_resource type="Script" uid="uid://vhlehd3vj88p" path="res://scripts/draggable.gd" id="4_drag"]
 
 [node name="Document" type="NinePatchRect" unique_id=1094341236]
 modulate = Color(0.86205, 0.80099994, 0.9, 1)

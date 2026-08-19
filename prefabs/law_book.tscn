@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dva833lsnexe1"]
 
-[ext_resource type="Texture2D" uid="uid://n16io3ujxbpp" path="res://book_sm.png" id="1_36q5r"]
-[ext_resource type="FontFile" uid="uid://decfvn28iawol" path="res://Alkhemikal.ttf" id="2_36q5r"]
+[ext_resource type="Texture2D" uid="uid://n16io3ujxbpp" path="res://assets/sprites/book_sm.png" id="1_8gd3c"]
+[ext_resource type="FontFile" uid="uid://decfvn28iawol" path="res://assets/fonts/Alkhemikal.ttf" id="2_8gd3c"]
 
 [node name="LawBook" type="TextureRect" unique_id=704640351]
 offset_right = 623.0
 offset_bottom = 385.0
-texture = ExtResource("1_36q5r")
+texture = ExtResource("1_8gd3c")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=173431881]
 layout_mode = 1
@@ -29,7 +29,7 @@ size_flags_horizontal = 3
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=546731468]
 modulate = Color(0, 0, 0, 1)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_36q5r")
+theme_override_fonts/font = ExtResource("2_8gd3c")
 text = "* It is illegal to kill people
 * It is illegal to steal shit
 * It is illegal to scream in the park

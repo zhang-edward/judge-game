@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://g8e3q5be8y6k"]
+
+[ext_resource type="Script" uid="uid://c8gna7kosva7x" path="res://scripts/document.gd" id="1_vwlpd"]
+[ext_resource type="Texture2D" uid="uid://b6dj1p1t7vdo4" path="res://assets/sprites/document.png" id="2_8pghi"]
+[ext_resource type="FontFile" uid="uid://cbl12pbc5rma5" path="res://assets/fonts/alagard.ttf" id="3_vwlpd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_doc"]
+size = Vector2(266, 215)
+
+[node name="WitnessStatement" type="Node2D" unique_id=612582443]
+script = ExtResource("1_vwlpd")
+
+[node name="Paper" type="NinePatchRect" parent="." unique_id=705578225]
+offset_left = -133.0
+offset_top = -107.5
+offset_right = 133.0
+offset_bottom = 107.5
+texture = ExtResource("2_8pghi")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Header" type="Label" parent="Paper" unique_id=1976353431]
+modulate = Color(0.35, 0.21845832, 0.1575, 1)
+layout_mode = 0
+offset_left = 21.0
+offset_top = 19.0
+offset_right = 254.0
+offset_bottom = 53.0
+rotation = -0.0067459783
+theme_override_fonts/font = ExtResource("3_vwlpd")
+text = "-- WITNESS STATEMENT --
+JOHN DOE"
+
+[node name="Body" type="Label" parent="Paper" unique_id=987660958]
+modulate = Color(0.35, 0.21845832, 0.1575, 1)
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 0
+offset_left = 31.0
+offset_top = 84.0
+offset_right = 231.0
+offset_bottom = 135.0
+rotation = 0.0023063119
+theme_override_fonts/font = ExtResource("3_vwlpd")
+text = "\"I saw Bob go to the bank and he fucking killed that dude\""
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Signature" type="Label" parent="Paper" unique_id=710233740]
+modulate = Color(0.35, 0.21845832, 0.1575, 1)
+layout_mode = 0
+offset_left = 33.0
+offset_top = 146.0
+offset_right = 233.0
+offset_bottom = 197.0
+rotation = 0.00725447
+theme_override_fonts/font = ExtResource("3_vwlpd")
+text = "-signed,
+John Doe
+Aug 14"
+horizontal_alignment = 2
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1450634913]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=216315082]
+shape = SubResource("RectangleShape2D_doc")

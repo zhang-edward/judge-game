@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CategoryDef" format=3 uid="uid://dwo5tsbups0x1"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_g0gpt"]
+
+[resource]
+script = ExtResource("1_g0gpt")
+id = &"food"
+plural = "food"
+metadata/_custom_type_script = "uid://b06g7tni33vq"

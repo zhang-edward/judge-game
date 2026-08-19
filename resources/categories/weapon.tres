@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CategoryDef" format=3 uid="uid://d08q4g8v8vt5w"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_owjy2"]
+
+[resource]
+script = ExtResource("1_owjy2")
+id = &"weapon"
+plural = "weapons"
+metadata/_custom_type_script = "uid://b06g7tni33vq"

@@ -1,17 +1,35 @@
 class_name Evidence
 
 # One thing the defendant did: an action in a location, optionally with an item.
-
+var suspect: Suspect
 var action: ActionDef
 var location: LocationDef
-var item: Item = null   # null for standalone actions like singing
+var item: ItemDef = null   # null for standalone actions like singing
 
 
-func _init(a: ActionDef, l: LocationDef, item_: Item = null) -> void:
+func _init(s: Suspect, a: ActionDef, l: LocationDef, item_: ItemDef = null) -> void:
+	suspect = s
 	action = a
 	location = l
 	item = item_
 
-
 func has_category(category: CategoryDef) -> bool:
 	return item != null and item.categories.has(category)
+
+func render() -> String:
+	var rendered_sentence = suspect.name
+	if action != null:
+		rendered_sentence += " " + action.past
+	else:
+		if item == null:
+			rendered_sentence += " was"
+		else:
+			rendered_sentence += " had"
+	if item != null:
+		rendered_sentence += " a " + item.name
+	else:
+		if action != null:
+			rendered_sentence += " something"
+	if location != null:
+		rendered_sentence += " " + location.phrase
+	return rendered_sentence

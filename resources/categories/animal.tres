@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CategoryDef" format=3 uid="uid://c0typltehv7u2"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_k33oq"]
+
+[resource]
+script = ExtResource("1_k33oq")
+id = &"animal"
+plural = "animals"
+metadata/_custom_type_script = "uid://b06g7tni33vq"

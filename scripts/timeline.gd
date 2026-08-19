@@ -44,4 +44,4 @@ func create_evidence(f: Fact) -> Evidence:
 			action = f.action
 			item = f.item
 			loc = f.location
-	return Evidence.new(suspect, action, loc, item)
+	return Evidence.new(suspect, f.time, action, loc, item)

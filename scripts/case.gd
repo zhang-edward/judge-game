@@ -16,8 +16,7 @@ func add_evidence(e: Evidence):
 
 # Score all evidence_list this case contains against the charge
 func score() -> float:
-	# TODO
-	return 0.0
+	return Judge.score(evidence_list, charge)
 
 func _to_string() -> String:
 	var s = "The defendent stands accused of: \n"

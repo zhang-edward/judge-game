@@ -13,7 +13,6 @@ func _init(_suspect: Suspect, _action: ActionDef, _item: ItemDef, _location: Loc
 	location = _location
 	time = _time
 
-	assert(action != null, "Fact must have action")
 	assert(item != null, "Fact must have object")
 	assert(location != null, "Fact must have location")
 

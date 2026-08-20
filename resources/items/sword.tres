@@ -6,14 +6,12 @@
 [ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="4_rsk1l"]
 [ext_resource type="Resource" uid="uid://bfyouew6ryhoj" path="res://resources/actions/use.tres" id="5_5vipd"]
 [ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="6_sxjur"]
-[ext_resource type="Resource" uid="uid://dxx211qx75ddc" path="res://resources/actions/possess.tres" id="7_12rxf"]
 [ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="8_ndt0r"]
-[ext_resource type="Resource" uid="uid://dh3gvicayt2ds" path="res://resources/actions/carry.tres" id="9_oqjn8"]
 
 [resource]
 script = ExtResource("2_5eq2r")
 id = &"sword"
 name = "sword"
 categories = Array[ExtResource("1_otrck")]([ExtResource("2_580ar")])
-supported_actions = Array[ExtResource("4_rsk1l")]([ExtResource("5_5vipd"), ExtResource("6_sxjur"), ExtResource("7_12rxf"), ExtResource("8_ndt0r"), ExtResource("9_oqjn8")])
+supported_actions = Array[ExtResource("4_rsk1l")]([ExtResource("5_5vipd"), ExtResource("6_sxjur"), ExtResource("8_ndt0r")])
 metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

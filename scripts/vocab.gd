@@ -17,6 +17,59 @@ var item_names: Array[String] = [
 	"sword"
 ]
 
+var day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+var suspect_names = [
+	"James",
+	"John",
+	"Robert",
+	"Michael",
+	"William",
+	"David",
+	"Richard",
+	"Joseph",
+	"Thomas",
+	"Charles",
+	"Christopher",
+	"Daniel",
+	"Matthew",
+	"Anthony",
+	"Mark",
+	"Donald",
+	"Steven",
+	"Paul",
+	"Andrew",
+	"Joshua",
+	"Kenneth",
+	"Kevin",
+	"Brian",
+	"George",
+	"Timothy",
+	"Mary",
+	"Patricia",
+	"Jennifer",
+	"Linda",
+	"Elizabeth",
+	"Barbara",
+	"Susan",
+	"Jessica",
+	"Sarah",
+	"Karen",
+	"Lisa",
+	"Nancy",
+	"Betty",
+	"Sandra",
+	"Margaret",
+	"Ashley",
+	"Kimberly",
+	"Emily",
+	"Donna",
+	"Michelle",
+	"Carol",
+	"Amanda",
+	"Melissa",
+	"Deborah"
+]
+
 var items: Array[ItemDef] = []
 var locations: Array[LocationDef] = []
 

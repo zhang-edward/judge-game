@@ -35,7 +35,6 @@ static func score(evidence: Array[Evidence], charge: Charge) -> float:
 			if not buckets.has(e.time):
 				buckets[e.time] = {}
 			buckets[e.time][aspect] = true
-
 	var total := 0.0
 	for time in buckets:
 		total += _bucket_points(buckets[time])

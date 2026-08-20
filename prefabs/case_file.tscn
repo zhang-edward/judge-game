@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://y345xgiu83t3"]
+
+[ext_resource type="Script" uid="uid://bvmqrvxyj43gi" path="res://scripts/interactables/case_file.gd" id="1_y7aqe"]
+[ext_resource type="Texture2D" uid="uid://ct1dqxmajqa5c" path="res://folder.png" id="2_n01au"]
+[ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="3_0o6oy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_muem4"]
+atlas = ExtResource("2_n01au")
+region = Rect2(3, 36, 87, 63)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_da51w"]
+atlas = ExtResource("2_n01au")
+region = Rect2(11, 105, 70, 7)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trceg"]
+size = Vector2(346, 236)
+
+[node name="CaseFile" type="Node2D" unique_id=1188483467]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_y7aqe")
+
+[node name="Folder" type="TextureRect" parent="." unique_id=357046853]
+offset_left = -172.0
+offset_top = -136.0
+offset_right = -85.0
+offset_bottom = -73.0
+scale = Vector2(4, 4)
+mouse_filter = 2
+texture = SubResource("AtlasTexture_muem4")
+
+[node name="LabelBackground" type="NinePatchRect" parent="Folder" unique_id=1388332043]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 5.0
+offset_right = 79.75
+offset_bottom = 9.75
+texture = SubResource("AtlasTexture_da51w")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="CaseNameLabel" type="Label" parent="Folder/LabelBackground" unique_id=2081385956]
+unique_name_in_owner = true
+modulate = Color(0.26, 0.26, 0.26, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.875
+offset_top = -2.375
+offset_right = 265.125
+offset_bottom = 16.625
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_0o6oy")
+text = "Bob Smith"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelBackground2" type="NinePatchRect" parent="Folder" unique_id=2081675757]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 13.0
+offset_right = 81.75
+offset_bottom = 17.75
+texture = SubResource("AtlasTexture_da51w")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="CaseChargeLabel" type="Label" parent="Folder/LabelBackground2" unique_id=1377109742]
+unique_name_in_owner = true
+modulate = Color(0.26, 0.26, 0.26, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.875
+offset_top = -2.375
+offset_right = 265.125
+offset_bottom = 16.625
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_0o6oy")
+text = "Illegal singing of songs in the museum"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1053825920 groups=["zone"]]
+position = Vector2(4, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=139097663]
+position = Vector2(-2, -8)
+shape = SubResource("RectangleShape2D_trceg")

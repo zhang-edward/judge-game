@@ -14,6 +14,10 @@ var _grab_offset := Vector2.ZERO
 var _current_zones: Array[Area2D] = []
 var _baseline_pending := false
 
+# Every draggable clicked on the current frame. Godot delivers the click to each
+# overlapping hitbox, so we gather them and grab only the frontmost.
+static var _click_candidates: Array[Draggable] = []
+
 @onready var _hitbox: Area2D = $Hitbox
 
 
@@ -24,9 +28,24 @@ func _ready() -> void:
 
 
 func _on_hitbox_input(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		begin_drag()
-		get_viewport().set_input_as_handled()
+	if not (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
+		return
+	if _click_candidates.is_empty():
+		call_deferred("_grab_frontmost_candidate")
+	_click_candidates.append(self)
+	get_viewport().set_input_as_handled()
+
+
+# Grab the frontmost draggable among those clicked this frame. Siblings draw
+# later-on-top, so the highest child index is the one rendered in front.
+func _grab_frontmost_candidate() -> void:
+	var top: Draggable = null
+	for d in _click_candidates:
+		if top == null or d.get_index() > top.get_index():
+			top = d
+	_click_candidates.clear()
+	if top != null:
+		top.begin_drag()
 
 
 # Start a drag programmatically. center_on_cursor=true snaps this node to the

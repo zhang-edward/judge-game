@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://db21vgtnk47xf"]
+
+[ext_resource type="Texture2D" uid="uid://ct1dqxmajqa5c" path="res://folder.png" id="1_5ya12"]
+[ext_resource type="Script" uid="uid://c8gna7kosva7x" path="res://scripts/interactables/document.gd" id="2_ktim0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mod73"]
+atlas = ExtResource("1_5ya12")
+region = Rect2(7, 4, 36, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_da51w"]
+size = Vector2(36.5, 24.5)
+
+[node name="CaseFileSmall" type="Sprite2D" unique_id=1946874805]
+texture = SubResource("AtlasTexture_mod73")
+script = ExtResource("2_ktim0")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1824372880]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1849257374]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_da51w")

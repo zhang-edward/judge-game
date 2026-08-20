@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://lxlkcf7biupu"]
+
+[ext_resource type="Script" uid="uid://1tw84uwyqrnb" path="res://scripts/debug_evidence_row.gd" id="1_op78j"]
+
+[node name="DebugEvidenceRow" type="HBoxContainer" unique_id=869342505]
+script = ExtResource("1_op78j")
+
+[node name="Label" type="Label" parent="." unique_id=1952984525]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bob walked something in the park"
+
+[node name="Button" type="Button" parent="." unique_id=1096296004]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Add to case"

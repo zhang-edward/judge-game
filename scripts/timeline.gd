@@ -11,6 +11,7 @@ func _init(_suspect: Suspect, charge: Charge):
 		if i == crime_index:
 			var law = charge.law
 			facts.append(Fact.new(suspect, law.action, Vocab.random_item_in_category(law.category), law.location, i))
+			continue
 		var rand_item = Vocab.items.pick_random()
 		var rand_action = rand_item.supported_actions.pick_random()
 		var rand_loc = Vocab.locations.pick_random()

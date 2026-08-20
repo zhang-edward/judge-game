@@ -18,7 +18,7 @@ static func make_random() -> Law:
 	var rand_item = Vocab.items.pick_random()
 	var category_from_item = rand_item.categories.pick_random()
 	var rand_action = rand_item.supported_actions.pick_random()
-	var rand_location = Vocab.locations.pick_random() if randf() > 0.5 else null
+	var rand_location = Vocab.locations.pick_random()
 
 	return Law.new(rand_action, category_from_item, rand_location)
 

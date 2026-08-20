@@ -1,7 +1,7 @@
 class_name Main
 extends Node
 
-@onready var case_view: CaseView = $CanvasLayer/TempGameUI/Case
+@onready var case_view: CaseView = %CaseView
 @onready var next_day_button: Button = $CanvasLayer/TempGameUI/NextDay
 @onready var day_of_week: Label = $CanvasLayer/TempGameUI/DayOfWeek
 @onready var artifact_manager: ArtifactManager = $ArtifactManager
@@ -52,7 +52,7 @@ func handle_case_outcome(case_outcome: CaseStatus.CaseOutcome):
 	reputation_label.text = "Rep: " + str(reputation_score)
 	
 func reset_case():
-	suspect = Suspect.new(Vocab.suspect_names.pick_random())	
+	suspect = Suspect.new(Vocab.suspect_names.pick_random())
 	charge = Charge.new(laws.pick_random(), 1)
 	case = Case.new(suspect, charge)
 	case_view.init_case()
@@ -67,7 +67,7 @@ func progress_day():
 	if did_flee:
 		suspect_fled_alert.show()
 	else:
-		flight_risk_percentage += 5 #todo: make this scale based on case strength
+		flight_risk_percentage += 5 # todo: make this scale based on case strength
 		update_flight_risk_percentage()
 		receive_evidence_list()
 		day_index = (day_index + 1) % day_labels.size()

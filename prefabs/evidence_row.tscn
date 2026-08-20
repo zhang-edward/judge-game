@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://lxlkcf7biupu"]
 
-[ext_resource type="Script" uid="uid://1tw84uwyqrnb" path="res://scripts/debug_evidence_row.gd" id="1_op78j"]
+[ext_resource type="Script" uid="uid://1tw84uwyqrnb" path="res://scripts/debug/debug_evidence_row.gd" id="1_op78j"]
 
 [node name="DebugEvidenceRow" type="HBoxContainer" unique_id=869342505]
 script = ExtResource("1_op78j")

@@ -3,18 +3,50 @@
 [ext_resource type="Script" uid="uid://bek04jfu6pvar" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://lxlkcf7biupu" path="res://prefabs/evidence_row.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://2kr1w2t7keso" path="res://scripts/artifact_manager.gd" id="2_sugp2"]
-[ext_resource type="Script" uid="uid://dqjy1qnvhasc7" path="res://scripts/case_view.gd" id="4_jyhfs"]
+[ext_resource type="Resource" uid="uid://dhnmft26xfb8p" path="res://resources/artifacts/witness_statement.tres" id="4_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://db21vgtnk47xf" path="res://prefabs/case_file_small.tscn" id="4_eb6dy"]
+[ext_resource type="Script" uid="uid://dqjy1qnvhasc7" path="res://scripts/debug/case_view.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dykt1xhhyk65g" path="res://prefabs/suspect_fled_alert.tscn" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://dcplpduicunrk" path="res://scripts/interactables/artifact_config.gd" id="5_trceg"]
+[ext_resource type="PackedScene" uid="uid://y345xgiu83t3" path="res://prefabs/case_file.tscn" id="6_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://cly8g3v42n0rn" path="res://prefabs/case_status.tscn" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://dx5rtdeict36r" path="res://bg.png" id="8_85g3d"]
+[ext_resource type="Texture2D" uid="uid://coo2xqclpf22a" path="res://assets/sprites/outbox.png" id="9_85g3d"]
+[ext_resource type="Texture2D" uid="uid://ct1dqxmajqa5c" path="res://folder.png" id="11_jkv2x"]
+[ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="12_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://btf6ctpdwdo0t" path="res://folder_open.png" id="13_trceg"]
+[ext_resource type="FontFile" uid="uid://1mhxsc0hbij8" path="res://assets/fonts/DePixelHalbfett.ttf" id="16_jbj1t"]
+[ext_resource type="FontFile" uid="uid://dso1ngtngoifh" path="res://assets/fonts/DePixelIllegible.ttf" id="17_muem4"]
+
+[sub_resource type="Resource" id="Resource_85g3d"]
+script = ExtResource("5_trceg")
+workspace_scene = ExtResource("6_a8y0u")
+desk_scene = ExtResource("4_eb6dy")
+metadata/_custom_type_script = "uid://dcplpduicunrk"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mod73"]
+size = Vector2(77.25, 162.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
+size = Vector2(209.75, 162.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkv2x"]
+atlas = ExtResource("11_jkv2x")
+region = Rect2(11, 105, 70, 7)
 
 [node name="Main" type="Node2D" unique_id=383367928]
 script = ExtResource("1_main")
 
-[node name="ArtifactManager" type="Node" parent="." unique_id=568863602 node_paths=PackedStringArray("game", "artifact_folder")]
+[node name="ArtifactManager" type="Node" parent="." unique_id=568863602 node_paths=PackedStringArray("game", "desk_mask", "desk_zone", "workspace_mask", "workspace_zone")]
 script = ExtResource("2_sugp2")
 game = NodePath("..")
 artifact_scene = ExtResource("2_0wfyh")
-artifact_folder = NodePath("../CanvasLayer/TempGameUI/ScrollContainer/EvidenceList")
+case_file_config = SubResource("Resource_85g3d")
+artifact_config = ExtResource("4_a8y0u")
+desk_mask = NodePath("../BG/DeskMask")
+desk_zone = NodePath("../BG/DeskZone")
+workspace_mask = NodePath("../BG/WorkspaceMask")
+workspace_zone = NodePath("../BG/WorkspaceZone")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=814390645]
 
@@ -25,6 +57,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Reputation" type="Label" parent="CanvasLayer/TempGameUI" unique_id=805450429]
 layout_mode = 1
@@ -45,6 +78,7 @@ theme_override_font_sizes/font_size = 20
 text = "Monday"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TempGameUI" unique_id=1993440484]
+visible = false
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -54,38 +88,6 @@ grow_vertical = 2
 
 [node name="EvidenceList" type="VBoxContainer" parent="CanvasLayer/TempGameUI/ScrollContainer" unique_id=174451281]
 layout_mode = 2
-
-[node name="Case" type="VBoxContainer" parent="CanvasLayer/TempGameUI" unique_id=1978021941 node_paths=PackedStringArray("game")]
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -465.0
-offset_top = 139.0
-grow_horizontal = 0
-grow_vertical = 2
-script = ExtResource("4_jyhfs")
-game = NodePath("../../..")
-
-[node name="ChargeName" type="Label" parent="CanvasLayer/TempGameUI/Case" unique_id=1061860937]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="WinPercentage" type="Label" parent="CanvasLayer/TempGameUI/Case" unique_id=89951549]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="FlightRisk" type="Label" parent="CanvasLayer/TempGameUI/Case" unique_id=1722218558]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Flight risk: 0%"
-
-[node name="SubmitCase" type="Button" parent="CanvasLayer/TempGameUI/Case" unique_id=865691937]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Submit Case"
 
 [node name="NextDay" type="Button" parent="CanvasLayer/TempGameUI" unique_id=594836325]
 layout_mode = 1
@@ -108,3 +110,191 @@ game = NodePath("../..")
 [node name="CaseStatus" parent="CanvasLayer" unique_id=1649126804 node_paths=PackedStringArray("game") instance=ExtResource("6_tefeu")]
 visible = false
 game = NodePath("../..")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=2138665773]
+modulate = Color(0.78, 0.78, 0.78, 1)
+position = Vector2(576, 321)
+scale = Vector2(4, 4)
+texture = ExtResource("8_85g3d")
+
+[node name="DeskZone" type="Area2D" parent="BG" unique_id=1846948545 groups=["zone"]]
+position = Vector2(-104.25, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/DeskZone" unique_id=1393005633]
+position = Vector2(-1.125, -1)
+shape = SubResource("RectangleShape2D_mod73")
+debug_color = Color(0.27515438, 0.63238186, 0, 0.41960785)
+
+[node name="WorkspaceZone" type="Area2D" parent="BG" unique_id=681774720 groups=["zone"]]
+position = Vector2(44, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BG/WorkspaceZone" unique_id=1974597431]
+position = Vector2(-3.625, -1)
+shape = SubResource("RectangleShape2D_a8y0u")
+debug_color = Color(0.27515438, 0.63238186, 0, 0.41960785)
+
+[node name="DeskMask" type="ColorRect" parent="BG" unique_id=793782571]
+clip_children = 1
+offset_left = -144.0
+offset_top = -80.5
+offset_right = -66.5
+offset_bottom = 81.5
+mouse_filter = 2
+
+[node name="WorkspaceMask" type="ColorRect" parent="BG" unique_id=356205471]
+clip_children = 1
+offset_left = -66.25
+offset_top = -81.0
+offset_right = 143.75
+offset_bottom = 81.25
+mouse_filter = 2
+
+[node name="Outbox" type="Sprite2D" parent="." unique_id=1093004885]
+visible = false
+position = Vector2(159, 474)
+scale = Vector2(4, 4)
+texture = ExtResource("9_85g3d")
+
+[node name="CaseView" type="Node2D" parent="." unique_id=697003815 node_paths=PackedStringArray("game")]
+unique_name_in_owner = true
+visible = false
+script = ExtResource("4_jyhfs")
+game = NodePath("..")
+
+[node name="ColorRect" type="ColorRect" parent="CaseView" unique_id=2030377141]
+self_modulate = Color(0, 0, 0, 0.42352942)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -168.0
+offset_top = -106.0
+offset_right = 1304.0
+offset_bottom = 792.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FolderView" type="Sprite2D" parent="CaseView" unique_id=2014473880]
+position = Vector2(460.5, 323)
+scale = Vector2(3.9826388, 4)
+texture = ExtResource("13_trceg")
+
+[node name="LabelBackground" type="NinePatchRect" parent="CaseView/FolderView" unique_id=1528341718]
+offset_left = 106.0
+offset_top = -60.5
+offset_right = 147.75
+offset_bottom = -55.75
+rotation = 1.5707964
+texture = SubResource("AtlasTexture_jkv2x")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="CaseNameLabel" type="Label" parent="CaseView/FolderView/LabelBackground" unique_id=653300512]
+unique_name_in_owner = true
+modulate = Color(0.26, 0.26, 0.26, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.875
+offset_top = -2.375
+offset_right = 265.125
+offset_bottom = 16.625
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("12_jkv2x")
+text = "Bob Smith"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelBackground2" type="NinePatchRect" parent="CaseView/FolderView" unique_id=1020744637]
+offset_left = 8.913681
+offset_top = -73.75
+offset_right = 97.79949
+offset_bottom = -65.25
+texture = SubResource("AtlasTexture_jkv2x")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="ChargeName" type="Label" parent="CaseView/FolderView/LabelBackground2" unique_id=1755978052]
+unique_name_in_owner = true
+modulate = Color(0.26, 0.26, 0.26, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.875
+offset_top = -2.375
+offset_right = 265.125
+offset_bottom = 16.625
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("12_jkv2x")
+text = "Bob Smith"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InfoContainer" type="PanelContainer" parent="CaseView" unique_id=1185809361]
+offset_left = 918.0
+offset_top = 366.0
+offset_right = 1132.0
+offset_bottom = 476.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CaseView/InfoContainer" unique_id=821100623]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CaseView/InfoContainer/MarginContainer" unique_id=1163962746]
+layout_mode = 2
+
+[node name="FlightRisk" type="Label" parent="CaseView/InfoContainer/MarginContainer/VBoxContainer" unique_id=1630743207]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_jbj1t")
+text = "Flight Risk:"
+horizontal_alignment = 1
+
+[node name="WinPercentage" type="Label" parent="CaseView/InfoContainer/MarginContainer/VBoxContainer" unique_id=1543407839]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_jbj1t")
+text = "Chance to win:
+100% "
+horizontal_alignment = 1
+
+[node name="SubmitCase" type="Button" parent="CaseView" unique_id=420506466]
+unique_name_in_owner = true
+offset_left = 919.0
+offset_top = 506.0
+offset_right = 1135.0
+offset_bottom = 594.0
+theme_override_fonts/font = ExtResource("16_jbj1t")
+theme_override_font_sizes/font_size = 20
+text = "Submit Case!"
+
+[node name="BackButton" type="Button" parent="CaseView" unique_id=816494707]
+unique_name_in_owner = true
+offset_left = 925.0
+offset_top = 25.0
+offset_right = 1001.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("17_muem4")
+text = "Back"
+
+[node name="TempEvidenceLabel" type="Label" parent="CaseView" unique_id=601084126]
+offset_left = 81.0
+offset_top = 47.0
+offset_right = 421.0
+offset_bottom = 566.0

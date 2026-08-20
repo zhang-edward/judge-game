@@ -6,6 +6,7 @@ extends PanelContainer
 @onready var reputation_gain: Label = $VBoxContainer/Label2
 @onready var continue_button = $VBoxContainer/Button
 var case_outcome: CaseOutcome
+var current_case: Case
 
 static var REP_REWARD: int = 100
 static var REP_PENALTY: int = 50
@@ -18,7 +19,8 @@ enum CaseOutcome {
 func _ready() -> void:
 	continue_button.pressed.connect(on_case_complete)
 
-func show_case_outcome(outcome: CaseOutcome):
+func show_case_outcome(c: Case, outcome: CaseOutcome):
+	current_case = c
 	case_outcome = outcome
 	if outcome == CaseOutcome.VICTORY:
 		outcome_title.text = "Case Won!"
@@ -30,5 +32,5 @@ func show_case_outcome(outcome: CaseOutcome):
 
 func on_case_complete():
 	hide()
-	game.handle_case_outcome(case_outcome)
-	game.reset_case()
+	game.handle_case_outcome(current_case, case_outcome)
+	game.resolve_case(current_case)

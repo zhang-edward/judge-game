@@ -6,6 +6,7 @@ const ACTION_POINTS := 4
 const TWO_ASPECT_POINTS := 5
 const THREE_ASPECT_POINTS := 12
 const IRRELEVANT_PENALTY := 1 # penalty per piece that proves no crime aspect
+const MISMATCH_PENALTY := 4 # penalty per piece filed against the wrong suspect
 const WIN_SCALE := 3.0 # points -> % chance to win
 
 static func make_law_book() -> Array[Law]:
@@ -20,13 +21,18 @@ static func make_law_book() -> Array[Law]:
 	return laws
 
 # Score evidence against a charge, as a 0-100 % chance to win the case
-static func score(evidence: Array[Evidence], charge: Charge) -> float:
+static func score(evidence: Array[Evidence], charge: Charge, suspect: Suspect = null) -> float:
 	var law := charge.law
 
 	# time -> set of crime aspects proven at that time (union across evidence)
 	var buckets := {}
 	var irrelevant_count := 0
+	var mismatch_count := 0
 	for e in evidence:
+		# Evidence is about a different suspect 
+		if suspect != null and e.suspect != suspect:
+			mismatch_count += 1
+			continue
 		var aspects := _matched_aspects(e, law)
 		if aspects.is_empty():
 			irrelevant_count += 1
@@ -39,6 +45,7 @@ static func score(evidence: Array[Evidence], charge: Charge) -> float:
 	for time in buckets:
 		total += _bucket_points(buckets[time])
 	total -= irrelevant_count * IRRELEVANT_PENALTY
+	total -= mismatch_count * MISMATCH_PENALTY
 	return clampf(total * WIN_SCALE, 0.0, 100.0)
 
 # Which crime aspects a single piece of evidence matches

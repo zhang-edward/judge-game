@@ -25,21 +25,23 @@ func render_artifacts():
 			d.queue_free()
 	_spawned_docs.clear()
 
-	# Spawn in artifacts for evidence
-	for e in game.evidence:
-		evidence_to_artifact_config[e] = artifact_config
-		spawn_artifact_for_evidence(e, artifact_config)
+	# Spawn in artifacts for ALL cases
+	for c in game.cases:
+		# Spawn in case file
+		var case_file_docs = spawn_document(case_file_config)
+		var case_file_workspace_doc = case_file_docs[0] as CaseFile
+		case_file_workspace_doc.initialize(c)
+		case_file_workspace_doc.open_case_info.connect(game.case_view.open_for.bind(c))
+		case_file_workspace_doc.visible = false
 
-	# Spawn in case file
-	var case_file_docs = spawn_document(case_file_config)
-	var case_file_workspace_doc = case_file_docs[0] as CaseFile
-	case_file_workspace_doc.initialize(game.case)
-	case_file_workspace_doc.open_case_info.connect(func(): game.case_view.toggle_visible())
-	case_file_workspace_doc.visible = false
+		var case_file_desk_doc = case_file_docs[1]
+		case_file_desk_doc.position = Vector2(randf_range(8, 60), randf_range(105, 145))
+		case_file_desk_doc.rotation_degrees = randf_range(-4, 4)
 
-	var case_file_desk_doc = case_file_docs[1]
-	case_file_desk_doc.position = Vector2(randf_range(30, 40), randf_range(110, 120))
-	case_file_desk_doc.rotation_degrees = randf_range(-4, 4)
+		# Spawn in artifacts for this case's evidence
+		for e in c.available_evidence:
+			evidence_to_artifact_config[e] = artifact_config
+			spawn_artifact_for_evidence(e, artifact_config)
 
 func spawn_artifact_for_evidence(e: Evidence, artifact: ArtifactConfig):
 	var docs = spawn_document(artifact_config)
@@ -61,7 +63,7 @@ func spawn_document(cfg: ArtifactConfig):
 	var desk_doc = cfg.desk_scene.instantiate() as Document
 	desk_mask.add_child(desk_doc)
 	desk_doc.zone = desk_zone
-	
+
 	desk_doc.counterpart = workspace_doc
 	workspace_doc.counterpart = desk_doc
 
@@ -73,13 +75,15 @@ func add_evidence_to_case(evidence_doc: EvidenceDocument, case_file: CaseFile):
 	var e = evidence_doc.evidence
 	if game.case_status.visible or game.suspect_fled_alert.visible:
 		return
-	game.case.add_evidence(e)
-	game.evidence.erase(e)
+	case_file.case.add_evidence(e)
+	case_file.case.available_evidence.erase(e)
 	evidence_doc.cleanup()
-	game.case_view.update_case_win_percentage()
+	if game.case_view.visible and game.case_view.current_case == case_file.case:
+		game.case_view.update_case_win_percentage()
 
 func remove_evidence_from_case(evidence_doc: EvidenceDocument, case_file: CaseFile):
 	var e = evidence_doc.evidence
 	spawn_artifact_for_evidence(e, evidence_to_artifact_config[e])
-	game.evidence.append(e)
-	game.case_view.update_case_win_percentage()
+	case_file.case.available_evidence.append(e)
+	if game.case_view.visible and game.case_view.current_case == case_file.case:
+		game.case_view.update_case_win_percentage()

@@ -16,7 +16,6 @@ func initialize(e: Evidence):
 func _ready() -> void:
 	super._ready()
 	set_grabbable(visible) # a copy authored hidden cannot be grabbed
-	zone_entered.connect(_on_zone_entered)
 	dropped.connect(try_add_to_case)
 
 func try_add_to_case():

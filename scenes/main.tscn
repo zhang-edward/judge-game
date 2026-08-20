@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://2kr1w2t7keso" path="res://scripts/artifact_manager.gd" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://dqjy1qnvhasc7" path="res://scripts/case_view.gd" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://dykt1xhhyk65g" path="res://prefabs/suspect_fled_alert.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cly8g3v42n0rn" path="res://prefabs/case_status.tscn" id="6_tefeu"]
 
 [node name="Main" type="Node2D" unique_id=383367928]
 script = ExtResource("1_main")
@@ -24,6 +25,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Reputation" type="Label" parent="CanvasLayer/TempGameUI" unique_id=805450429]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 38.0
+offset_bottom = 61.0
+grow_horizontal = 0
+text = "Rep: 0"
 
 [node name="DayOfWeek" type="Label" parent="CanvasLayer/TempGameUI" unique_id=1356184311]
 layout_mode = 0
@@ -91,4 +103,8 @@ offset_left = -250.0
 offset_top = -150.0
 offset_right = 250.0
 offset_bottom = 150.0
+game = NodePath("../..")
+
+[node name="CaseStatus" parent="CanvasLayer" unique_id=1649126804 node_paths=PackedStringArray("game") instance=ExtResource("6_tefeu")]
+visible = false
 game = NodePath("../..")

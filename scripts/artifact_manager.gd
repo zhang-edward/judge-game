@@ -14,6 +14,8 @@ func render_artifacts():
 		artifact.initialize(e)
 		artifact.add_to_case_button.pressed.connect(
 			func():
+				if game.case_status.visible or game.suspect_fled_alert.visible:
+					return
 				game.case.add_evidence(e)
 				game.evidence.erase(e)
 				artifact.queue_free()

@@ -7,11 +7,14 @@ extends Node
 @onready var artifact_manager: ArtifactManager = $ArtifactManager
 @onready var flight_risk_label: Label = %FlightRisk
 @onready var suspect_fled_alert: SuspectFledAlert = $CanvasLayer/SuspectFledAlert
+@onready var case_status: CaseStatus = $CanvasLayer/CaseStatus
 @onready var submit_case: Button = %SubmitCase
+@onready var reputation_label: Label = $CanvasLayer/TempGameUI/Reputation
 
 var day_labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 var day_index := 0
 var flight_risk_percentage := 0
+var reputation_score := 0
 
 var evidence: Array[Evidence] = []
 var laws: Array[Law]
@@ -37,9 +40,16 @@ func receive_evidence_list():
 func on_submit_case():
 	var did_case_succeed = randi_range(1, 100) <= case.win_percentage
 	if did_case_succeed:
-		pass
+		case_status.show_case_outcome(CaseStatus.CaseOutcome.VICTORY)
 	else:
-		pass
+		case_status.show_case_outcome(CaseStatus.CaseOutcome.DEFEAT)
+		
+func handle_case_outcome(case_outcome: CaseStatus.CaseOutcome):
+	if case_outcome == CaseStatus.CaseOutcome.VICTORY:
+		reputation_score += CaseStatus.REP_REWARD
+	elif case_outcome == CaseStatus.CaseOutcome.DEFEAT:
+		reputation_score = max(0, reputation_score - CaseStatus.REP_PENALTY)
+	reputation_label.text = "Rep: " + str(reputation_score)
 	
 func reset_case():
 	suspect = Suspect.new(Vocab.suspect_names.pick_random())	
@@ -51,7 +61,7 @@ func reset_case():
 	receive_evidence_list()
 
 func progress_day():
-	if suspect_fled_alert.visible:
+	if suspect_fled_alert.visible or case_status.visible:
 		return
 	var did_flee = randi_range(1, 100) < flight_risk_percentage
 	if did_flee:

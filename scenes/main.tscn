@@ -4,28 +4,51 @@
 [ext_resource type="PackedScene" uid="uid://lxlkcf7biupu" path="res://prefabs/evidence_row.tscn" id="2_0wfyh"]
 [ext_resource type="Script" uid="uid://2kr1w2t7keso" path="res://scripts/artifact_manager.gd" id="2_sugp2"]
 [ext_resource type="Script" uid="uid://dqjy1qnvhasc7" path="res://scripts/case_view.gd" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dykt1xhhyk65g" path="res://prefabs/suspect_fled_alert.tscn" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cly8g3v42n0rn" path="res://prefabs/case_status.tscn" id="6_tefeu"]
 
 [node name="Main" type="Node2D" unique_id=383367928]
 script = ExtResource("1_main")
 
+[node name="ArtifactManager" type="Node" parent="." unique_id=568863602 node_paths=PackedStringArray("game", "artifact_folder")]
+script = ExtResource("2_sugp2")
+game = NodePath("..")
+artifact_scene = ExtResource("2_0wfyh")
+artifact_folder = NodePath("../CanvasLayer/TempGameUI/ScrollContainer/EvidenceList")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=814390645]
 
-[node name="TempGameUI" type="Control" parent="CanvasLayer" unique_id=67088817 node_paths=PackedStringArray("game", "artifact_folder")]
+[node name="TempGameUI" type="Control" parent="CanvasLayer" unique_id=67088817]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_sugp2")
-game = NodePath("../..")
-artifact_scene = ExtResource("2_0wfyh")
-artifact_folder = NodePath("ScrollContainer/EvidenceList")
+
+[node name="Reputation" type="Label" parent="CanvasLayer/TempGameUI" unique_id=805450429]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -48.0
+offset_top = 38.0
+offset_bottom = 61.0
+grow_horizontal = 0
+text = "Rep: 0"
+
+[node name="DayOfWeek" type="Label" parent="CanvasLayer/TempGameUI" unique_id=1356184311]
+layout_mode = 0
+offset_right = 63.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20
+text = "Monday"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TempGameUI" unique_id=1993440484]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
+offset_top = 53.0
 offset_right = 486.0
 grow_vertical = 2
 
@@ -45,6 +68,43 @@ grow_vertical = 2
 script = ExtResource("4_jyhfs")
 game = NodePath("../../..")
 
-[node name="Label" type="Label" parent="CanvasLayer/TempGameUI/Case" unique_id=1061860937]
+[node name="ChargeName" type="Label" parent="CanvasLayer/TempGameUI/Case" unique_id=1061860937]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="WinPercentage" type="Label" parent="CanvasLayer/TempGameUI/Case" unique_id=89951549]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FlightRisk" type="Label" parent="CanvasLayer/TempGameUI/Case" unique_id=1722218558]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Flight risk: 0%"
+
+[node name="SubmitCase" type="Button" parent="CanvasLayer/TempGameUI/Case" unique_id=865691937]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Submit Case"
+
+[node name="NextDay" type="Button" parent="CanvasLayer/TempGameUI" unique_id=594836325]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -79.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Next Day"
+
+[node name="SuspectFledAlert" parent="CanvasLayer" unique_id=1107840277 node_paths=PackedStringArray("game") instance=ExtResource("5_tbgi4")]
+visible = false
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
+game = NodePath("../..")
+
+[node name="CaseStatus" parent="CanvasLayer" unique_id=1649126804 node_paths=PackedStringArray("game") instance=ExtResource("6_tefeu")]
+visible = false
+game = NodePath("../..")

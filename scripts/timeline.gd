@@ -6,7 +6,6 @@ var suspect: Suspect
 func _init(_suspect: Suspect, charge: Charge):
 	suspect = _suspect
 	var crime_index = randi_range(0, 24)
-	print("CRIME COMMITTED AT " + str(crime_index))
 	for i in range(0, 24):
 		if i == crime_index:
 			var law = charge.law
@@ -22,7 +21,10 @@ func generate_evidence_list() -> Array[Evidence]:
 	for f in facts:
 		var num_evidence = randi_range(1, 3)
 		for i in range(0, num_evidence):
-			evidence_arr.append(create_evidence(f))
+			var evidence = create_evidence(f)
+			var add_to_evidence_arr = randi_range(0, 1) == 0
+			if add_to_evidence_arr:
+				evidence_arr.append(evidence)
 	return evidence_arr
 
 func create_evidence(f: Fact) -> Evidence:

@@ -1,5 +1,13 @@
 class_name Judge
 
+const OBJECT_POINTS := 1
+const LOCATION_POINTS := 2
+const ACTION_POINTS := 4
+const TWO_ASPECT_POINTS := 5
+const THREE_ASPECT_POINTS := 12
+const IRRELEVANT_PENALTY := 1 # penalty per piece that proves no crime aspect
+const WIN_SCALE := 3.0 # points -> % chance to win
+
 static func make_law_book() -> Array[Law]:
 	var laws: Array[Law] = [
 		Law.new(Vocab.action("sing"), null, Vocab.location("library")),
@@ -11,46 +19,50 @@ static func make_law_book() -> Array[Law]:
 	]
 	return laws
 
-static func evaluate(evidence: Array[Evidence], law_book: Array[Law]) -> Array[Charge]:
-	var charges: Array[Charge] = []
-	for law in law_book:
-		var count := 0
-		for e in evidence:
-			if law.is_broken_by(e):
-				count += 1
-		if count > 0:
-			charges.append(Charge.new(law, count))
-	return charges
+# Score evidence against a charge, as a 0-100 % chance to win the case
+static func score(evidence: Array[Evidence], charge: Charge) -> float:
+	var law := charge.law
 
+	# time -> set of crime aspects proven at that time (union across evidence)
+	var buckets := {}
+	var irrelevant_count := 0
+	for e in evidence:
+		var aspects := _matched_aspects(e, law)
+		if aspects.is_empty():
+			irrelevant_count += 1
+			continue
+		for aspect in aspects:
+			if not buckets.has(e.time):
+				buckets[e.time] = {}
+			buckets[e.time][aspect] = true
 
-# e.g. "Carried a knife in the park." or "Sang in the park."
-static func evidence_sentence(e: Evidence) -> String:
-	if e.item == null:
-		return "%s %s." % [e.action.past, e.location.phrase]
-	return "%s %s %s." % [e.action.past, _item_phrase(e.item), e.location.phrase]
+	var total := 0.0
+	for time in buckets:
+		total += _bucket_points(buckets[time])
+	total -= irrelevant_count * IRRELEVANT_PENALTY
+	return clampf(total * WIN_SCALE, 0.0, 100.0)
 
+# Which crime aspects a single piece of evidence matches
+static func _matched_aspects(e: Evidence, law: Law) -> Array:
+	var aspects := []
+	if law.action != null and e.action == law.action:
+		aspects.append("action")
+	if law.category != null and e.has_category(law.category):
+		aspects.append("object")
+	if law.location != null and e.location == law.location:
+		aspects.append("location")
+	return aspects
 
-# e.g. "3 counts of illegal carrying of weapons."
-static func charge_sentence(c: Charge) -> String:
-	var word := "count" if c.count == 1 else "counts"
-	return "%d %s of %s." % [c.count, word, _offence(c.law)]
-
-
-# What a law forbids, e.g. "illegal selling of food on the street".
-static func _offence(law: Law) -> String:
-	var text := "illegal %s" % law.action.gerund
-	if law.category != null:
-		text += " of %s" % law.category.plural
-	if law.location != null:
-		text += " %s" % law.location.phrase
-	return text
-
-
-# e.g. "a knife", "an apple".
-static func _item_phrase(item: ItemDef) -> String:
-	var article := "an" if _starts_with_vowel(item.name) else "a"
-	return "%s %s" % [article, item.name]
-
-
-static func _starts_with_vowel(word: String) -> bool:
-	return not word.is_empty() and "aeiou".contains(word[0].to_lower())
+# Points for one time bucket, scored by its best tier
+static func _bucket_points(aspect_set: Dictionary) -> float:
+	if aspect_set.size() >= 3:
+		return THREE_ASPECT_POINTS
+	if aspect_set.size() == 2:
+		return TWO_ASPECT_POINTS
+	if aspect_set.has("action"):
+		return ACTION_POINTS
+	if aspect_set.has("object"):
+		return OBJECT_POINTS
+	if aspect_set.has("location"):
+		return LOCATION_POINTS
+	return 0.0

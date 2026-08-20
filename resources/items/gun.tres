@@ -4,9 +4,7 @@
 [ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_2tvt4"]
 [ext_resource type="Resource" uid="uid://d08q4g8v8vt5w" path="res://resources/categories/weapon.tres" id="2_4jlet"]
 [ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="4_4jlet"]
-[ext_resource type="Resource" uid="uid://dh3gvicayt2ds" path="res://resources/actions/carry.tres" id="5_gvk54"]
 [ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_3xry5"]
-[ext_resource type="Resource" uid="uid://dxx211qx75ddc" path="res://resources/actions/possess.tres" id="7_3so6t"]
 [ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="8_fjsjr"]
 [ext_resource type="Resource" uid="uid://bfyouew6ryhoj" path="res://resources/actions/use.tres" id="9_de0s0"]
 
@@ -15,5 +13,5 @@ script = ExtResource("2_2tvt4")
 id = &"gun"
 name = "gun"
 categories = Array[ExtResource("1_p6p62")]([ExtResource("2_4jlet")])
-supported_actions = Array[ExtResource("4_4jlet")]([ExtResource("5_gvk54"), ExtResource("6_3xry5"), ExtResource("7_3so6t"), ExtResource("8_fjsjr"), ExtResource("9_de0s0")])
+supported_actions = Array[ExtResource("4_4jlet")]([ExtResource("6_3xry5"), ExtResource("8_fjsjr"), ExtResource("9_de0s0")])
 metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

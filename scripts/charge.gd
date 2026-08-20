@@ -18,7 +18,7 @@ func _to_string() -> String:
 		if law.category == null:
 			rendered_sentence += " being"
 		else:
-			rendered_sentence += " having"
+			rendered_sentence += " possession"
 	if law.category != null:
 		rendered_sentence += " of " + law.category.plural
 	if law.location != null:

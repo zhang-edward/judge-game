@@ -3,9 +3,15 @@ class_name Timeline
 var facts: Array[Fact] = []
 var suspect: Suspect
 
-func _init(_suspect: Suspect):
+func _init(_suspect: Suspect, charge: Charge):
 	suspect = _suspect
+	var crime_index = randi_range(0, 24)
+	print("CRIME COMMITTED AT " + str(crime_index))
 	for i in range(0, 24):
+		if i == crime_index:
+			var law = charge.law
+			facts.append(Fact.new(suspect, law.action, Vocab.random_item_in_category(law.category), law.location, i))
+			continue
 		var rand_item = Vocab.items.pick_random()
 		var rand_action = rand_item.supported_actions.pick_random()
 		var rand_loc = Vocab.locations.pick_random()

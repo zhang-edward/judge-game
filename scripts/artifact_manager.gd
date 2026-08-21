@@ -43,17 +43,21 @@ func render_artifacts():
 			evidence_to_artifact_config[e] = artifact_config
 			spawn_artifact_for_evidence(e, artifact_config)
 
-func spawn_artifact_for_evidence(e: Evidence, artifact: ArtifactConfig):
+func spawn_artifact_for_evidence(e: Evidence, artifact: ArtifactConfig, on_desk := false):
 	var docs = spawn_document(artifact_config)
 
 	var workspace_doc = docs[0] as EvidenceDocument
 	workspace_doc.initialize(e)
-	workspace_doc.visible = false
+	workspace_doc.visible = on_desk
 	workspace_doc.added_to_case.connect(func(c: CaseFile): add_evidence_to_case(workspace_doc, c))
+	workspace_doc.position = Vector2(50, 50)
+	workspace_doc.set_grabbable(!game.case_view.visible)
 
 	var desk_doc = docs[1]
 	desk_doc.position = Vector2(randf_range(12, 66), randf_range(12, 90))
+	desk_doc.visible = !on_desk
 	desk_doc.rotation_degrees = randf_range(-4, 4)
+	desk_doc.set_grabbable(!game.case_view.visible)
 
 func spawn_document(cfg: ArtifactConfig):
 	var workspace_doc = cfg.workspace_scene.instantiate() as Document
@@ -81,9 +85,9 @@ func add_evidence_to_case(evidence_doc: EvidenceDocument, case_file: CaseFile):
 	if game.case_view.visible and game.case_view.current_case == case_file.case:
 		game.case_view.update_case_win_percentage()
 
-func remove_evidence_from_case(evidence_doc: EvidenceDocument, case_file: CaseFile):
+func remove_evidence_from_case(evidence_doc: EvidenceDocument, case: Case):
 	var e = evidence_doc.evidence
-	spawn_artifact_for_evidence(e, evidence_to_artifact_config[e])
-	case_file.case.available_evidence.append(e)
-	if game.case_view.visible and game.case_view.current_case == case_file.case:
+	spawn_artifact_for_evidence(e, evidence_to_artifact_config[e], true)
+	case.available_evidence.append(e)
+	if game.case_view.visible and game.case_view.current_case == case:
 		game.case_view.update_case_win_percentage()

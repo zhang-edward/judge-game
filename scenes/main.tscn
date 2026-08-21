@@ -34,6 +34,12 @@ size = Vector2(209.75, 162.5)
 atlas = ExtResource("11_jkv2x")
 region = Rect2(11, 105, 70, 7)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]
+size = Vector2(908, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_muem4"]
+size = Vector2(241, 648)
+
 [node name="Main" type="Node2D" unique_id=383367928]
 script = ExtResource("1_main")
 
@@ -155,23 +161,21 @@ position = Vector2(159, 474)
 scale = Vector2(4, 4)
 texture = ExtResource("9_85g3d")
 
-[node name="CaseView" type="Node2D" parent="." unique_id=697003815 node_paths=PackedStringArray("game")]
+[node name="CaseView" type="Node2D" parent="." unique_id=697003815 node_paths=PackedStringArray("game", "desk_mask", "workspace_mask")]
 unique_name_in_owner = true
 visible = false
 script = ExtResource("4_jyhfs")
 game = NodePath("..")
+desk_mask = NodePath("../BG/DeskMask")
+workspace_mask = NodePath("../BG/WorkspaceMask")
 
-[node name="ColorRect" type="ColorRect" parent="CaseView" unique_id=2030377141]
+[node name="Background" type="ColorRect" parent="CaseView" unique_id=2030377141]
 self_modulate = Color(0, 0, 0, 0.42352942)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
 offset_left = -168.0
 offset_top = -106.0
 offset_right = 1304.0
 offset_bottom = 792.0
-grow_horizontal = 2
-grow_vertical = 2
+mouse_filter = 1
 
 [node name="FolderView" type="Sprite2D" parent="CaseView" unique_id=2014473880]
 position = Vector2(460.5, 323)
@@ -248,6 +252,7 @@ offset_left = 918.0
 offset_top = 366.0
 offset_right = 1132.0
 offset_bottom = 476.0
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="CaseView/InfoContainer" unique_id=821100623]
 layout_mode = 2
@@ -298,3 +303,16 @@ offset_left = 81.0
 offset_top = 47.0
 offset_right = 421.0
 offset_bottom = 566.0
+
+[node name="FolderInterior" type="Area2D" parent="CaseView" unique_id=1407249188 groups=["zone"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaseView/FolderInterior" unique_id=986781167]
+position = Vector2(452, 319)
+shape = SubResource("RectangleShape2D_6pmnr")
+
+[node name="FolderExterior" type="Area2D" parent="CaseView" unique_id=82709048 groups=["zone"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CaseView/FolderExterior" unique_id=1780791918]
+position = Vector2(1030.5, 317)
+shape = SubResource("RectangleShape2D_muem4")
+debug_color = Color(0.99604684, 0.058943145, 3.85046e-07, 0.41960785)

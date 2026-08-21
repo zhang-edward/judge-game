@@ -45,9 +45,9 @@ desk_zone = NodePath("../BG/DeskZone")
 workspace_mask = NodePath("../BG/WorkspaceMask")
 workspace_zone = NodePath("../BG/WorkspaceZone")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=814390645]
+[node name="TempUI" type="CanvasLayer" parent="." unique_id=814390645]
 
-[node name="TempGameUI" type="Control" parent="CanvasLayer" unique_id=67088817]
+[node name="TempGameUI" type="Control" parent="TempUI" unique_id=67088817]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,7 +56,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Reputation" type="Label" parent="CanvasLayer/TempGameUI" unique_id=805450429]
+[node name="Reputation" type="Label" parent="TempUI/TempGameUI" unique_id=805450429]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -67,14 +67,14 @@ offset_bottom = 61.0
 grow_horizontal = 0
 text = "Rep: 0"
 
-[node name="DayOfWeek" type="Label" parent="CanvasLayer/TempGameUI" unique_id=1356184311]
+[node name="DayOfWeek" type="Label" parent="TempUI/TempGameUI" unique_id=1356184311]
 layout_mode = 0
 offset_right = 63.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 20
 text = "Monday"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/TempGameUI" unique_id=1993440484]
+[node name="ScrollContainer" type="ScrollContainer" parent="TempUI/TempGameUI" unique_id=1993440484]
 visible = false
 layout_mode = 1
 anchors_preset = 9
@@ -83,10 +83,10 @@ offset_top = 53.0
 offset_right = 486.0
 grow_vertical = 2
 
-[node name="EvidenceList" type="VBoxContainer" parent="CanvasLayer/TempGameUI/ScrollContainer" unique_id=174451281]
+[node name="EvidenceList" type="VBoxContainer" parent="TempUI/TempGameUI/ScrollContainer" unique_id=174451281]
 layout_mode = 2
 
-[node name="NextDay" type="Button" parent="CanvasLayer/TempGameUI" unique_id=594836325]
+[node name="NextDay" type="Button" parent="TempUI/TempGameUI" unique_id=594836325]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -96,7 +96,7 @@ offset_bottom = 31.0
 grow_horizontal = 0
 text = "Next Day"
 
-[node name="SuspectFledAlert" parent="CanvasLayer" unique_id=1107840277 node_paths=PackedStringArray("game") instance=ExtResource("5_tbgi4")]
+[node name="SuspectFledAlert" parent="TempUI" unique_id=1107840277 node_paths=PackedStringArray("game") instance=ExtResource("5_tbgi4")]
 visible = false
 offset_left = -250.0
 offset_top = -150.0
@@ -104,7 +104,7 @@ offset_right = 250.0
 offset_bottom = 150.0
 game = NodePath("../..")
 
-[node name="CaseStatus" parent="CanvasLayer" unique_id=1649126804 node_paths=PackedStringArray("game") instance=ExtResource("6_tefeu")]
+[node name="CaseStatus" parent="TempUI" unique_id=1649126804 node_paths=PackedStringArray("game") instance=ExtResource("6_tefeu")]
 visible = false
 game = NodePath("../..")
 
@@ -206,19 +206,22 @@ text = "Bob Smith"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LabelBackground2" type="NinePatchRect" parent="CaseView/FolderView" unique_id=1020744637]
+[node name="ChargeLabelBackground" type="NinePatchRect" parent="CaseView/FolderView" unique_id=1020744637]
+unique_name_in_owner = true
 offset_left = 8.913681
 offset_top = -73.75
 offset_right = 97.79949
 offset_bottom = -65.25
+mouse_filter = 0
 texture = SubResource("AtlasTexture_jkv2x")
 patch_margin_left = 1
 patch_margin_top = 1
 patch_margin_right = 1
 patch_margin_bottom = 1
 
-[node name="ChargeName" type="Label" parent="CaseView/FolderView/LabelBackground2" unique_id=1755978052]
+[node name="ChargeName" type="Label" parent="CaseView/FolderView/ChargeLabelBackground" unique_id=1755978052]
 unique_name_in_owner = true
+mouse_filter = 2
 modulate = Color(0.26, 0.26, 0.26, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -307,3 +310,30 @@ shape = SubResource("RectangleShape2D_6pmnr")
 position = Vector2(1030.5, 317)
 shape = SubResource("RectangleShape2D_muem4")
 debug_color = Color(0.99604684, 0.058943145, 3.85046e-07, 0.41960785)
+
+[node name="ChargeMenuPanel" type="PanelContainer" parent="CaseView" unique_id=463128181]
+unique_name_in_owner = true
+visible = false
+offset_left = 500.0
+offset_top = 76.0
+offset_right = 848.0
+offset_bottom = 526.0
+
+[node name="Margin" type="MarginContainer" parent="CaseView/ChargeMenuPanel" unique_id=5759170]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ChargeMenu" type="VBoxContainer" parent="CaseView/ChargeMenuPanel/Margin" unique_id=223932940]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="Label" parent="CaseView/ChargeMenuPanel/Margin/ChargeMenu" unique_id=324147639]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("16_jbj1t")
+theme_override_font_sizes/font_size = 12
+text = "CHARGE"
+horizontal_alignment = 1

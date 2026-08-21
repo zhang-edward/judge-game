@@ -22,6 +22,8 @@ static func make_law_book() -> Array[Law]:
 
 # Score evidence against a charge, as a 0-100 % chance to win the case
 static func score(evidence: Array[Evidence], charge: Charge, suspect: Suspect = null) -> float:
+	if charge == null:
+		return 0.0
 	var law := charge.law
 
 	# time -> set of crime aspects proven at that time (union across evidence)

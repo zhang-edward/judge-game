@@ -15,8 +15,12 @@ func _on_hitbox_input(_viewport: Node, event: InputEvent, _shape_idx: int) -> vo
 
 func setup_case(c: Case):
 	case = c
+	case.charge_changed.connect(_refresh_charge_label)
 	case_name_label.text = case.suspect.name
-	case_charge_label.text = case.charge.to_string()
+	_refresh_charge_label()
+
+func _refresh_charge_label():
+	case_charge_label.text = case.charge.to_string() if case.charge != null else "No charge filed"
 
 func initialize(e: Evidence, manager: ArtifactManager, with_small_form := true):
 	super.initialize(e, manager, with_small_form)

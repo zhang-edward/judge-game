@@ -41,7 +41,7 @@ func open_for(c: Case):
 		var cfg = game.artifact_manager.evidence_to_artifact_config[e]
 		var workspace_doc = cfg.workspace_scene.instantiate() as EvidenceDocument
 		folder_view.add_child(workspace_doc)
-		workspace_doc.initialize(e)
+		workspace_doc.initialize(e, cfg)
 		workspace_doc.zone = folder_interior
 		var rand_x = randi_range(-65, 0)
 		var rand_y = randi_range(-40, 0)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArtifactConfig" format=3 uid="uid://by8k65vm7v1de"]
+
+[ext_resource type="PackedScene" uid="uid://rne57trhn7tr" path="res://prefabs/police_report_small.tscn" id="1_bkrh7"]
+[ext_resource type="Script" uid="uid://dcplpduicunrk" path="res://scripts/interactables/artifact_config.gd" id="1_cl4vx"]
+[ext_resource type="PackedScene" uid="uid://dxlrojhw3ypnh" path="res://prefabs/police_report.tscn" id="3_yc6gm"]
+
+[resource]
+script = ExtResource("1_cl4vx")
+workspace_scene = ExtResource("3_yc6gm")
+desk_scene = ExtResource("1_bkrh7")
+metadata/_custom_type_script = "uid://dcplpduicunrk"

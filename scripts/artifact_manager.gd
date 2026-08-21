@@ -47,7 +47,7 @@ func spawn_artifact_for_evidence(e: Evidence, artifact: ArtifactConfig, on_desk 
 	var docs = spawn_document(artifact_config)
 
 	var workspace_doc = docs[0] as EvidenceDocument
-	workspace_doc.initialize(e)
+	workspace_doc.initialize(e, artifact)
 	workspace_doc.visible = on_desk
 	workspace_doc.added_to_case.connect(func(c: CaseFile): add_evidence_to_case(workspace_doc, c))
 	workspace_doc.position = Vector2(50, 50)

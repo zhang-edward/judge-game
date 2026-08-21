@@ -13,7 +13,7 @@ var is_within_case_view := false
 
 var case_file_ref: CaseFile
 
-func initialize(e: Evidence):
+func initialize(e: Evidence, cfg: ArtifactConfig):
 	evidence = e
 	label.text = e.render()
 
@@ -24,7 +24,9 @@ func _ready() -> void:
 
 func try_add_to_case():
 	for area in hitbox.get_overlapping_areas():
+		print(area)
 		if area.get_parent() is CaseFile:
+			print("adding to case")
 			added_to_case.emit(area.get_parent() as CaseFile)
 
 # Hand off to the counterpart when the cursor enters the counterpart's zone.

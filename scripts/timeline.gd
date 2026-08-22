@@ -5,7 +5,7 @@ var suspect: Suspect
 
 func _init(_suspect: Suspect):
 	suspect = _suspect
-	for i in range(0, 24):
+	for i in range(0, 12):
 		var rand_item = Vocab.items.pick_random()
 		var rand_action = rand_item.supported_actions.pick_random()
 		var rand_loc = Vocab.locations.pick_random()

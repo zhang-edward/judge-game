@@ -2,17 +2,46 @@ class_name LawBook
 extends Draggable
 
 @export var small_form_scene: PackedScene
+@export var is_small_form: bool
 
 const LAW_FONT = preload("res://assets/fonts/PixelOperator-Bold.ttf")
+
+@onready var prev_page_button: TextureButton = %PrevPageButton
+@onready var next_page_button: TextureButton = %NextPageButton
 
 var counterpart: LawBook
 var home_zone: Area2D
 var small_form: LawBook
 
+var page_index: int = 0
+
 func _ready() -> void:
 	super._ready()
 	set_grabbable(visible)
 	zone_entered.connect(_on_zone_entered)
+	if !is_small_form:
+		prev_page_button.pressed.connect(on_prev_page)
+		next_page_button.pressed.connect(on_next_page)
+
+func on_next_page() -> void:
+	var cur_page = get_node("Page" + str(page_index))
+	cur_page.visible = false
+	page_index += 1
+	var new_page = get_node("Page" + str(page_index))
+	new_page.visible = true
+
+	next_page_button.visible = page_index != 1
+	prev_page_button.visible = page_index != 0
+
+func on_prev_page() -> void:
+	var cur_page = get_node("Page" + str(page_index))
+	cur_page.visible = false
+	page_index -= 1
+	var new_page = get_node("Page" + str(page_index))
+	new_page.visible = true
+
+	next_page_button.visible = page_index != 1
+	prev_page_button.visible = page_index != 0
 
 func initialize(laws: Array[Law], desk_parent: Node, workspace_zone: Area2D, desk_zone: Area2D) -> void:
 	populate(laws)

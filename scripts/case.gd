@@ -6,6 +6,9 @@ signal charge_changed
 
 var evidence_list: Array[Evidence] = []
 
+# The artifact data the player has filed into this case's folder, one per filed artifact.
+var filed_data: Array[ArtifactData] = []
+
 # Unfiled evidence for this case: the pile the player still has to sort onto the folder.
 var available_evidence: Array[Evidence] = []
 var charge: Charge
@@ -43,4 +46,5 @@ func _to_string() -> String:
 
 func reset():
 	evidence_list = []
+	filed_data = []
 	win_percentage = 0.0

@@ -8,14 +8,14 @@ signal entered_zone(area: Area2D, artifact: Artifact)
 
 var artifact_manager: ArtifactManager
 var small_form: ArtifactSmall
-var evidence: Evidence
+var data: ArtifactData
 var case_file_ref: CaseFile
 var zone: Area2D
 var is_within_case_view := false
 var hovered_zone: Area2D
 
-func initialize(e: Evidence, manager: ArtifactManager, with_small_form := true):
-	evidence = e
+func initialize(g: ArtifactData, manager: ArtifactManager, with_small_form := true):
+	data = g
 	artifact_manager = manager
 	zone = artifact_manager.workspace_zone
 	
@@ -29,17 +29,21 @@ func initialize(e: Evidence, manager: ArtifactManager, with_small_form := true):
 		small_form.zone = artifact_manager.desk_zone
 		hide()
 		
-	if evidence != null:
-		render_evidence_into_artifact(evidence)
+	if data != null and not data.evidence.is_empty():
+		render_evidence_into_artifact(data)
 
-func render_evidence_into_artifact(evidence: Evidence):
+func render_evidence_into_artifact(data: ArtifactData):
 	pass
+
+func select_evidence(pool: Array[Evidence]) -> Array[Evidence]:
+	return ArtifactManager.pick_random_evidence(pool, 1, 1)
 
 func _ready() -> void:
 	super._ready()
 	set_grabbable(visible) # a copy authored hidden cannot be grabbed
 	dropped.connect(try_add_to_case)
 	zone_entered.connect(_on_zone_entered)
+	zone_exited.connect(_on_zone_exited)
 
 func try_add_to_case():
 	if case_file_ref != null:
@@ -57,6 +61,12 @@ func _on_zone_entered(area: Area2D) -> void:
 			case_file_ref = null
 	if small_form != null and area == small_form.zone:
 		_hand_off()
+
+func _on_zone_exited(area: Area2D) -> void:
+	print("Exited zone:", area)
+	if area.get_parent() is CaseFile:
+		case_file_ref = null
+
 
 func _hand_off() -> void:
 	cancel_drag()

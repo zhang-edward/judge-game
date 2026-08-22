@@ -8,7 +8,19 @@ extends Artifact
 
 var random_prices = [1.59, 3.59, 5.99, 12.99, 19.99, 34.99, 44.99, 59.99, 99.59]
 
-func render_evidence_into_artifact(e: Evidence):
+# A receipt only shows a purchased item, so it can only represent item-only evidence.
+func select_evidence(pool: Array[Evidence]) -> Array[Evidence]:
+	var candidates: Array[Evidence] = []
+	for e in pool:
+		if e.action == null and e.location == null and e.item != null:
+			candidates.append(e)
+	var result: Array[Evidence] = []
+	if not candidates.is_empty():
+		result.append(candidates.pick_random())
+	return result
+
+func render_evidence_into_artifact(data: ArtifactData):
+	var e = data.evidence[0]
 	var evidence_item_name = ""
 	var total_price = 0.0
 	if e.item != null:

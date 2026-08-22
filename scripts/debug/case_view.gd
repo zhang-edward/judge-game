@@ -1,6 +1,9 @@
 class_name CaseView
 extends Node2D
 
+signal opened()
+signal closed()
+
 const MENU_FONT := preload("res://assets/fonts/DePixelHalbfett.ttf")
 
 @export var game: Main
@@ -52,15 +55,14 @@ func open_for(c: Case):
 	folder_interior_collider.disabled = false
 	folder_exterior_collider.disabled = false
 	
-	# Render evidence artifacts within folder
+	# Render evidence artifacts within folder, one per filed artifact
 	for child in folder_view.get_children():
 		if child is Artifact:
 			child.queue_free()
-	for e in c.evidence_list:
-		var artifact_scene = game.artifact_manager.evidence_to_artifact_scene[e]
-		var artifact = artifact_scene.instantiate() as Artifact
+	for data in c.filed_data:
+		var artifact = data.artifact_scene.instantiate() as Artifact
 		folder_view.add_child(artifact)
-		artifact.initialize(e, game.artifact_manager, false)
+		artifact.initialize(data, game.artifact_manager, false)
 		artifact.is_within_case_view = true
 		artifact.zone = folder_interior
 		var rand_x = randi_range(-65, 0)
@@ -69,6 +71,7 @@ func open_for(c: Case):
 		artifact.entered_zone.connect(handle_zone_enter)
 		artifact.dropped.connect(func(): handle_dropped(artifact))
 	visible = true
+	opened.emit()
 	
 func handle_zone_enter(area: Area2D, artifact: Artifact):
 	if area == folder_exterior:
@@ -79,7 +82,8 @@ func handle_zone_enter(area: Area2D, artifact: Artifact):
 func handle_dropped(artifact: Artifact):
 	if artifact.hovered_zone == folder_exterior:
 		artifact.cleanup()
-		current_case.remove_evidence(artifact.evidence)
+		for e in artifact.data.evidence:
+			current_case.remove_evidence(e)
 		game.artifact_manager.remove_evidence_from_case(artifact, current_case)
 
 func disable_outer_draggables():
@@ -102,6 +106,9 @@ func close():
 	enable_outer_draggables()
 	_stop_pulse()
 	visible = false
+	folder_interior_collider.disabled = true
+	folder_exterior_collider.disabled = true
+	closed.emit()
 
 func _on_charge_label_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

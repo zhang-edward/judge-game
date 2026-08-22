@@ -1,21 +1,24 @@
 [gd_scene format=3 uid="uid://dxlrojhw3ypnh"]
 
-[ext_resource type="Script" uid="uid://b0lsjvuogs5ma" path="res://scripts/interactables/evidence_document.gd" id="1_5pcpj"]
-[ext_resource type="Texture2D" uid="uid://c7x1bsgkpmn8i" path="res://assets/sprites/document2.png" id="1_76a24"]
-[ext_resource type="Texture2D" uid="uid://diw6dgyivayim" path="res://assets/sprites/doc_eyewitness.png" id="1_p1r8c"]
-[ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_apfmo"]
-[ext_resource type="FontFile" uid="uid://paeyvxq6llev" path="res://assets/fonts/DePixelBreit.ttf" id="3_76a24"]
-[ext_resource type="Texture2D" uid="uid://d3j5qltt8mobc" path="res://assets/sprites/police-badge.png" id="4_apfmo"]
+[ext_resource type="Texture2D" uid="uid://c7x1bsgkpmn8i" path="res://assets/sprites/document2.png" id="1_1q6cm"]
+[ext_resource type="Script" uid="uid://c00r3t5avsu8a" path="res://scripts/interactables/artifacts/police_report.gd" id="1_m0rb7"]
+[ext_resource type="PackedScene" uid="uid://rne57trhn7tr" path="res://prefabs/artifacts/police_report_small.tscn" id="2_hh11h"]
+[ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_m0rb7"]
+[ext_resource type="FontFile" uid="uid://paeyvxq6llev" path="res://assets/fonts/DePixelBreit.ttf" id="3_hh11h"]
+[ext_resource type="Texture2D" uid="uid://diw6dgyivayim" path="res://assets/sprites/doc_eyewitness.png" id="4_wbaar"]
+[ext_resource type="Texture2D" uid="uid://d3j5qltt8mobc" path="res://assets/sprites/police-badge.png" id="5_gjdor"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76a24"]
-atlas = ExtResource("1_p1r8c")
+atlas = ExtResource("4_wbaar")
 region = Rect2(2, 30, 3, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pcpj"]
 size = Vector2(320, 246.5)
 
 [node name="PoliceReport" type="Node2D" unique_id=1658486347]
-script = ExtResource("1_5pcpj")
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_m0rb7")
+small_form_scene = ExtResource("2_hh11h")
 
 [node name="Paper" type="NinePatchRect" parent="." unique_id=1905710414]
 anchors_preset = 15
@@ -28,7 +31,7 @@ offset_bottom = -45.25
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
-texture = ExtResource("1_76a24")
+texture = ExtResource("1_1q6cm")
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
@@ -46,7 +49,7 @@ offset_right = 203.61713
 offset_bottom = 39.75
 rotation = -0.0067459783
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("2_apfmo")
+theme_override_fonts/font = ExtResource("2_m0rb7")
 theme_override_font_sizes/font_size = 18
 text = "POLICE DEPARTMENT REPORT"
 vertical_alignment = 1
@@ -64,7 +67,7 @@ offset_top = 16.5
 offset_right = 86.25
 offset_bottom = 36.500008
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("2_apfmo")
+theme_override_fonts/font = ExtResource("2_m0rb7")
 theme_override_font_sizes/font_size = 16
 text = "Date:"
 autowrap_mode = 2
@@ -82,7 +85,7 @@ offset_top = 16.5
 offset_right = 125.0
 offset_bottom = 38.5
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("3_76a24")
+theme_override_fonts/font = ExtResource("3_hh11h")
 theme_override_font_sizes/font_size = 12
 text = "Monday"
 vertical_alignment = 1
@@ -99,7 +102,7 @@ offset_top = 23.0
 offset_right = 71.25
 offset_bottom = 43.000008
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("2_apfmo")
+theme_override_fonts/font = ExtResource("2_m0rb7")
 theme_override_font_sizes/font_size = 16
 text = "Suspect: "
 autowrap_mode = 2
@@ -114,7 +117,7 @@ offset_top = 23.0
 offset_right = 120.5
 offset_bottom = 45.0
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("3_76a24")
+theme_override_fonts/font = ExtResource("3_hh11h")
 theme_override_font_sizes/font_size = 12
 text = "Bob Smith"
 vertical_alignment = 1
@@ -131,7 +134,7 @@ offset_top = 33.0
 offset_right = 204.0
 offset_bottom = 53.000008
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("2_apfmo")
+theme_override_fonts/font = ExtResource("2_m0rb7")
 theme_override_font_sizes/font_size = 16
 text = "Summary:"
 autowrap_mode = 2
@@ -149,9 +152,9 @@ offset_top = 39.25
 offset_right = 243.25
 offset_bottom = 93.25
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("3_76a24")
+theme_override_fonts/font = ExtResource("3_hh11h")
 theme_override_font_sizes/font_size = 14
-text = "Suspect was seen exiting the park with a gun at 02:00"
+text = "Suspect was seen at the park with a gun at 02:00"
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
@@ -165,7 +168,7 @@ offset_top = 16.75
 offset_right = 67.75
 offset_bottom = 36.750008
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("2_apfmo")
+theme_override_fonts/font = ExtResource("2_m0rb7")
 theme_override_font_sizes/font_size = 16
 text = "Officer:"
 autowrap_mode = 2
@@ -180,7 +183,7 @@ offset_top = 16.75
 offset_right = 118.0
 offset_bottom = 38.75
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("3_76a24")
+theme_override_fonts/font = ExtResource("3_hh11h")
 theme_override_font_sizes/font_size = 12
 text = "Johnson"
 vertical_alignment = 1
@@ -212,7 +215,7 @@ metadata/_edit_use_anchors_ = true
 [node name="PoliceBadge" type="Sprite2D" parent="." unique_id=103699054]
 modulate = Color(1, 1, 1, 0.49019608)
 position = Vector2(-92, -74)
-texture = ExtResource("4_apfmo")
+texture = ExtResource("5_gjdor")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1911782000]
 

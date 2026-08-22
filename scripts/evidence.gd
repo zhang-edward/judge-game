@@ -6,6 +6,7 @@ var action: ActionDef
 var location: LocationDef
 var item: ItemDef = null # null for standalone actions like singing
 var time: int
+var misc_data := {}
 
 func _init(s: Suspect, t: int, a: ActionDef, l: LocationDef, item_: ItemDef = null) -> void:
 	suspect = s

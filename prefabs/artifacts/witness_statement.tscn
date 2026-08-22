@@ -1,24 +1,25 @@
 [gd_scene format=3 uid="uid://g8e3q5be8y6k"]
 
-[ext_resource type="Script" uid="uid://b0lsjvuogs5ma" path="res://scripts/interactables/evidence_document.gd" id="1_8pghi"]
-[ext_resource type="Texture2D" uid="uid://diw6dgyivayim" path="res://assets/sprites/doc_eyewitness.png" id="2_8pghi"]
-[ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="3_8pghi"]
-[ext_resource type="FontFile" uid="uid://paeyvxq6llev" path="res://assets/fonts/DePixelBreit.ttf" id="4_8pghi"]
+[ext_resource type="Script" uid="uid://dpeyp4xe6jnax" path="res://scripts/interactables/artifacts/witness_statement.gd" id="1_ekwf7"]
+[ext_resource type="Texture2D" uid="uid://diw6dgyivayim" path="res://assets/sprites/doc_eyewitness.png" id="2_ekwf7"]
+[ext_resource type="PackedScene" uid="uid://d3d6rj02mxxxb" path="res://prefabs/artifacts/witness_statement_small.tscn" id="2_f12rb"]
+[ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="3_f12rb"]
+[ext_resource type="FontFile" uid="uid://paeyvxq6llev" path="res://assets/fonts/DePixelBreit.ttf" id="4_3m7rf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pghi"]
-atlas = ExtResource("2_8pghi")
+atlas = ExtResource("2_ekwf7")
 region = Rect2(1, 1, 28, 27)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mod73"]
-atlas = ExtResource("2_8pghi")
+atlas = ExtResource("2_ekwf7")
 region = Rect2(2, 30, 3, 3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4vghc"]
-atlas = ExtResource("2_8pghi")
+atlas = ExtResource("2_ekwf7")
 region = Rect2(2, 30, 3, 3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gylim"]
-atlas = ExtResource("2_8pghi")
+atlas = ExtResource("2_ekwf7")
 region = Rect2(6, 30, 8, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_doc"]
@@ -26,7 +27,8 @@ size = Vector2(266, 366.5)
 
 [node name="WitnessStatement" type="Node2D" unique_id=1049833240]
 scale = Vector2(0.25, 0.25)
-script = ExtResource("1_8pghi")
+script = ExtResource("1_ekwf7")
+small_form_scene = ExtResource("2_f12rb")
 
 [node name="Paper" type="NinePatchRect" parent="." unique_id=1176720261]
 anchors_preset = 15
@@ -56,7 +58,7 @@ offset_right = 237.25
 offset_bottom = 41.5
 rotation = -0.0067459783
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("3_8pghi")
+theme_override_fonts/font = ExtResource("3_f12rb")
 theme_override_font_sizes/font_size = 18
 text = "EYEWITNESS STATEMENT FORM"
 horizontal_alignment = 1
@@ -121,7 +123,7 @@ offset_top = 21.749998
 offset_right = 208.25
 offset_bottom = 42.98658
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("3_8pghi")
+theme_override_fonts/font = ExtResource("3_f12rb")
 theme_override_font_sizes/font_size = 16
 text = "Statement of:"
 autowrap_mode = 2
@@ -135,7 +137,7 @@ offset_top = 21.5
 offset_right = 137.75
 offset_bottom = 42.5
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("4_8pghi")
+theme_override_fonts/font = ExtResource("4_3m7rf")
 theme_override_font_sizes/font_size = 12
 text = "John Doe"
 vertical_alignment = 1
@@ -169,7 +171,7 @@ offset_top = 28.75
 offset_right = 208.0
 offset_bottom = 48.750008
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("3_8pghi")
+theme_override_fonts/font = ExtResource("3_f12rb")
 theme_override_font_sizes/font_size = 16
 text = "Date:"
 autowrap_mode = 2
@@ -183,7 +185,7 @@ offset_top = 28.75
 offset_right = 181.5
 offset_bottom = 50.75
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("4_8pghi")
+theme_override_fonts/font = ExtResource("4_3m7rf")
 theme_override_font_sizes/font_size = 12
 text = "Monday"
 vertical_alignment = 1
@@ -217,7 +219,7 @@ offset_top = 36.25
 offset_right = 207.5
 offset_bottom = 56.250008
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("3_8pghi")
+theme_override_fonts/font = ExtResource("3_f12rb")
 theme_override_font_sizes/font_size = 16
 text = "Statement:"
 autowrap_mode = 2
@@ -232,7 +234,7 @@ offset_top = 42.5
 offset_right = 191.0
 offset_bottom = 217.5
 scale = Vector2(0.25, 0.25)
-theme_override_fonts/font = ExtResource("4_8pghi")
+theme_override_fonts/font = ExtResource("4_3m7rf")
 theme_override_font_sizes/font_size = 14
 text = "I saw Bob in the bank at 12:00. He was carrying a gun."
 autowrap_mode = 3
@@ -242,3 +244,5 @@ autowrap_mode = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1894450763]
 position = Vector2(0, 75.75)
 shape = SubResource("RectangleShape2D_doc")
+
+[connection signal="zone_entered" from="." to="." method="_on_zone_entered"]

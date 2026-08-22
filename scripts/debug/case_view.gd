@@ -35,48 +35,48 @@ func open_for(c: Case):
 	
 	# Render evidence artifacts within folder
 	for child in folder_view.get_children():
-		if child is Document:
+		if child is Artifact:
 			child.queue_free()
 	for e in c.evidence_list:
-		var cfg = game.artifact_manager.evidence_to_artifact_config[e]
-		var workspace_doc = cfg.workspace_scene.instantiate() as EvidenceDocument
-		folder_view.add_child(workspace_doc)
-		workspace_doc.initialize(e, cfg)
-		workspace_doc.zone = folder_interior
+		var artifact_scene = game.artifact_manager.evidence_to_artifact_scene[e]
+		var artifact = artifact_scene.instantiate() as Artifact
+		folder_view.add_child(artifact)
+		artifact.initialize(e, game.artifact_manager, false)
+		artifact.is_within_case_view = true
+		artifact.zone = folder_interior
 		var rand_x = randi_range(-65, 0)
 		var rand_y = randi_range(-40, 0)
-		workspace_doc.position = Vector2(rand_x, rand_y)
-		workspace_doc.is_within_case_view = true
-		workspace_doc.entered_zone.connect(handle_zone_enter)
-		workspace_doc.dropped.connect(func(): handle_dropped(workspace_doc))
+		artifact.position = Vector2(rand_x, rand_y)
+		artifact.entered_zone.connect(handle_zone_enter)
+		artifact.dropped.connect(func(): handle_dropped(artifact))
 	visible = true
 	
-func handle_zone_enter(area: Area2D, doc: EvidenceDocument):
+func handle_zone_enter(area: Area2D, artifact: Artifact):
 	if area == folder_exterior:
-		doc.modulate = Color(0.278, 0.278, 0.278, 1.0)
+		artifact.modulate = Color(0.278, 0.278, 0.278, 1.0)
 	else:
-		doc.modulate = Color(1, 1, 1)
+		artifact.modulate = Color(1, 1, 1)
 		
-func handle_dropped(doc: EvidenceDocument):
-	if doc.hovered_zone == folder_exterior:
-		doc.cleanup()
-		current_case.remove_evidence(doc.evidence)
-		game.artifact_manager.remove_evidence_from_case(doc, current_case)
+func handle_dropped(artifact: Artifact):
+	if artifact.hovered_zone == folder_exterior:
+		artifact.cleanup()
+		current_case.remove_evidence(artifact.evidence)
+		game.artifact_manager.remove_evidence_from_case(artifact, current_case)
 
 func disable_outer_draggables():
 	for c in desk_mask.get_children():
-		var doc = c as Document
+		var doc = c as ArtifactSmall
 		doc.set_grabbable(false)
 	for c in workspace_mask.get_children():
-		var doc = c as Document
+		var doc = c as Artifact
 		doc.set_grabbable(false)
 		
 func enable_outer_draggables():
 	for c in desk_mask.get_children():
-		var doc = c as Document
+		var doc = c as ArtifactSmall
 		doc.set_grabbable(doc.visible)
 	for c in workspace_mask.get_children():
-		var doc = c as Document
+		var doc = c as Artifact
 		doc.set_grabbable(doc.visible)
 
 func close():

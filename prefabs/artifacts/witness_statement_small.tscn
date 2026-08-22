@@ -1,24 +1,24 @@
-[gd_scene format=3 uid="uid://rne57trhn7tr"]
+[gd_scene format=3 uid="uid://d3d6rj02mxxxb"]
 
-[ext_resource type="Texture2D" uid="uid://mqvsgm2w4yi0" path="res://assets/sprites/document1.png" id="1_vnfle"]
-[ext_resource type="Script" uid="uid://c8gna7kosva7x" path="res://scripts/interactables/document.gd" id="2_qo3go"]
+[ext_resource type="Texture2D" uid="uid://mqvsgm2w4yi0" path="res://assets/sprites/document1.png" id="1_mshka"]
+[ext_resource type="Script" uid="uid://dvcel8xbgnl5x" path="res://scripts/interactables/artifact_small.gd" id="2_mshka"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvihj"]
-atlas = ExtResource("1_vnfle")
+atlas = ExtResource("1_mshka")
 region = Rect2(9, 6, 14, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_da51w"]
-size = Vector2(7.6404505, 10.390627)
+size = Vector2(7.515278, 10.390627)
 
 [node name="WitnessStatementSmall" type="Sprite2D" unique_id=500467866]
-scale = Vector2(1.2142857, 1)
+scale = Vector2(1, 1.4801549)
 texture = SubResource("AtlasTexture_yvihj")
-script = ExtResource("2_qo3go")
+script = ExtResource("2_mshka")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=806156145]
 scale = Vector2(1.8028172, 1.3473684)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1481008727]
-position = Vector2(0.06258619, 0)
-scale = Vector2(1.0000001, 1)
 shape = SubResource("RectangleShape2D_da51w")
+
+[connection signal="zone_entered" from="." to="." method="_on_zone_entered"]

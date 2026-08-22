@@ -13,6 +13,7 @@ size = Vector2(24, 28)
 [node name="LawBookSmall" type="Sprite2D" unique_id=430914472]
 texture = SubResource("AtlasTexture_mod73")
 script = ExtResource("2_lawbk")
+is_small_form = true
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1785244002]
 

@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://1mhxsc0hbij8"
-path="res://.godot/imported/DePixelHalbfett.ttf-427a4ed07021327e4b4f3211db486e1c.fontdata"
+uid="uid://dmpv1r0rxapfy"
+path="res://.godot/imported/Magic Crush.otf-9d481ea0b38350c5c9e58f050b9570fb.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/DePixelHalbfett.ttf"
-dest_files=["res://.godot/imported/DePixelHalbfett.ttf-427a4ed07021327e4b4f3211db486e1c.fontdata"]
+source_file="res://assets/fonts/Magic Crush.otf"
+dest_files=["res://.godot/imported/Magic Crush.otf-9d481ea0b38350c5c9e58f050b9570fb.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=1
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
@@ -30,12 +30,7 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0)
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

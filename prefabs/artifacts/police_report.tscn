@@ -13,7 +13,7 @@ atlas = ExtResource("4_wbaar")
 region = Rect2(2, 30, 3, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pcpj"]
-size = Vector2(320, 246.5)
+size = Vector2(320, 244)
 
 [node name="PoliceReport" type="Node2D" unique_id=1658486347]
 scale = Vector2(0.25, 0.25)
@@ -24,10 +24,10 @@ small_form_scene = ExtResource("2_hh11h")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -132.0
-offset_top = -107.0
-offset_right = -52.25
-offset_bottom = -45.25
+offset_left = -160.0
+offset_top = -123.0
+offset_right = -80.25
+offset_bottom = -61.25
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
@@ -214,11 +214,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="PoliceBadge" type="Sprite2D" parent="." unique_id=103699054]
 modulate = Color(1, 1, 1, 0.49019608)
-position = Vector2(-92, -74)
+position = Vector2(-124, -90)
 texture = ExtResource("5_gjdor")
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1911782000]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1885440288]
-position = Vector2(27, 15.75)
 shape = SubResource("RectangleShape2D_5pcpj")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c5kdimmme2wxn"]
+
+[ext_resource type="Texture2D" uid="uid://coo2xqclpf22a" path="res://assets/sprites/outbox.png" id="1_f8egs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8egs"]
+size = Vector2(56, 58)
+
+[node name="Outbox" type="Sprite2D" unique_id=1566029221]
+texture = ExtResource("1_f8egs")
+
+[node name="OutboxHitbox" type="Area2D" parent="." unique_id=1031978463 groups=["zone"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutboxHitbox" unique_id=812233443]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_f8egs")

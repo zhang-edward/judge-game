@@ -6,6 +6,8 @@ extends Node
 @export var case_file_scene: PackedScene
 @export var law_book_scene: PackedScene
 @export var all_artifact_types: Array[PackedScene]
+@export var item_only_artifact_types: Array[PackedScene]
+@export var one_prop_only_artifact_types: Array[PackedScene]
 
 var law_book: LawBook
 
@@ -37,7 +39,6 @@ func _is_law_book(node: Node) -> bool:
 
 func render_artifacts():
 	clear_previous_artifacts()
-
 	# Spawn in artifacts for ALL cases
 	for c in game.cases:
 		# Spawn in case file
@@ -50,16 +51,31 @@ func render_artifacts():
 
 		# Spawn in artifacts for this case's evidence
 		for e in c.available_evidence:
-			var artifact_scene = all_artifact_types.pick_random()
+			var artifact_scene
+			if e.action == null and e.location == null:
+				artifact_scene = item_only_artifact_types.pick_random()
+			else:
+				artifact_scene = all_artifact_types.pick_random()
 			evidence_to_artifact_scene[e] = artifact_scene
 			spawn_artifact_for_evidence(e, artifact_scene)
+
+func evidence_has_only_one_property(e: Evidence):
+	var props = [e.action, e.item, e.location]
+	var num_non_null_props := 0
+	for p in props:
+		if p != null:
+			num_non_null_props += 1
+	return num_non_null_props == 1
+			
 
 func spawn_artifact_for_evidence(e: Evidence, artifact_scene: PackedScene, on_desk := false):
 	var artifact = artifact_scene.instantiate() as Artifact
 	workspace_mask.add_child(artifact)
 	artifact.added_to_case.connect(func(c: CaseFile): add_evidence_to_case(artifact, c))
-	artifact.initialize(e, self, !on_desk)
+	artifact.initialize(e, self)
 	if on_desk:
+		artifact.show()
+		artifact.small_form.hide()
 		artifact.position = Vector2(randi_range(25, 50), randi_range(25, 50))
 
 func add_evidence_to_case(artifact: Artifact, case_file: CaseFile):

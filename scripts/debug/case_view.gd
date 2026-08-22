@@ -15,10 +15,14 @@ const MENU_FONT := preload("res://assets/fonts/DePixelHalbfett.ttf")
 @onready var evidence_list_TEMP: Label = $TempEvidenceLabel
 @onready var folder_interior: Area2D = $FolderInterior
 @onready var folder_exterior: Area2D = $FolderExterior
+@onready var folder_interior_collider: CollisionShape2D = $FolderInterior/CollisionShape2D
+@onready var folder_exterior_collider: CollisionShape2D = $FolderExterior/CollisionShape2D
 @onready var folder_view: Sprite2D = $FolderView
 @onready var charge_menu: VBoxContainer = %ChargeMenu
 @onready var charge_menu_panel: PanelContainer = %ChargeMenuPanel
 @onready var charge_label_background: NinePatchRect = %ChargeLabelBackground
+@onready var flight_risk_note: StickyNote = $FlightRiskNote
+@onready var success_rate_note: StickyNote = $FlightRiskNote
 
 var current_case: Case
 var charge_buttons := {}
@@ -27,23 +31,26 @@ var pulse_tween: Tween
 func _ready() -> void:
 	back_button.pressed.connect(close)
 	charge_label_background.gui_input.connect(_on_charge_label_input)
-
+	folder_interior_collider.disabled = true
+	folder_exterior_collider.disabled = true
+	
 func update_case_win_percentage():
 	if current_case == null:
 		return
-	win_percentage.text = "% chance to win:\n " + str(current_case.win_percentage)
+	success_rate_note.configure_text("Case Success", str(current_case.win_percentage) + "%")
 
 func open_for(c: Case):
 	if charge_buttons.is_empty():
 		_build_charge_menu()
 	current_case = c
 	case_name_label.text = c.suspect.name
-	flight_risk_label.text = "Flight risk: " + str(c.flight_risk_percentage) + "%"
-	charge_menu_panel.visible = false
 	_sync_charge_selection()
 	_update_charge_prompt()
+	flight_risk_note.configure_text("Flight Risk", str(c.flight_risk_percentage) + "%")
 	update_case_win_percentage()
 	disable_outer_draggables()
+	folder_interior_collider.disabled = false
+	folder_exterior_collider.disabled = false
 	
 	# Render evidence artifacts within folder
 	for child in folder_view.get_children():

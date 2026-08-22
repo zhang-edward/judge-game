@@ -6,16 +6,20 @@
 [ext_resource type="PackedScene" uid="uid://dxlrojhw3ypnh" path="res://prefabs/artifacts/police_report.tscn" id="5_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://dykt1xhhyk65g" path="res://prefabs/suspect_fled_alert.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://y345xgiu83t3" path="res://prefabs/case_file.tscn" id="6_a8y0u"]
-[ext_resource type="PackedScene" uid="uid://dva833lsnexe1" path="res://prefabs/law_book.tscn" id="18_lawbk"]
+[ext_resource type="PackedScene" uid="uid://bvj0gm2k3n1or" path="res://prefabs/artifacts/receipt.tscn" id="6_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://cly8g3v42n0rn" path="res://prefabs/case_status.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://3ljyc4t8656o" path="res://prefabs/artifacts/photo.tscn" id="7_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://g8e3q5be8y6k" path="res://prefabs/artifacts/witness_statement.tscn" id="7_muem4"]
 [ext_resource type="Texture2D" uid="uid://dx5rtdeict36r" path="res://bg.png" id="8_85g3d"]
-[ext_resource type="Texture2D" uid="uid://coo2xqclpf22a" path="res://assets/sprites/outbox.png" id="9_85g3d"]
 [ext_resource type="Texture2D" uid="uid://ct1dqxmajqa5c" path="res://folder.png" id="11_jkv2x"]
 [ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="12_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://btf6ctpdwdo0t" path="res://folder_open.png" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://cjrh108hk7tu1" path="res://prefabs/profile.tscn" id="15_jbj1t"]
 [ext_resource type="FontFile" uid="uid://1mhxsc0hbij8" path="res://assets/fonts/DePixelHalbfett.ttf" id="16_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://cd5bkms06yg7l" path="res://assets/sprites/tape.png" id="16_muem4"]
+[ext_resource type="PackedScene" uid="uid://lxje2xqpnef0" path="res://prefabs/sticky_note.tscn" id="17_dp3eg"]
 [ext_resource type="FontFile" uid="uid://dso1ngtngoifh" path="res://assets/fonts/DePixelIllegible.ttf" id="17_muem4"]
+[ext_resource type="PackedScene" uid="uid://dva833lsnexe1" path="res://prefabs/law_book.tscn" id="18_lawbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mod73"]
 size = Vector2(77.25, 162.5)
@@ -41,7 +45,8 @@ script = ExtResource("2_sugp2")
 game = NodePath("..")
 case_file_scene = ExtResource("6_a8y0u")
 law_book_scene = ExtResource("18_lawbk")
-all_artifact_types = Array[PackedScene]([ExtResource("7_muem4"), ExtResource("5_jkv2x")])
+all_artifact_types = Array[PackedScene]([ExtResource("7_muem4"), ExtResource("5_jkv2x"), ExtResource("7_gqmmt")])
+item_only_artifact_types = Array[PackedScene]([ExtResource("6_dp3eg")])
 desk_mask = NodePath("../BG/DeskMask")
 desk_zone = NodePath("../BG/DeskZone")
 workspace_mask = NodePath("../BG/WorkspaceMask")
@@ -148,12 +153,6 @@ offset_right = 143.75
 offset_bottom = 81.25
 mouse_filter = 2
 
-[node name="Outbox" type="Sprite2D" parent="." unique_id=1093004885]
-visible = false
-position = Vector2(159, 474)
-scale = Vector2(4, 4)
-texture = ExtResource("9_85g3d")
-
 [node name="CaseView" type="Node2D" parent="." unique_id=697003815 node_paths=PackedStringArray("game", "desk_mask", "workspace_mask")]
 unique_name_in_owner = true
 visible = false
@@ -223,7 +222,6 @@ patch_margin_bottom = 1
 
 [node name="ChargeName" type="Label" parent="CaseView/FolderView/ChargeLabelBackground" unique_id=1755978052]
 unique_name_in_owner = true
-mouse_filter = 2
 modulate = Color(0.26, 0.26, 0.26, 1)
 layout_mode = 1
 anchors_preset = 8
@@ -242,38 +240,6 @@ theme_override_fonts/font = ExtResource("12_jkv2x")
 text = "Bob Smith"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="InfoContainer" type="PanelContainer" parent="CaseView" unique_id=1185809361]
-offset_left = 918.0
-offset_top = 366.0
-offset_right = 1132.0
-offset_bottom = 476.0
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="CaseView/InfoContainer" unique_id=821100623]
-layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CaseView/InfoContainer/MarginContainer" unique_id=1163962746]
-layout_mode = 2
-
-[node name="FlightRisk" type="Label" parent="CaseView/InfoContainer/MarginContainer/VBoxContainer" unique_id=1630743207]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_fonts/font = ExtResource("16_jbj1t")
-text = "Flight Risk:"
-horizontal_alignment = 1
-
-[node name="WinPercentage" type="Label" parent="CaseView/InfoContainer/MarginContainer/VBoxContainer" unique_id=1543407839]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_fonts/font = ExtResource("16_jbj1t")
-text = "Chance to win:
-100% "
-horizontal_alignment = 1
 
 [node name="SubmitCase" type="Button" parent="CaseView" unique_id=420506466]
 unique_name_in_owner = true
@@ -300,13 +266,38 @@ offset_top = 47.0
 offset_right = 421.0
 offset_bottom = 566.0
 
+[node name="ProfilePic" parent="CaseView" unique_id=1592178397 instance=ExtResource("15_jbj1t")]
+position = Vector2(523.5, 116.75)
+scale = Vector2(4, 4)
+
+[node name="Tape2" type="Sprite2D" parent="CaseView" unique_id=978517455]
+position = Vector2(523.5, 117.75)
+scale = Vector2(1.6999999, 1.8448279)
+texture = ExtResource("16_muem4")
+
+[node name="Tape3" type="Sprite2D" parent="CaseView" unique_id=1384277676]
+position = Vector2(681.5, 119.75)
+scale = Vector2(1.7, 1.845)
+texture = ExtResource("16_muem4")
+flip_h = true
+
+[node name="FlightRiskNote" parent="CaseView" unique_id=69093072 instance=ExtResource("17_dp3eg")]
+position = Vector2(676, 350)
+scale = Vector2(0.75, 0.75)
+
+[node name="SuccessRateNote" parent="CaseView" unique_id=1636871805 instance=ExtResource("17_dp3eg")]
+position = Vector2(512, 335)
+scale = Vector2(0.75, 0.75)
+
 [node name="FolderInterior" type="Area2D" parent="CaseView" unique_id=1407249188 groups=["zone"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CaseView/FolderInterior" unique_id=986781167]
 position = Vector2(452, 319)
 shape = SubResource("RectangleShape2D_6pmnr")
 
 [node name="FolderExterior" type="Area2D" parent="CaseView" unique_id=82709048 groups=["zone"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CaseView/FolderExterior" unique_id=1780791918]
 position = Vector2(1030.5, 317)

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cjrh108hk7tu1"]
+
+[ext_resource type="Texture2D" uid="uid://c7x1bsgkpmn8i" path="res://assets/sprites/document2.png" id="2_gmwj0"]
+[ext_resource type="Texture2D" uid="uid://db4c23mhmi1xf" path="res://assets/sprites/male-avatar-1.png" id="3_2kews"]
+
+[node name="ProfilePic" type="Node2D" unique_id=1592178397]
+
+[node name="Photo" type="NinePatchRect" parent="." unique_id=588281907]
+offset_right = 40.0
+offset_bottom = 44.25
+texture = ExtResource("2_gmwj0")
+
+[node name="Sprite2D" type="Sprite2D" parent="Photo" unique_id=258992473]
+position = Vector2(19.875, 17.25)
+scale = Vector2(1.2583333, 1.1206897)
+texture = ExtResource("3_2kews")

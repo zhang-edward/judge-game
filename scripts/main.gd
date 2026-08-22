@@ -9,6 +9,7 @@ extends Node
 @onready var case_status: CaseStatus = $TempUI/CaseStatus
 @onready var submit_case: Button = %SubmitCase
 @onready var reputation_label: Label = $TempUI/TempGameUI/Reputation
+@onready var calendar: Calendar = $Calendar
 
 const CASE_COUNT := 1
 
@@ -25,24 +26,23 @@ var _fled_queue: Array[Case] = []
 func _ready() -> void:
 	for i in range(0, 5):
 		laws.append(Law.make_random())
-	# Distinct suspect names so the folders never share a name.
-	var names := Vocab.suspect_names.duplicate()
-	names.shuffle()
-	for i in range(0, CASE_COUNT):
-		var suspect := Suspect.new(names[i % names.size()])
-		var c := Case.new(suspect)
-		c.refresh_evidence()
-		cases.append(c)
-	artifact_manager.render_artifacts()
+	generate_new_cases()
 	artifact_manager.init_law_book(laws)
-	next_day_button.pressed.connect(progress_day)
+	calendar.next_day.connect(progress_day)
 	submit_case.pressed.connect(on_submit_case)
 
 	case_view.opened.connect(func(): artifact_manager.toggle_hitbox_for_all_case_files(false))
 	case_view.closed.connect(func(): artifact_manager.toggle_hitbox_for_all_case_files(true))
 
-# Redraw the desk from the current set of cases.
-func receive_evidence_list():
+func generate_new_cases():
+	var names := Vocab.suspect_names.duplicate()
+	names.shuffle()
+	var num_cases_to_generate = CASE_COUNT - cases.size()
+	for i in range(0, num_cases_to_generate):
+		var suspect := Suspect.new(names[i % names.size()])
+		var c := Case.new(suspect)
+		c.refresh_evidence()
+		cases.append(c)
 	artifact_manager.render_artifacts()
 
 func on_submit_case():
@@ -67,7 +67,7 @@ func resolve_case(c: Case):
 	cases.erase(c)
 	if case_view.visible and case_view.current_case == c:
 		case_view.close()
-	receive_evidence_list()
+	generate_new_cases()
 
 func progress_day():
 	if suspect_fled_alert.visible or case_status.visible:
@@ -80,9 +80,7 @@ func progress_day():
 		else:
 			c.flight_risk_percentage += 5 # todo: make this scale based on case strength
 			c.refresh_evidence()
-	day_index = (day_index + 1) % day_labels.size()
-	day_of_week.text = day_labels[day_index]
-	receive_evidence_list()
+	artifact_manager.render_artifacts()
 	_fled_queue = fled
 	_show_next_fled()
 

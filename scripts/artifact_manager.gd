@@ -80,7 +80,7 @@ func spawn_artifact_for_data(data: ArtifactData, on_desk := false):
 func _register_artifact(artifact: Artifact, data: ArtifactData, on_desk := false):
 	workspace_mask.add_child(artifact)
 	artifact.added_to_case.connect(func(c: CaseFile): add_evidence_to_case(artifact, c))
-	artifact.initialize(data, self, !on_desk)
+	artifact.initialize(data, self)
 	if on_desk:
 		artifact.show()
 		artifact.position = Vector2(randi_range(25, 50), randi_range(25, 50))

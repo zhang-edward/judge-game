@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://3ljyc4t8656o" path="res://prefabs/artifacts/photo.tscn" id="7_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://g8e3q5be8y6k" path="res://prefabs/artifacts/witness_statement.tscn" id="7_muem4"]
 [ext_resource type="Texture2D" uid="uid://dx5rtdeict36r" path="res://bg.png" id="8_85g3d"]
+[ext_resource type="PackedScene" uid="uid://crcg21wueuorx" path="res://prefabs/artifacts/social_media_post.tscn" id="9_yc10j"]
 [ext_resource type="Texture2D" uid="uid://ct1dqxmajqa5c" path="res://folder.png" id="11_jkv2x"]
 [ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="12_jkv2x"]
 [ext_resource type="FontFile" uid="uid://dulwxkskumshb" path="res://assets/fonts/dogicabold.ttf" id="12_yc10j"]
@@ -46,7 +47,7 @@ script = ExtResource("1_main")
 script = ExtResource("2_sugp2")
 game = NodePath("..")
 case_file_scene = ExtResource("6_a8y0u")
-all_artifact_types = Array[PackedScene]([ExtResource("7_muem4"), ExtResource("5_jkv2x"), ExtResource("7_gqmmt"), ExtResource("6_dp3eg")])
+all_artifact_types = Array[PackedScene]([ExtResource("7_muem4"), ExtResource("5_jkv2x"), ExtResource("7_gqmmt"), ExtResource("6_dp3eg"), ExtResource("9_yc10j")])
 desk_mask = NodePath("../BG/DeskMask")
 desk_zone = NodePath("../BG/DeskZone")
 workspace_mask = NodePath("../BG/WorkspaceMask")

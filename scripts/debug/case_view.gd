@@ -24,8 +24,8 @@ const MENU_FONT := preload("res://assets/fonts/DePixelHalbfett.ttf")
 @onready var charge_menu: VBoxContainer = %ChargeMenu
 @onready var charge_menu_panel: PanelContainer = %ChargeMenuPanel
 @onready var charge_label_background: NinePatchRect = %ChargeLabelBackground
-@onready var flight_risk_note: StickyNote = $FlightRiskNote
-@onready var success_rate_note: StickyNote = $FlightRiskNote
+@onready var flight_risk_note: StickyNote = %FlightRiskNote
+@onready var success_rate_note: StickyNote = %SuccessRateNote
 
 var current_case: Case
 var charge_buttons := {}

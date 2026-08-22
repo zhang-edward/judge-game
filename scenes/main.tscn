@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dx5rtdeict36r" path="res://bg.png" id="8_85g3d"]
 [ext_resource type="Texture2D" uid="uid://ct1dqxmajqa5c" path="res://folder.png" id="11_jkv2x"]
 [ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="12_jkv2x"]
+[ext_resource type="FontFile" uid="uid://dulwxkskumshb" path="res://assets/fonts/dogicabold.ttf" id="12_yc10j"]
 [ext_resource type="Texture2D" uid="uid://btf6ctpdwdo0t" path="res://folder_open.png" id="13_trceg"]
 [ext_resource type="PackedScene" uid="uid://cjrh108hk7tu1" path="res://prefabs/profile.tscn" id="15_jbj1t"]
 [ext_resource type="FontFile" uid="uid://1mhxsc0hbij8" path="res://assets/fonts/DePixelHalbfett.ttf" id="16_jbj1t"]
@@ -20,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://lxje2xqpnef0" path="res://prefabs/sticky_note.tscn" id="17_dp3eg"]
 [ext_resource type="FontFile" uid="uid://dso1ngtngoifh" path="res://assets/fonts/DePixelIllegible.ttf" id="17_muem4"]
 [ext_resource type="PackedScene" uid="uid://dva833lsnexe1" path="res://prefabs/law_book.tscn" id="18_lawbk"]
+[ext_resource type="FontFile" uid="uid://dmpv1r0rxapfy" path="res://assets/fonts/Magic Crush.otf" id="22_jscy8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mod73"]
 size = Vector2(76, 162.5)
@@ -40,16 +42,16 @@ size = Vector2(241, 648)
 [node name="Main" type="Node2D" unique_id=383367928]
 script = ExtResource("1_main")
 
-[node name="ArtifactManager" type="Node" parent="." unique_id=568863602 node_paths=PackedStringArray("game", "desk_mask", "desk_zone", "workspace_mask", "workspace_zone")]
+[node name="ArtifactManager" type="Node" parent="." unique_id=568863602 node_paths=PackedStringArray("game", "desk_mask", "desk_zone", "workspace_mask", "workspace_zone", "law_book")]
 script = ExtResource("2_sugp2")
 game = NodePath("..")
 case_file_scene = ExtResource("6_a8y0u")
-law_book_scene = ExtResource("18_lawbk")
 all_artifact_types = Array[PackedScene]([ExtResource("7_muem4"), ExtResource("5_jkv2x"), ExtResource("7_gqmmt"), ExtResource("6_dp3eg")])
 desk_mask = NodePath("../BG/DeskMask")
 desk_zone = NodePath("../BG/DeskZone")
 workspace_mask = NodePath("../BG/WorkspaceMask")
 workspace_zone = NodePath("../BG/WorkspaceZone")
+law_book = NodePath("../BG/WorkspaceMask/LawBook")
 
 [node name="TempUI" type="CanvasLayer" parent="." unique_id=814390645]
 
@@ -120,6 +122,16 @@ position = Vector2(576, 321)
 scale = Vector2(4, 4)
 texture = ExtResource("8_85g3d")
 
+[node name="TutorialLabel" type="Label" parent="BG" unique_id=2023556450]
+offset_left = -1.75
+offset_top = 71.0
+offset_right = 302.25
+offset_bottom = 94.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 0.41568628)
+theme_override_fonts/font = ExtResource("12_yc10j")
+text = "Drag Documents Here"
+
 [node name="DeskZone" type="Area2D" parent="BG" unique_id=1846948545 groups=["zone"]]
 position = Vector2(-104.25, 1)
 
@@ -151,6 +163,9 @@ offset_top = -81.0
 offset_right = 143.75
 offset_bottom = 81.25
 mouse_filter = 2
+
+[node name="LawBook" parent="BG/WorkspaceMask" unique_id=1342471158 instance=ExtResource("18_lawbk")]
+position = Vector2(51.5, 37.25)
 
 [node name="CaseView" type="Node2D" parent="." unique_id=697003815 node_paths=PackedStringArray("game", "desk_mask", "workspace_mask")]
 unique_name_in_owner = true
@@ -240,6 +255,46 @@ text = "Bob Smith"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ProfilePic" parent="CaseView/FolderView" unique_id=1592178397 instance=ExtResource("15_jbj1t")]
+position = Vector2(15.818649, -51.5625)
+scale = Vector2(1.0043592, 1)
+
+[node name="Tape2" type="Sprite2D" parent="CaseView/FolderView" unique_id=978517455]
+position = Vector2(15.818649, -51.3125)
+scale = Vector2(0.42685267, 0.46120697)
+texture = ExtResource("16_muem4")
+
+[node name="Tape3" type="Sprite2D" parent="CaseView/FolderView" unique_id=1384277676]
+position = Vector2(55.490845, -50.8125)
+scale = Vector2(0.4268527, 0.46125)
+texture = ExtResource("16_muem4")
+flip_h = true
+
+[node name="FlightRiskNote" parent="CaseView/FolderView" unique_id=69093072 instance=ExtResource("17_dp3eg")]
+unique_name_in_owner = true
+position = Vector2(54.109848, 6.75)
+scale = Vector2(0.18831736, 0.1875)
+
+[node name="Label" type="Label" parent="CaseView/FolderView/FlightRiskNote" unique_id=1314487607]
+modulate = Color(0.18, 0.18, 0.18, 0.70980394)
+offset_left = -80.0
+offset_top = 208.00002
+offset_right = 224.0
+offset_bottom = 259.0
+rotation = -0.028386703
+theme_override_fonts/font = ExtResource("22_jscy8")
+theme_override_font_sizes/font_size = 18
+text = "the stronger your case is, the more likely
+the suspect will flee at the end of the day"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SuccessRateNote" parent="CaseView/FolderView" unique_id=1636871805 instance=ExtResource("17_dp3eg")]
+unique_name_in_owner = true
+position = Vector2(12.931122, 3)
+scale = Vector2(0.18831736, 0.1875)
+
 [node name="SubmitCase" type="Button" parent="CaseView" unique_id=420506466]
 unique_name_in_owner = true
 offset_left = 919.0
@@ -264,29 +319,6 @@ offset_left = 81.0
 offset_top = 47.0
 offset_right = 421.0
 offset_bottom = 566.0
-
-[node name="ProfilePic" parent="CaseView" unique_id=1592178397 instance=ExtResource("15_jbj1t")]
-position = Vector2(523.5, 116.75)
-scale = Vector2(4, 4)
-
-[node name="Tape2" type="Sprite2D" parent="CaseView" unique_id=978517455]
-position = Vector2(523.5, 117.75)
-scale = Vector2(1.6999999, 1.8448279)
-texture = ExtResource("16_muem4")
-
-[node name="Tape3" type="Sprite2D" parent="CaseView" unique_id=1384277676]
-position = Vector2(681.5, 119.75)
-scale = Vector2(1.7, 1.845)
-texture = ExtResource("16_muem4")
-flip_h = true
-
-[node name="FlightRiskNote" parent="CaseView" unique_id=69093072 instance=ExtResource("17_dp3eg")]
-position = Vector2(676, 350)
-scale = Vector2(0.75, 0.75)
-
-[node name="SuccessRateNote" parent="CaseView" unique_id=1636871805 instance=ExtResource("17_dp3eg")]
-position = Vector2(512, 335)
-scale = Vector2(0.75, 0.75)
 
 [node name="FolderInterior" type="Area2D" parent="CaseView" unique_id=1407249188 groups=["zone"]]
 visible = false

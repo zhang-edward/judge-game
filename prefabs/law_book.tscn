@@ -3,13 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://dtujex8o7ni60" path="res://prefabs/law_book_small.tscn" id="2_f57v0"]
 [ext_resource type="Texture2D" uid="uid://d1lslele7ujjo" path="res://assets/sprites/book.png" id="3_f57v0"]
 [ext_resource type="Script" uid="uid://bgmb12t1q1d6t" path="res://scripts/interactables/law_book.gd" id="3_lawbk"]
+[ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="4_80xwo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f57v0"]
 atlas = ExtResource("3_f57v0")
-region = Rect2(5, 4, 93, 70)
+region = Rect2(5, 4, 93, 71)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lawbk"]
-size = Vector2(368, 280)
+size = Vector2(472, 280)
 
 [node name="LawBook" type="Node2D" unique_id=1342471158]
 scale = Vector2(0.25, 0.25)
@@ -19,32 +20,46 @@ small_form_scene = ExtResource("2_f57v0")
 [node name="TextureRect" type="TextureRect" parent="." unique_id=704640351]
 offset_left = -188.0
 offset_top = -140.0
-offset_right = 184.0
-offset_bottom = 140.0
+offset_right = 288.0
+offset_bottom = 144.0
 texture = SubResource("AtlasTexture_f57v0")
-stretch_mode = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=173431881]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="InstructionsLabel" type="Label" parent="TextureRect" unique_id=319898227]
+modulate = Color(0, 0, 0, 0.6745098)
+layout_mode = 0
 offset_left = 14.0
-offset_top = 10.0
-offset_right = -12.0
-offset_bottom = -23.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 40
-alignment = 1
+offset_top = 7.5
+offset_right = 220.0
+offset_bottom = 260.0
+theme_override_fonts/font = ExtResource("4_80xwo")
+text = "* Inspect documents and identify incriminating evidence.
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/HBoxContainer" unique_id=512148225]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 16
+* Drag documents into the folder to build your case
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="TextureRect/HBoxContainer" unique_id=903882333]
-layout_mode = 2
+* Right-click on the folder to inspect the case and add a charge
+
+* Submit when you've built a strong case"
+autowrap_mode = 2
+
+[node name="LawsContainerTitle" type="Label" parent="TextureRect" unique_id=1565223331]
+modulate = Color(0, 0, 0, 0.7411765)
+layout_mode = 0
+offset_left = 336.0
+offset_top = 4.0
+offset_right = 389.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("4_80xwo")
+text = "- LAWS -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LawsContainer" type="VBoxContainer" parent="TextureRect" unique_id=903882333]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 256.0
+offset_top = 28.0
+offset_right = 464.0
+offset_bottom = 268.0
 size_flags_horizontal = 3
 theme_override_constants/separation = 16
 
@@ -52,5 +67,5 @@ theme_override_constants/separation = 16
 position = Vector2(-256, -192)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1500727366]
-position = Vector2(256, 192)
+position = Vector2(308, 192)
 shape = SubResource("RectangleShape2D_lawbk")

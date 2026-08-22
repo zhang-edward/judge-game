@@ -4,21 +4,15 @@ extends Node
 @export var game: Main
 
 @export var case_file_scene: PackedScene
-@export var law_book_scene: PackedScene
 @export var all_artifact_types: Array[PackedScene]
-
-var law_book: LawBook
 
 @export var desk_mask: ColorRect
 @export var desk_zone: Area2D
 @export var workspace_mask: ColorRect
 @export var workspace_zone: Area2D
+@export var law_book: LawBook
 
-func spawn_law_book(laws: Array[Law]):
-	if law_book_scene == null:
-		return
-	law_book = law_book_scene.instantiate() as LawBook
-	workspace_mask.add_child(law_book)
+func init_law_book(laws: Array[Law]):
 	law_book.initialize(laws, desk_mask, workspace_zone, desk_zone)
 
 func clear_previous_artifacts():

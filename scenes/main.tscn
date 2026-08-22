@@ -22,10 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://dva833lsnexe1" path="res://prefabs/law_book.tscn" id="18_lawbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mod73"]
-size = Vector2(77.25, 162.5)
+size = Vector2(76, 162.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8y0u"]
-size = Vector2(209.75, 162.5)
+size = Vector2(211.25, 162.5)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkv2x"]
 atlas = ExtResource("11_jkv2x")
@@ -45,8 +45,7 @@ script = ExtResource("2_sugp2")
 game = NodePath("..")
 case_file_scene = ExtResource("6_a8y0u")
 law_book_scene = ExtResource("18_lawbk")
-all_artifact_types = Array[PackedScene]([ExtResource("7_muem4"), ExtResource("5_jkv2x"), ExtResource("7_gqmmt")])
-item_only_artifact_types = Array[PackedScene]([ExtResource("6_dp3eg")])
+all_artifact_types = Array[PackedScene]([ExtResource("7_muem4"), ExtResource("5_jkv2x"), ExtResource("7_gqmmt"), ExtResource("6_dp3eg")])
 desk_mask = NodePath("../BG/DeskMask")
 desk_zone = NodePath("../BG/DeskZone")
 workspace_mask = NodePath("../BG/WorkspaceMask")
@@ -125,7 +124,7 @@ texture = ExtResource("8_85g3d")
 position = Vector2(-104.25, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BG/DeskZone" unique_id=1393005633]
-position = Vector2(-1.125, -1)
+position = Vector2(-1.75, -1)
 shape = SubResource("RectangleShape2D_mod73")
 debug_color = Color(0.27515438, 0.63238186, 0, 0.41960785)
 
@@ -133,7 +132,7 @@ debug_color = Color(0.27515438, 0.63238186, 0, 0.41960785)
 position = Vector2(44, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BG/WorkspaceZone" unique_id=1974597431]
-position = Vector2(-3.625, -1)
+position = Vector2(-4.375, -1)
 shape = SubResource("RectangleShape2D_a8y0u")
 debug_color = Color(0.27515438, 0.63238186, 0, 0.41960785)
 
@@ -141,13 +140,13 @@ debug_color = Color(0.27515438, 0.63238186, 0, 0.41960785)
 clip_children = 1
 offset_left = -144.0
 offset_top = -80.5
-offset_right = -66.5
+offset_right = -66.75
 offset_bottom = 81.5
 mouse_filter = 2
 
 [node name="WorkspaceMask" type="ColorRect" parent="BG" unique_id=356205471]
 clip_children = 1
-offset_left = -66.25
+offset_left = -66.75
 offset_top = -81.0
 offset_right = 143.75
 offset_bottom = 81.25

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://y31g6qf8ac7d"]
 
-[ext_resource type="Script" path="res://scripts/interactables/evidence_document.gd" id="1_8pghi"]
+[ext_resource type="Script" uid="uid://dpeyp4xe6jnax" path="res://scripts/interactables/artifacts/witness_statement.gd" id="1_gylim"]
+[ext_resource type="PackedScene" uid="uid://d3d6rj02mxxxb" path="res://prefabs/artifacts/witness_statement_small.tscn" id="2_4vghc"]
 [ext_resource type="Texture2D" uid="uid://diw6dgyivayim" path="res://assets/sprites/doc_eyewitness.png" id="2_8pghi"]
 [ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="3_8pghi"]
 [ext_resource type="FontFile" uid="uid://paeyvxq6llev" path="res://assets/fonts/DePixelBreit.ttf" id="4_8pghi"]
@@ -26,7 +27,8 @@ size = Vector2(266, 366.5)
 
 [node name="WitnessStatement" type="Node2D" unique_id=1049833240]
 scale = Vector2(0.25, 0.25)
-script = ExtResource("1_8pghi")
+script = ExtResource("1_gylim")
+small_form_scene = ExtResource("2_4vghc")
 
 [node name="Paper" type="NinePatchRect" parent="." unique_id=1176720261]
 anchors_preset = 15
@@ -89,10 +91,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -26.75
-offset_top = -26.25
-offset_right = 28.0
-offset_bottom = 39.75
+offset_left = -27.0
+offset_top = -30.0
+offset_right = 27.75
+offset_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_4vghc")
@@ -105,10 +107,10 @@ axis_stretch_vertical = 1
 
 [node name="ColorRect" type="ColorRect" parent="Paper/Box" unique_id=1197662505]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 54.0
-offset_bottom = 65.0
+offset_left = 0.75
+offset_top = 1.25
+offset_right = 53.75
+offset_bottom = 70.0
 mouse_filter = 2
 
 [node name="StatementOfLabel" type="Label" parent="Paper" unique_id=1170833469]
@@ -116,10 +118,10 @@ modulate = Color(0.25, 0.25, 0.25, 1)
 custom_minimum_size = Vector2(200, 0)
 custom_maximum_size = Vector2(200, -1)
 layout_mode = 0
-offset_left = 8.249998
-offset_top = 21.749998
-offset_right = 208.25
-offset_bottom = 42.98658
+offset_left = 7.999998
+offset_top = 16.999998
+offset_right = 208.0
+offset_bottom = 38.23658
 scale = Vector2(0.25, 0.25)
 theme_override_fonts/font = ExtResource("3_8pghi")
 theme_override_font_sizes/font_size = 16
@@ -130,10 +132,10 @@ autowrap_mode = 2
 modulate = Color(0.22838, 0.2166, 0.57, 1)
 custom_maximum_size = Vector2(200, -1)
 layout_mode = 0
-offset_left = 32.75
-offset_top = 21.5
-offset_right = 137.75
-offset_bottom = 42.5
+offset_left = 32.5
+offset_top = 16.75
+offset_right = 137.5
+offset_bottom = 37.75
 scale = Vector2(0.25, 0.25)
 theme_override_fonts/font = ExtResource("4_8pghi")
 theme_override_font_sizes/font_size = 12
@@ -148,10 +150,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -26.75
-offset_top = -19.25
-offset_right = 28.0
-offset_bottom = -18.25
+offset_left = -27.0
+offset_top = -24.0
+offset_right = 27.75
+offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_gylim")
@@ -164,10 +166,10 @@ modulate = Color(0.25, 0.25, 0.25, 1)
 custom_minimum_size = Vector2(200, 0)
 custom_maximum_size = Vector2(200, -1)
 layout_mode = 0
-offset_left = 8.0
-offset_top = 28.75
-offset_right = 208.0
-offset_bottom = 48.750008
+offset_left = 7.75
+offset_top = 24.0
+offset_right = 207.75
+offset_bottom = 44.000008
 scale = Vector2(0.25, 0.25)
 theme_override_fonts/font = ExtResource("3_8pghi")
 theme_override_font_sizes/font_size = 16
@@ -178,10 +180,10 @@ autowrap_mode = 2
 modulate = Color(0.22838, 0.2166, 0.57, 1)
 custom_maximum_size = Vector2(200, -1)
 layout_mode = 0
-offset_left = 19.5
-offset_top = 28.75
-offset_right = 181.5
-offset_bottom = 50.75
+offset_left = 19.25
+offset_top = 24.0
+offset_right = 181.25
+offset_bottom = 46.0
 scale = Vector2(0.25, 0.25)
 theme_override_fonts/font = ExtResource("4_8pghi")
 theme_override_font_sizes/font_size = 12
@@ -196,10 +198,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -26.75
-offset_top = -12.25
-offset_right = 28.0
-offset_bottom = -11.25
+offset_left = -27.0
+offset_top = -17.0
+offset_right = 27.75
+offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_gylim")
@@ -212,10 +214,10 @@ modulate = Color(0.25, 0.25, 0.25, 1)
 custom_minimum_size = Vector2(200, 0)
 custom_maximum_size = Vector2(200, -1)
 layout_mode = 0
-offset_left = 7.5
-offset_top = 36.25
-offset_right = 207.5
-offset_bottom = 56.250008
+offset_left = 8.0
+offset_top = 30.75
+offset_right = 208.0
+offset_bottom = 50.750008
 scale = Vector2(0.25, 0.25)
 theme_override_fonts/font = ExtResource("3_8pghi")
 theme_override_font_sizes/font_size = 16
@@ -227,13 +229,13 @@ unique_name_in_owner = true
 modulate = Color(0.22838, 0.2166, 0.57, 1)
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 0
-offset_left = 11.0
-offset_top = 42.5
-offset_right = 191.0
-offset_bottom = 217.5
+offset_left = 9.0
+offset_top = 35.75
+offset_right = 209.0
+offset_bottom = 231.75
 scale = Vector2(0.25, 0.25)
 theme_override_fonts/font = ExtResource("4_8pghi")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "I saw Bob in the bank at 12:00. He was carrying a gun."
 autowrap_mode = 3
 

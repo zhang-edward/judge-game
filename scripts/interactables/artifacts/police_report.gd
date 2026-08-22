@@ -7,19 +7,23 @@ var template_string = "Suspect was seen at the $location $action a $item at $tim
 @onready var date_label = $Paper/DateBody as Label
 @onready var evidence_label = %EvidenceLabel as Label
 
-func render_evidence_into_artifact(e: Evidence):
-	if e.location != null:
-		template_string = template_string.replace("$location", e.location.id)
-	else:
-		template_string = template_string.replace(" at the $location", "")
-	if e.item != null:
-		template_string = template_string.replace("$item", e.item.name)
-	else:
-		template_string = template_string.replace(" a $item", " something")
-	if e.action != null:
-		template_string = template_string.replace("$action", e.action.gerund)
-	else:
-		template_string = template_string.replace("$action", "with")
-	template_string = template_string.replace("$time", str(e.time) + ":00")
-	suspect_body.text = e.suspect.name
-	evidence_label.text = template_string
+func render_evidence_into_artifact(data: ArtifactData):
+	var lines: Array[String] = []
+	for e in data.evidence:
+		var s = template_string
+		if e.location != null:
+			s = s.replace("$location", e.location.id)
+		else:
+			s = s.replace(" at the $location", "")
+		if e.item != null:
+			s = s.replace("$item", e.item.name)
+		else:
+			s = s.replace(" a $item", " something")
+		if e.action != null:
+			s = s.replace("$action", e.action.gerund)
+		else:
+			s = s.replace("$action", "with")
+		s = s.replace("$time", str(e.time) + ":00")
+		lines.append(s)
+	evidence_label.text = "\n\n".join(lines)
+	suspect_body.text = data.evidence[0].suspect.name

@@ -6,7 +6,8 @@ extends Artifact
 
 var template_string = "\"Shows $suspect $action a $item at the $location.\""
 
-func render_evidence_into_artifact(evidence: Evidence):
+func render_evidence_into_artifact(data: ArtifactData):
+	var evidence = data.evidence[0]
 	template_string = template_string.replace("$suspect", evidence.suspect.name)
 	if evidence.action != null:
 		template_string = template_string.replace("$action", evidence.action.gerund)

@@ -8,14 +8,14 @@ signal entered_zone(area: Area2D, artifact: Artifact)
 
 var artifact_manager: ArtifactManager
 var small_form: ArtifactSmall
-var evidence: Evidence
+var data: ArtifactData
 var case_file_ref: CaseFile
 var zone: Area2D
 var is_within_case_view := false
 var hovered_zone: Area2D
 
-func initialize(e: Evidence, manager: ArtifactManager, with_small_form := true):
-	evidence = e
+func initialize(g: ArtifactData, manager: ArtifactManager, with_small_form := true):
+	data = g
 	artifact_manager = manager
 	zone = artifact_manager.workspace_zone
 	
@@ -29,11 +29,14 @@ func initialize(e: Evidence, manager: ArtifactManager, with_small_form := true):
 		small_form.zone = artifact_manager.desk_zone
 		hide()
 		
-	if evidence != null:
-		render_evidence_into_artifact(evidence)
+	if data != null and not data.evidence.is_empty():
+		render_evidence_into_artifact(data)
 
-func render_evidence_into_artifact(evidence: Evidence):
+func render_evidence_into_artifact(data: ArtifactData):
 	pass
+
+func select_evidence(pool: Array[Evidence]) -> Array[Evidence]:
+	return ArtifactManager.pick_random_evidence(pool, 1, 1)
 
 func _ready() -> void:
 	super._ready()

@@ -1,8 +1,8 @@
+class_name ArtifactSmall
 extends Draggable
-class_name Document
 
-@export var zone: Area2D # the zone Area2D this copy lives in
-@export var counterpart: Document # the copy in the other zone
+var zone: Area2D # the zone Area2D this copy lives in
+var parent_artifact: Artifact
 
 func _ready() -> void:
 	super._ready()
@@ -11,13 +11,13 @@ func _ready() -> void:
 
 # Hand off to the counterpart when the cursor enters the counterpart's zone.
 func _on_zone_entered(area: Area2D) -> void:
-	if counterpart != null and area == counterpart.zone:
+	if parent_artifact != null and area == parent_artifact.zone:
 		_hand_off()
 
 func _hand_off() -> void:
 	cancel_drag()
 	hide()
 	set_grabbable(false)
-	counterpart.show()
-	counterpart.set_grabbable(true)
-	counterpart.begin_drag(true) # appears centered on the cursor and takes over
+	parent_artifact.show()
+	parent_artifact.set_grabbable(true)
+	parent_artifact.begin_drag(true) # appears centered on the cursor and takes over

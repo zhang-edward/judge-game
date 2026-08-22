@@ -1,5 +1,5 @@
 class_name CaseFile
-extends Document
+extends Artifact
 
 signal open_case_info()
 
@@ -13,7 +13,13 @@ func _on_hitbox_input(_viewport: Node, event: InputEvent, _shape_idx: int) -> vo
 	if (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.pressed):
 		open_case_info.emit()
 
-func initialize(c: Case):
+func setup_case(c: Case):
 	case = c
 	case_name_label.text = case.suspect.name
 	case_charge_label.text = case.charge.to_string()
+
+func initialize(e: Evidence, manager: ArtifactManager, with_small_form := true):
+	super.initialize(e, manager, with_small_form)
+	if small_form != null:
+		small_form.position = Vector2(randf_range(8, 60), randf_range(105, 145))
+		small_form.rotation_degrees = randf_range(-4, 4)

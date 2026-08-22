@@ -34,6 +34,7 @@ func _ready() -> void:
 		c.refresh_evidence()
 		cases.append(c)
 	artifact_manager.render_artifacts()
+	artifact_manager.spawn_law_book(laws)
 	next_day_button.pressed.connect(progress_day)
 	submit_case.pressed.connect(on_submit_case)
 

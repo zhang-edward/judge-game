@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dtujex8o7ni60"]
+
+[ext_resource type="Texture2D" uid="uid://d1lslele7ujjo" path="res://assets/sprites/book.png" id="1_xnqq1"]
+[ext_resource type="Script" uid="uid://bgmb12t1q1d6t" path="res://scripts/interactables/law_book.gd" id="2_lawbk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mod73"]
+atlas = ExtResource("1_xnqq1")
+region = Rect2(101, 16, 25, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mod73"]
+size = Vector2(24, 28)
+
+[node name="LawBookSmall" type="Sprite2D" unique_id=430914472]
+texture = SubResource("AtlasTexture_mod73")
+script = ExtResource("2_lawbk")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1785244002]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2137077779]
+shape = SubResource("RectangleShape2D_mod73")

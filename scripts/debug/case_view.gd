@@ -77,18 +77,18 @@ func handle_dropped(artifact: Artifact):
 
 func disable_outer_draggables():
 	for c in desk_mask.get_children():
-		var doc = c as ArtifactSmall
+		var doc = c as Draggable
 		doc.set_grabbable(false)
 	for c in workspace_mask.get_children():
-		var doc = c as Artifact
+		var doc = c as Draggable
 		doc.set_grabbable(false)
 		
 func enable_outer_draggables():
 	for c in desk_mask.get_children():
-		var doc = c as ArtifactSmall
+		var doc = c as Draggable
 		doc.set_grabbable(doc.visible)
 	for c in workspace_mask.get_children():
-		var doc = c as Artifact
+		var doc = c as Draggable
 		doc.set_grabbable(doc.visible)
 
 func close():

@@ -2,13 +2,13 @@ class_name Main
 extends Node
 
 @onready var case_view: CaseView = %CaseView
-@onready var next_day_button: Button = $CanvasLayer/TempGameUI/NextDay
-@onready var day_of_week: Label = $CanvasLayer/TempGameUI/DayOfWeek
+@onready var next_day_button: Button = $TempUI/TempGameUI/NextDay
+@onready var day_of_week: Label = $TempUI/TempGameUI/DayOfWeek
 @onready var artifact_manager: ArtifactManager = $ArtifactManager
-@onready var suspect_fled_alert: SuspectFledAlert = $CanvasLayer/SuspectFledAlert
-@onready var case_status: CaseStatus = $CanvasLayer/CaseStatus
+@onready var suspect_fled_alert: SuspectFledAlert = $TempUI/SuspectFledAlert
+@onready var case_status: CaseStatus = $TempUI/CaseStatus
 @onready var submit_case: Button = %SubmitCase
-@onready var reputation_label: Label = $CanvasLayer/TempGameUI/Reputation
+@onready var reputation_label: Label = $TempUI/TempGameUI/Reputation
 
 const CASE_COUNT := 3
 
@@ -30,11 +30,11 @@ func _ready() -> void:
 	names.shuffle()
 	for i in range(0, CASE_COUNT):
 		var suspect := Suspect.new(names[i % names.size()])
-		var charge := Charge.new(laws.pick_random(), 1)
-		var c := Case.new(suspect, charge)
+		var c := Case.new(suspect)
 		c.refresh_evidence()
 		cases.append(c)
 	artifact_manager.render_artifacts()
+	artifact_manager.spawn_law_book(laws)
 	next_day_button.pressed.connect(progress_day)
 	submit_case.pressed.connect(on_submit_case)
 

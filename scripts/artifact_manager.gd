@@ -4,7 +4,10 @@ extends Node
 @export var game: Main
 
 @export var case_file_scene: PackedScene
+@export var law_book_scene: PackedScene
 @export var all_artifact_types: Array[PackedScene]
+
+var law_book: LawBook
 
 @export var desk_mask: ColorRect
 @export var desk_zone: Area2D
@@ -14,13 +17,23 @@ extends Node
 # Stores a mapping to a piece of evidence to the type of artifact that the evidence is rendered as
 var evidence_to_artifact_scene: Dictionary[Evidence, PackedScene]
 
+func spawn_law_book(laws: Array[Law]):
+	if law_book_scene == null:
+		return
+	law_book = law_book_scene.instantiate() as LawBook
+	workspace_mask.add_child(law_book)
+	law_book.initialize(laws, desk_mask, workspace_zone, desk_zone)
+
 func clear_previous_artifacts():
 	for c in desk_mask.get_children():
-		if is_instance_valid(c):
+		if is_instance_valid(c) and not _is_law_book(c):
 			c.queue_free()
 	for c in workspace_mask.get_children():
-		if is_instance_valid(c):
+		if is_instance_valid(c) and not _is_law_book(c):
 			c.queue_free()
+
+func _is_law_book(node: Node) -> bool:
+	return law_book != null and (node == law_book or node == law_book.small_form)
 
 func render_artifacts():
 	clear_previous_artifacts()

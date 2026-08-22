@@ -1,42 +1,56 @@
 [gd_scene format=3 uid="uid://dva833lsnexe1"]
 
-[ext_resource type="Texture2D" uid="uid://n16io3ujxbpp" path="res://assets/sprites/book_sm.png" id="1_8gd3c"]
-[ext_resource type="FontFile" uid="uid://decfvn28iawol" path="res://assets/fonts/Alkhemikal.ttf" id="2_8gd3c"]
+[ext_resource type="PackedScene" uid="uid://dtujex8o7ni60" path="res://prefabs/law_book_small.tscn" id="2_f57v0"]
+[ext_resource type="Texture2D" uid="uid://d1lslele7ujjo" path="res://assets/sprites/book.png" id="3_f57v0"]
+[ext_resource type="Script" uid="uid://bgmb12t1q1d6t" path="res://scripts/interactables/law_book.gd" id="3_lawbk"]
 
-[node name="LawBook" type="TextureRect" unique_id=704640351]
-offset_right = 623.0
-offset_bottom = 385.0
-texture = ExtResource("1_8gd3c")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f57v0"]
+atlas = ExtResource("3_f57v0")
+region = Rect2(5, 4, 93, 70)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=173431881]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lawbk"]
+size = Vector2(368, 280)
+
+[node name="LawBook" type="Node2D" unique_id=1342471158]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("3_lawbk")
+small_form_scene = ExtResource("2_f57v0")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=704640351]
+offset_left = -188.0
+offset_top = -140.0
+offset_right = 184.0
+offset_bottom = 140.0
+texture = SubResource("AtlasTexture_f57v0")
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=173431881]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 23.0
+offset_left = 14.0
 offset_top = 10.0
-offset_right = -21.0
+offset_right = -12.0
 offset_bottom = -23.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 64
+theme_override_constants/separation = 40
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=512148225]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/HBoxContainer" unique_id=512148225]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=546731468]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_8gd3c")
-text = "* It is illegal to kill people
-* It is illegal to steal shit
-* It is illegal to scream in the park
-* It is illegal to sing in the bank
-* It is illegal to carry weapons"
-autowrap_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=903882333]
+[node name="VBoxContainer2" type="VBoxContainer" parent="TextureRect/HBoxContainer" unique_id=903882333]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1586475501]
+position = Vector2(-256, -192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1500727366]
+position = Vector2(256, 192)
+shape = SubResource("RectangleShape2D_lawbk")

@@ -1,0 +1,244 @@
+[gd_scene format=3 uid="uid://y31g6qf8ac7d"]
+
+[ext_resource type="Script" path="res://scripts/interactables/evidence_document.gd" id="1_8pghi"]
+[ext_resource type="Texture2D" uid="uid://diw6dgyivayim" path="res://assets/sprites/doc_eyewitness.png" id="2_8pghi"]
+[ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="3_8pghi"]
+[ext_resource type="FontFile" uid="uid://paeyvxq6llev" path="res://assets/fonts/DePixelBreit.ttf" id="4_8pghi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pghi"]
+atlas = ExtResource("2_8pghi")
+region = Rect2(1, 1, 28, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mod73"]
+atlas = ExtResource("2_8pghi")
+region = Rect2(2, 30, 3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vghc"]
+atlas = ExtResource("2_8pghi")
+region = Rect2(2, 30, 3, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gylim"]
+atlas = ExtResource("2_8pghi")
+region = Rect2(6, 30, 8, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_doc"]
+size = Vector2(266, 366.5)
+
+[node name="WitnessStatement" type="Node2D" unique_id=1049833240]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_8pghi")
+
+[node name="Paper" type="NinePatchRect" parent="." unique_id=1176720261]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -132.0
+offset_top = -107.0
+offset_right = -66.0
+offset_bottom = -15.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_8pghi")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Header" type="Label" parent="Paper" unique_id=1180571847]
+modulate = Color(0.16, 0.16, 0.16, 1)
+layout_mode = 0
+offset_left = 4.25
+offset_top = 6.5
+offset_right = 237.25
+offset_bottom = 41.5
+rotation = -0.0067459783
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_8pghi")
+theme_override_font_sizes/font_size = 18
+text = "EYEWITNESS STATEMENT FORM"
+horizontal_alignment = 1
+
+[node name="Divider" type="NinePatchRect" parent="Paper" unique_id=31744755]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.75
+offset_top = -34.0
+offset_right = 28.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_mod73")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Box" type="NinePatchRect" parent="Paper" unique_id=176812501]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.75
+offset_top = -26.25
+offset_right = 28.0
+offset_bottom = 39.75
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_4vghc")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="ColorRect" type="ColorRect" parent="Paper/Box" unique_id=1197662505]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 54.0
+offset_bottom = 65.0
+mouse_filter = 2
+
+[node name="StatementOfLabel" type="Label" parent="Paper" unique_id=1170833469]
+modulate = Color(0.25, 0.25, 0.25, 1)
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 0
+offset_left = 8.249998
+offset_top = 21.749998
+offset_right = 208.25
+offset_bottom = 42.98658
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_8pghi")
+theme_override_font_sizes/font_size = 16
+text = "Statement of:"
+autowrap_mode = 2
+
+[node name="StatementOfBody" type="Label" parent="Paper" unique_id=41165505]
+modulate = Color(0.22838, 0.2166, 0.57, 1)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 0
+offset_left = 32.75
+offset_top = 21.5
+offset_right = 137.75
+offset_bottom = 42.5
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("4_8pghi")
+theme_override_font_sizes/font_size = 12
+text = "John Doe"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Divider2" type="NinePatchRect" parent="Paper" unique_id=1410820645]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.75
+offset_top = -19.25
+offset_right = 28.0
+offset_bottom = -18.25
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_gylim")
+patch_margin_left = 1
+patch_margin_right = 1
+axis_stretch_horizontal = 2
+
+[node name="DateLabel" type="Label" parent="Paper" unique_id=897159186]
+modulate = Color(0.25, 0.25, 0.25, 1)
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 0
+offset_left = 8.0
+offset_top = 28.75
+offset_right = 208.0
+offset_bottom = 48.750008
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_8pghi")
+theme_override_font_sizes/font_size = 16
+text = "Date:"
+autowrap_mode = 2
+
+[node name="DateBody" type="Label" parent="Paper" unique_id=699754540]
+modulate = Color(0.22838, 0.2166, 0.57, 1)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 0
+offset_left = 19.5
+offset_top = 28.75
+offset_right = 181.5
+offset_bottom = 50.75
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("4_8pghi")
+theme_override_font_sizes/font_size = 12
+text = "Monday"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Divider3" type="NinePatchRect" parent="Paper" unique_id=398970777]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.75
+offset_top = -12.25
+offset_right = 28.0
+offset_bottom = -11.25
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_gylim")
+patch_margin_left = 1
+patch_margin_right = 1
+axis_stretch_horizontal = 2
+
+[node name="StatementLabel" type="Label" parent="Paper" unique_id=483026949]
+modulate = Color(0.25, 0.25, 0.25, 1)
+custom_minimum_size = Vector2(200, 0)
+custom_maximum_size = Vector2(200, -1)
+layout_mode = 0
+offset_left = 7.5
+offset_top = 36.25
+offset_right = 207.5
+offset_bottom = 56.250008
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("3_8pghi")
+theme_override_font_sizes/font_size = 16
+text = "Statement:"
+autowrap_mode = 2
+
+[node name="EvidenceLabel" type="Label" parent="Paper" unique_id=577978974]
+unique_name_in_owner = true
+modulate = Color(0.22838, 0.2166, 0.57, 1)
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_left = 11.0
+offset_top = 42.5
+offset_right = 191.0
+offset_bottom = 217.5
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("4_8pghi")
+theme_override_font_sizes/font_size = 14
+text = "I saw Bob in the bank at 12:00. He was carrying a gun."
+autowrap_mode = 3
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1604196144]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1894450763]
+position = Vector2(0, 75.75)
+shape = SubResource("RectangleShape2D_doc")

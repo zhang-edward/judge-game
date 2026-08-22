@@ -58,8 +58,10 @@ func spawn_artifact_for_evidence(e: Evidence, artifact_scene: PackedScene, on_de
 	var artifact = artifact_scene.instantiate() as Artifact
 	workspace_mask.add_child(artifact)
 	artifact.added_to_case.connect(func(c: CaseFile): add_evidence_to_case(artifact, c))
-	artifact.initialize(e, self, !on_desk)
+	artifact.initialize(e, self)
 	if on_desk:
+		artifact.show()
+		artifact.small_form.hide()
 		artifact.position = Vector2(randi_range(25, 50), randi_range(25, 50))
 
 func add_evidence_to_case(artifact: Artifact, case_file: CaseFile):

@@ -46,6 +46,7 @@ func try_add_to_case():
 		added_to_case.emit(case_file_ref)
 
 func _on_zone_entered(area: Area2D) -> void:
+	print("Entered new zone: " + str(area))
 	if is_within_case_view:
 		hovered_zone = area
 		entered_zone.emit(area, self)

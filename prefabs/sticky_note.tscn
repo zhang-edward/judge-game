@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://lxje2xqpnef0"]
+
+[ext_resource type="Script" uid="uid://dum3tiodu8grx" path="res://scripts/sticky_note.gd" id="1_md6i7"]
+[ext_resource type="Texture2D" uid="uid://nbxxi2x1erq8" path="res://assets/sprites/sticky-note.png" id="1_yp8at"]
+[ext_resource type="FontFile" uid="uid://dmpv1r0rxapfy" path="res://assets/fonts/Magic Crush.otf" id="2_yp8at"]
+
+[node name="StickyNote" type="Node2D" unique_id=69093072]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_md6i7")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=856652818]
+offset_right = 177.0
+offset_bottom = 179.0
+texture = ExtResource("1_yp8at")
+
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=126868233]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = -57.5
+offset_right = 70.5
+offset_bottom = -12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_yp8at")
+theme_override_font_sizes/font_size = 30
+text = "Flight Risk"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Body" type="Label" parent="NinePatchRect" unique_id=1003085120]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.25
+offset_top = -21.25
+offset_right = 71.75
+offset_bottom = 51.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_yp8at")
+theme_override_font_sizes/font_size = 50
+text = "0%"
+horizontal_alignment = 1
+vertical_alignment = 1

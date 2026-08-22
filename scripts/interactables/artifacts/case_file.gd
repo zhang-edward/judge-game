@@ -27,3 +27,7 @@ func initialize(e: Evidence, manager: ArtifactManager, with_small_form := true):
 	if small_form != null:
 		small_form.position = Vector2(randf_range(8, 60), randf_range(105, 145))
 		small_form.rotation_degrees = randf_range(-4, 4)
+
+func _on_zone_entered(area: Area2D) -> void:
+	super._on_zone_entered(area)
+	print(area.name)

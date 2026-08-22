@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://bvj0gm2k3n1or"]
+
+[ext_resource type="Script" uid="uid://cg2q4eowxsfa8" path="res://scripts/interactables/artifacts/receipt.gd" id="1_1hfkg"]
+[ext_resource type="Texture2D" uid="uid://dwil16p7ofj8q" path="res://assets/sprites/receipt.png" id="1_malji"]
+[ext_resource type="Texture2D" uid="uid://cdkdscs75kyei" path="res://assets/sprites/receipt-logo.png" id="2_4excb"]
+[ext_resource type="PackedScene" uid="uid://s13whmbvhybp" path="res://prefabs/artifacts/receipt_small.tscn" id="2_g7rr5"]
+[ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="2_hg0ei"]
+[ext_resource type="Texture2D" uid="uid://diw6dgyivayim" path="res://assets/sprites/doc_eyewitness.png" id="4_1hfkg"]
+[ext_resource type="PackedScene" uid="uid://clo23nsqx0d7w" path="res://prefabs/artifacts/receipt_item_row.tscn" id="4_yeqhf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7rr5"]
+atlas = ExtResource("4_1hfkg")
+region = Rect2(6, 30, 8, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]
+size = Vector2(260, 436)
+
+[node name="Receipt" type="Node2D" unique_id=1674446968]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_1hfkg")
+receipt_item_row_scene = ExtResource("4_yeqhf")
+small_form_scene = ExtResource("2_g7rr5")
+
+[node name="Paper" type="NinePatchRect" parent="." unique_id=158850598]
+offset_left = -132.0
+offset_top = -216.0
+offset_right = -67.0
+offset_bottom = -107.0
+scale = Vector2(4, 4)
+texture = ExtResource("1_malji")
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="ReceiptLogo" type="Sprite2D" parent="Paper" unique_id=1328293931]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(51.625004, 10.387502)
+scale = Vector2(0.6375001, 0.51022726)
+texture = ExtResource("2_4excb")
+
+[node name="Header" type="Label" parent="Paper" unique_id=1244137333]
+modulate = Color(0.16, 0.16, 0.16, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.1076924
+anchor_top = -0.006666667
+anchor_right = -1.1076924
+anchor_bottom = -0.006666667
+offset_left = 77.0
+offset_top = 3.9846988
+offset_right = 230.0
+offset_bottom = 44.9847
+rotation = -0.0067459783
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("2_hg0ei")
+theme_override_font_sizes/font_size = 40
+text = "WallMart"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Paper" unique_id=16086994]
+modulate = Color(0.16, 0.16, 0.16, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.500004
+offset_top = -41.241966
+offset_right = 108.5
+offset_bottom = -28.241966
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0067459783
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("2_hg0ei")
+theme_override_font_sizes/font_size = 12
+text = "More Money. Live Forever"
+horizontal_alignment = 1
+
+[node name="Divider2" type="NinePatchRect" parent="Paper" unique_id=1528684284]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = -34.5
+offset_right = 30.5
+offset_bottom = -33.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_g7rr5")
+patch_margin_left = 1
+patch_margin_right = 1
+axis_stretch_horizontal = 2
+
+[node name="ItemList" type="VBoxContainer" parent="Paper" unique_id=1231716358]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 24.0
+offset_right = 246.0
+offset_bottom = 256.0
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+
+[node name="Divider3" type="NinePatchRect" parent="Paper" unique_id=2056087628]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.5
+offset_top = 30.5
+offset_right = 30.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_g7rr5")
+patch_margin_left = 1
+patch_margin_right = 1
+axis_stretch_horizontal = 2
+
+[node name="Purchaser" type="Label" parent="Paper" unique_id=1289738449]
+modulate = Color(0.16, 0.16, 0.16, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.499998
+offset_top = 39.5
+offset_right = 79.5
+offset_bottom = 55.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0067459783
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("2_hg0ei")
+theme_override_font_sizes/font_size = 15
+text = "BOB SMITH CREDIT"
+
+[node name="TotalLabel" type="Label" parent="Paper" unique_id=1057801463]
+modulate = Color(0.16, 0.16, 0.16, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = 33.5
+offset_right = 57.5
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0067459783
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("2_hg0ei")
+theme_override_font_sizes/font_size = 18
+text = "Total"
+
+[node name="Amount" type="Label" parent="Paper" unique_id=2041446881]
+modulate = Color(0.16, 0.16, 0.16, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.500004
+offset_top = 33.5
+offset_right = 96.5
+offset_bottom = 52.5
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0067459783
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("2_hg0ei")
+theme_override_font_sizes/font_size = 18
+text = "10.00"
+horizontal_alignment = 2
+
+[node name="CreditCardNum" type="Label" parent="Paper" unique_id=896968239]
+modulate = Color(0.16, 0.16, 0.16, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.499992
+offset_top = 39.0
+offset_right = 96.5
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0067459783
+scale = Vector2(0.25, 0.25)
+theme_override_fonts/font = ExtResource("2_hg0ei")
+theme_override_font_sizes/font_size = 15
+text = "XXXX1234"
+horizontal_alignment = 2
+
+[node name="Subtitle6" type="Label" parent="Paper" unique_id=1000641713]
+modulate = Color(0.16, 0.16, 0.16, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.38942
+offset_top = 48.55996
+offset_right = 226.7229
+offset_bottom = 61.55996
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0067459783
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0.34906504, 0.34906504, 0.34906498, 1)
+theme_override_fonts/font = ExtResource("2_hg0ei")
+theme_override_font_sizes/font_size = 10
+text = "THANK YOU FOR SHOPPING AT WALLMART!"
+horizontal_alignment = 1
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=79295597]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2058922645]
+position = Vector2(-2, 2)
+shape = SubResource("RectangleShape2D_6pmnr")

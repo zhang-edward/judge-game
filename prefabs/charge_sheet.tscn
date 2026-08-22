@@ -11,13 +11,13 @@ modulate = Color(0.86205, 0.80099994, 0.9, 1)
 offset_right = 275.0
 offset_bottom = 417.0
 texture = ExtResource("1_650ho")
-script = ExtResource("4_drag")
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
+script = ExtResource("4_drag")
 
 [node name="Header" type="Label" parent="." unique_id=1238705159]
 modulate = Color(0.1485, 0.18177497, 0.33, 1)

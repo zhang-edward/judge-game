@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://s13whmbvhybp"]
+
+[ext_resource type="Texture2D" uid="uid://b6b56a8e78swu" path="res://assets/sprites/receipt-small.png" id="1_m0608"]
+[ext_resource type="Script" uid="uid://dvcel8xbgnl5x" path="res://scripts/interactables/artifact_small.gd" id="2_fkcu2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0608"]
+size = Vector2(4.437498, 11.875001)
+
+[node name="ReceiptSmall" type="Sprite2D" unique_id=889754271]
+scale = Vector2(1.375, 1.5)
+texture = ExtResource("1_m0608")
+script = ExtResource("2_fkcu2")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=419318369]
+scale = Vector2(1.8028172, 1.3473684)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1952832025]
+position = Vector2(0, 4.866161e-07)
+scale = Vector2(1.0000004, 1)
+shape = SubResource("RectangleShape2D_m0608")

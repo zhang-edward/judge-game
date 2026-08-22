@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://clo23nsqx0d7w"]
+
+[ext_resource type="Script" uid="uid://c4r2ahw1k1w8r" path="res://scripts/interactables/artifacts/receipt_item_row.gd" id="1_nh7bd"]
+[ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="1_pud6t"]
+
+[node name="ReceiptItemRow" type="HBoxContainer" unique_id=827722595]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -9.5
+offset_right = 48.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+script = ExtResource("1_nh7bd")
+
+[node name="ItemName" type="Label" parent="." unique_id=964636436]
+modulate = Color(0.16, 0.16, 0.16, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pud6t")
+theme_override_font_sizes/font_size = 18
+text = "Banana"
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="." unique_id=1705977226]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="Price" type="Label" parent="." unique_id=91207209]
+modulate = Color(0.16, 0.16, 0.16, 1)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pud6t")
+theme_override_font_sizes/font_size = 18
+text = "1.00"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

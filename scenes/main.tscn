@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dxlrojhw3ypnh" path="res://prefabs/artifacts/police_report.tscn" id="5_jkv2x"]
 [ext_resource type="PackedScene" uid="uid://dykt1xhhyk65g" path="res://prefabs/suspect_fled_alert.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://y345xgiu83t3" path="res://prefabs/case_file.tscn" id="6_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://bvj0gm2k3n1or" path="res://prefabs/artifacts/receipt.tscn" id="6_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://dva833lsnexe1" path="res://prefabs/law_book.tscn" id="18_lawbk"]
 [ext_resource type="PackedScene" uid="uid://cly8g3v42n0rn" path="res://prefabs/case_status.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://g8e3q5be8y6k" path="res://prefabs/artifacts/witness_statement.tscn" id="7_muem4"]
@@ -44,6 +45,7 @@ game = NodePath("..")
 case_file_scene = ExtResource("6_a8y0u")
 law_book_scene = ExtResource("18_lawbk")
 all_artifact_types = Array[PackedScene]([ExtResource("7_muem4"), ExtResource("5_jkv2x")])
+item_only_artifact_types = Array[PackedScene]([ExtResource("6_dp3eg")])
 desk_mask = NodePath("../BG/DeskMask")
 desk_zone = NodePath("../BG/DeskZone")
 workspace_mask = NodePath("../BG/WorkspaceMask")

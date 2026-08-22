@@ -1,6 +1,9 @@
 class_name CaseView
 extends Node2D
 
+signal opened()
+signal closed()
+
 const MENU_FONT := preload("res://assets/fonts/DePixelHalbfett.ttf")
 
 @export var game: Main
@@ -68,6 +71,7 @@ func open_for(c: Case):
 		artifact.entered_zone.connect(handle_zone_enter)
 		artifact.dropped.connect(func(): handle_dropped(artifact))
 	visible = true
+	opened.emit()
 	
 func handle_zone_enter(area: Area2D, artifact: Artifact):
 	if area == folder_exterior:
@@ -102,6 +106,9 @@ func close():
 	enable_outer_draggables()
 	_stop_pulse()
 	visible = false
+	folder_interior_collider.disabled = true
+	folder_exterior_collider.disabled = true
+	closed.emit()
 
 func _on_charge_label_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:

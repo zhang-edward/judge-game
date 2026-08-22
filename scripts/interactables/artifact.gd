@@ -43,6 +43,7 @@ func _ready() -> void:
 	set_grabbable(visible) # a copy authored hidden cannot be grabbed
 	dropped.connect(try_add_to_case)
 	zone_entered.connect(_on_zone_entered)
+	zone_exited.connect(_on_zone_exited)
 
 func try_add_to_case():
 	if case_file_ref != null:
@@ -60,6 +61,12 @@ func _on_zone_entered(area: Area2D) -> void:
 			case_file_ref = null
 	if small_form != null and area == small_form.zone:
 		_hand_off()
+
+func _on_zone_exited(area: Area2D) -> void:
+	print("Exited zone:", area)
+	if area.get_parent() is CaseFile:
+		case_file_ref = null
+
 
 func _hand_off() -> void:
 	cancel_drag()

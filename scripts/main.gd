@@ -38,6 +38,9 @@ func _ready() -> void:
 	next_day_button.pressed.connect(progress_day)
 	submit_case.pressed.connect(on_submit_case)
 
+	case_view.opened.connect(func(): artifact_manager.toggle_hitbox_for_all_case_files(false))
+	case_view.closed.connect(func(): artifact_manager.toggle_hitbox_for_all_case_files(true))
+
 # Redraw the desk from the current set of cases.
 func receive_evidence_list():
 	artifact_manager.render_artifacts()

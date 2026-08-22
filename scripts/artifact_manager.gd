@@ -90,6 +90,8 @@ func _register_artifact(artifact: Artifact, data: ArtifactData, on_desk := false
 	if on_desk:
 		artifact.show()
 		artifact.position = Vector2(randi_range(25, 50), randi_range(25, 50))
+		if game.case_view.visible:
+			artifact.set_grabbable(false)
 
 func add_evidence_to_case(artifact: Artifact, case_file: CaseFile):
 	if game.case_status.visible or game.suspect_fled_alert.visible:
@@ -109,3 +111,10 @@ func remove_evidence_from_case(artifact: Artifact, case: Case):
 	spawn_artifact_for_data(artifact.data, true)
 	if game.case_view.visible and game.case_view.current_case == case:
 		game.case_view.update_case_win_percentage()
+
+func toggle_hitbox_for_all_case_files(is_enabled: bool):
+	print("toggling all case files hitboxes: ", is_enabled)
+	for artifact in workspace_mask.get_children():
+		if artifact is CaseFile:
+			var hitbox: CollisionShape2D = artifact.get_node("Hitbox/CollisionShape2D")
+			hitbox.disabled = !is_enabled

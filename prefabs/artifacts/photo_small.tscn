@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bfyetl4uj5o3b"]
+
+[ext_resource type="Texture2D" uid="uid://dpmfv7bj54r0v" path="res://assets/sprites/photo-small.png" id="1_fuwgw"]
+[ext_resource type="Script" uid="uid://dvcel8xbgnl5x" path="res://scripts/interactables/artifact_small.gd" id="2_w63r2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]
+size = Vector2(16, 16)
+
+[node name="PhotoSmall" type="Sprite2D" unique_id=267708150]
+texture = ExtResource("1_fuwgw")
+script = ExtResource("2_w63r2")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=630506773]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=415940717]
+shape = SubResource("RectangleShape2D_6pmnr")

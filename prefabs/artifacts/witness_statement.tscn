@@ -23,7 +23,7 @@ atlas = ExtResource("2_ekwf7")
 region = Rect2(6, 30, 8, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_doc"]
-size = Vector2(266, 366.5)
+size = Vector2(266, 368)
 
 [node name="WitnessStatement" type="Node2D" unique_id=1049833240]
 scale = Vector2(0.25, 0.25)
@@ -35,9 +35,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -132.0
-offset_top = -107.0
+offset_top = -183.0
 offset_right = -66.0
-offset_bottom = -15.5
+offset_bottom = -91.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4, 4)
@@ -242,7 +242,6 @@ autowrap_mode = 3
 [node name="Hitbox" type="Area2D" parent="." unique_id=1604196144]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1894450763]
-position = Vector2(0, 75.75)
 shape = SubResource("RectangleShape2D_doc")
 
 [connection signal="zone_entered" from="." to="." method="_on_zone_entered"]

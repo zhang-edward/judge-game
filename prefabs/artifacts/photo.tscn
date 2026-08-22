@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://3ljyc4t8656o"]
+
+[ext_resource type="Texture2D" uid="uid://c3pvdfnkhn030" path="res://assets/sprites/photo.png" id="1_1qfan"]
+[ext_resource type="Script" uid="uid://bdjmaru1llsfp" path="res://scripts/interactables/artifacts/photo.gd" id="1_dwi21"]
+[ext_resource type="PackedScene" uid="uid://bfyetl4uj5o3b" path="res://prefabs/artifacts/photo_small.tscn" id="2_bwnpc"]
+[ext_resource type="Texture2D" uid="uid://bk7ng1hjtvw8k" path="res://assets/sprites/photo-pic.png" id="2_u4qfp"]
+[ext_resource type="FontFile" uid="uid://paeyvxq6llev" path="res://assets/fonts/DePixelBreit.ttf" id="4_3su7l"]
+[ext_resource type="FontFile" uid="uid://yiigd4da51w2" path="res://assets/fonts/PixelOperator.ttf" id="5_3su7l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]
+size = Vector2(304, 303)
+
+[node name="Photo" type="Node2D" unique_id=1268349616]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_dwi21")
+small_form_scene = ExtResource("2_bwnpc")
+
+[node name="PhotoFrame" type="NinePatchRect" parent="." unique_id=399985923]
+offset_left = -150.0
+offset_top = -150.0
+offset_right = -75.0
+offset_bottom = -75.0
+scale = Vector2(4, 4)
+texture = ExtResource("1_1qfan")
+
+[node name="Description" type="Label" parent="PhotoFrame" unique_id=412433315]
+layout_mode = 0
+offset_left = 1.5
+offset_top = 54.5
+offset_right = 285.5
+offset_bottom = 106.5
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_3su7l")
+theme_override_font_sizes/font_size = 14
+text = "\"Shows Bob selling a gun at the park.\""
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TimeTaken" type="Label" parent="PhotoFrame" unique_id=1592745512]
+layout_mode = 0
+offset_left = 25.5
+offset_top = 69.5
+offset_right = 119.5
+offset_bottom = 92.5
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0.55561996, 0.55561996, 0.55561996, 1)
+theme_override_fonts/font = ExtResource("5_3su7l")
+theme_override_font_sizes/font_size = 15
+text = "Taken at 1:00"
+horizontal_alignment = 1
+
+[node name="PhotoPic" type="Sprite2D" parent="." unique_id=793231050]
+position = Vector2(-0.25003052, -43.5)
+scale = Vector2(10.017857, 7.1071424)
+texture = ExtResource("2_u4qfp")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=708787976]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=500932254]
+shape = SubResource("RectangleShape2D_6pmnr")

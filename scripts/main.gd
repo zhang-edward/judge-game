@@ -10,7 +10,7 @@ extends Node
 @onready var submit_case: Button = %SubmitCase
 @onready var reputation_label: Label = $TempUI/TempGameUI/Reputation
 
-const CASE_COUNT := 3
+const CASE_COUNT := 1
 
 var day_labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 var day_index := 0

@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dykt1xhhyk65g" path="res://prefabs/suspect_fled_alert.tscn" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://y345xgiu83t3" path="res://prefabs/case_file.tscn" id="6_a8y0u"]
 [ext_resource type="PackedScene" uid="uid://bvj0gm2k3n1or" path="res://prefabs/artifacts/receipt.tscn" id="6_dp3eg"]
-[ext_resource type="PackedScene" uid="uid://dva833lsnexe1" path="res://prefabs/law_book.tscn" id="18_lawbk"]
 [ext_resource type="PackedScene" uid="uid://cly8g3v42n0rn" path="res://prefabs/case_status.tscn" id="6_tefeu"]
+[ext_resource type="PackedScene" uid="uid://3ljyc4t8656o" path="res://prefabs/artifacts/photo.tscn" id="7_gqmmt"]
 [ext_resource type="PackedScene" uid="uid://g8e3q5be8y6k" path="res://prefabs/artifacts/witness_statement.tscn" id="7_muem4"]
 [ext_resource type="Texture2D" uid="uid://dx5rtdeict36r" path="res://bg.png" id="8_85g3d"]
 [ext_resource type="Texture2D" uid="uid://ct1dqxmajqa5c" path="res://folder.png" id="11_jkv2x"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cd5bkms06yg7l" path="res://assets/sprites/tape.png" id="16_muem4"]
 [ext_resource type="PackedScene" uid="uid://lxje2xqpnef0" path="res://prefabs/sticky_note.tscn" id="17_dp3eg"]
 [ext_resource type="FontFile" uid="uid://dso1ngtngoifh" path="res://assets/fonts/DePixelIllegible.ttf" id="17_muem4"]
+[ext_resource type="PackedScene" uid="uid://dva833lsnexe1" path="res://prefabs/law_book.tscn" id="18_lawbk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mod73"]
 size = Vector2(77.25, 162.5)
@@ -44,7 +45,7 @@ script = ExtResource("2_sugp2")
 game = NodePath("..")
 case_file_scene = ExtResource("6_a8y0u")
 law_book_scene = ExtResource("18_lawbk")
-all_artifact_types = Array[PackedScene]([ExtResource("7_muem4"), ExtResource("5_jkv2x")])
+all_artifact_types = Array[PackedScene]([ExtResource("7_muem4"), ExtResource("5_jkv2x"), ExtResource("7_gqmmt")])
 item_only_artifact_types = Array[PackedScene]([ExtResource("6_dp3eg")])
 desk_mask = NodePath("../BG/DeskMask")
 desk_zone = NodePath("../BG/DeskZone")
@@ -221,7 +222,6 @@ patch_margin_bottom = 1
 
 [node name="ChargeName" type="Label" parent="CaseView/FolderView/ChargeLabelBackground" unique_id=1755978052]
 unique_name_in_owner = true
-mouse_filter = 2
 modulate = Color(0.26, 0.26, 0.26, 1)
 layout_mode = 1
 anchors_preset = 8

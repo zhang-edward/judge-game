@@ -13,7 +13,7 @@ atlas = ExtResource("4_1hfkg")
 region = Rect2(6, 30, 8, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pmnr"]
-size = Vector2(260, 436)
+size = Vector2(263, 436)
 
 [node name="Receipt" type="Node2D" unique_id=1674446968]
 scale = Vector2(0.25, 0.25)
@@ -233,5 +233,5 @@ horizontal_alignment = 1
 [node name="Hitbox" type="Area2D" parent="." unique_id=79295597]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=2058922645]
-position = Vector2(-2, 2)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_6pmnr")

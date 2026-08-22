@@ -97,10 +97,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1053825920 groups=["zone"]]
-position = Vector2(4, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=139097663]
-position = Vector2(-2, -8)
 shape = SubResource("RectangleShape2D_trceg")
 
 [connection signal="zone_entered" from="." to="." method="_on_zone_entered"]

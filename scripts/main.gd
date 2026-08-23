@@ -8,14 +8,12 @@ extends Node
 @onready var suspect_fled_alert: SuspectFledAlert = $TempUI/SuspectFledAlert
 @onready var case_status: CaseStatus = $TempUI/CaseStatus
 @onready var submit_case: Button = %SubmitCase
-@onready var reputation_label: Label = $TempUI/TempGameUI/Reputation
-@onready var calendar: Calendar = $Calendar
+@onready var calendar: Calendar = $BG/Calendar
+@onready var rep_nameplate: RepNameplate = $BG/RepNameplate
 @onready var cutscene: Cutscene = $CanvasLayer/Cutscene
+@onready var promo_alert: PromotionAlert = $TempUI/PromotionAlert
 
-const CASE_COUNT := 1
-
-var day_labels = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-var day_index := 0
+var case_count = 1
 var reputation_score := 0
 
 var laws: Array[Law]
@@ -35,14 +33,20 @@ func _ready() -> void:
 	calendar.next_day.connect(progress_day)
 	submit_case.pressed.connect(on_submit_case)
 	cutscene.finished.connect(on_cutscene_finished)
+	rep_nameplate.on_promo.connect(handle_promo)
 
 	case_view.opened.connect(func(): artifact_manager.toggle_hitbox_for_all_case_files(false))
 	case_view.closed.connect(func(): artifact_manager.toggle_hitbox_for_all_case_files(true))
+	
+func handle_promo(new_title: String):
+	case_count += 1
+	promo_alert.show_promo_alert(new_title)
+	generate_new_cases()
 
 func generate_new_cases():
 	var names := Vocab.suspect_names.duplicate()
 	names.shuffle()
-	var num_cases_to_generate = CASE_COUNT - cases.size()
+	var num_cases_to_generate = case_count - cases.size()
 	for i in range(0, num_cases_to_generate):
 		var suspect := Suspect.new(names[i % names.size()])
 		var c := Case.new(suspect)
@@ -55,7 +59,8 @@ func on_submit_case():
 	if c == null:
 		return
 	_pending_case = c
-	_pending_success = randi_range(1, 100) <= c.win_percentage
+	#_pending_success = randi_range(1, 100) <= c.win_percentage
+	_pending_success = true
 	cutscene.play(CutsceneBuilder.build(c, _pending_success))
 
 func on_cutscene_finished():
@@ -66,10 +71,9 @@ func on_cutscene_finished():
 
 func handle_case_outcome(c: Case, case_outcome: CaseStatus.CaseOutcome):
 	if case_outcome == CaseStatus.CaseOutcome.VICTORY:
-		reputation_score += CaseStatus.REP_REWARD
+		rep_nameplate.add_rep_progress(CaseStatus.REP_REWARD)
 	elif case_outcome == CaseStatus.CaseOutcome.DEFEAT:
-		reputation_score = max(0, reputation_score - CaseStatus.REP_PENALTY)
-	reputation_label.text = "Rep: " + str(reputation_score)
+		rep_nameplate.add_rep_progress(-CaseStatus.REP_PENALTY)
 
 # Remove resolved case and redraw 
 func resolve_case(c: Case):

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cly8g3v42n0rn"]
 
 [ext_resource type="Script" uid="uid://bm3u7p4l84cla" path="res://scripts/case_status.gd" id="1_kh3fj"]
+[ext_resource type="FontFile" uid="uid://cbl12pbc5rma5" path="res://assets/fonts/alagard.ttf" id="2_438g2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
 bg_color = Color(0.12591082, 0.12591085, 0.12591076, 1)
@@ -28,14 +29,16 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=599156254]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_438g2")
+theme_override_font_sizes/font_size = 50
 text = "Case Won!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer" unique_id=300495365]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("2_438g2")
+theme_override_font_sizes/font_size = 18
 text = "+100 Reputation"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -44,4 +47,5 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_438g2")
 text = "Continue"

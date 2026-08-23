@@ -85,6 +85,15 @@ func location(id: StringName) -> LocationDef:
 			return l
 	return null
 
+func get_item_def(item_name: String):
+	for item in items:
+		if item.name == item_name:
+			return item
+	return null
+	
+func get_item_categories(item_name: String):
+	return get_item_def(item_name).categories
+
 func random_item_in_category(c: CategoryDef) -> ItemDef:
 	var potential_items = []
 	for item in items:

@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://dva833lsnexe1" path="res://prefabs/law_book.tscn" id="18_lawbk"]
 [ext_resource type="FontFile" uid="uid://dmpv1r0rxapfy" path="res://assets/fonts/Magic Crush.otf" id="22_jscy8"]
 [ext_resource type="PackedScene" uid="uid://bd7rvag7bevwr" path="res://prefabs/calendar.tscn" id="24_y6deb"]
+[ext_resource type="PackedScene" path="res://prefabs/cutscene/cutscene.tscn" id="25_cut"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mod73"]
 size = Vector2(76, 162.5)
@@ -350,3 +351,7 @@ horizontal_alignment = 1
 
 [node name="Calendar" parent="." unique_id=2118279971 instance=ExtResource("24_y6deb")]
 position = Vector2(1065, 64)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1571221079]
+
+[node name="Cutscene" parent="CanvasLayer" unique_id=222806330 instance=ExtResource("25_cut")]

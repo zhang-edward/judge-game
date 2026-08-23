@@ -27,13 +27,24 @@ func render_evidence_into_artifact(data: ArtifactData):
 		evidence_item_name = e.item.name
 		var evidence_row = generate_receipt_item_row(evidence_item_name)
 		total_price += evidence_row.price_val
+	# Don't include other items of the same category
+	var c = Vocab.get_item_categories(evidence_item_name)
+	var valid_items = Vocab.items.filter(func (def): return get_intersection(c, def.categories).is_empty())
 	var num_items = randi_range(4, 9)
 	for i in range(0, num_items):
-		var random_item = Vocab.item_names.pick_random()
-		var row = generate_receipt_item_row(random_item)
+		var random_item: ItemDef = valid_items.pick_random()
+		var row = generate_receipt_item_row(random_item.name)
 		total_price += row.price_val
 	total_amount.text = "%.2f" % total_price
 	purchaser.text = e.suspect.name + " CREDIT"
+	
+func get_intersection(arr1: Array, arr2: Array):
+	var intersection = []
+	for i in arr1:
+		if arr2.has(i):
+			intersection.append(i)
+	return intersection
+			
 	
 func generate_receipt_item_row(item_name: String):
 	var item_row = receipt_item_row_scene.instantiate() as ReceiptItemRow

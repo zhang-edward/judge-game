@@ -146,7 +146,7 @@ func _on_charge_selected(charge: Charge):
 	current_case.set_charge(charge)
 	_update_charge_prompt()
 	update_case_win_percentage()
-	charge_menu_panel.visible = false
+	charge_menu_panel.hide()
 
 func _sync_charge_selection():
 	for button in charge_buttons:

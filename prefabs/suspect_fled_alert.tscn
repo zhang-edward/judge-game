@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dykt1xhhyk65g"]
 
 [ext_resource type="Script" uid="uid://c1xhlqtnuf2th" path="res://scripts/suspect_fled_alert.gd" id="1_yelxo"]
+[ext_resource type="FontFile" uid="uid://cbl12pbc5rma5" path="res://assets/fonts/alagard.ttf" id="2_jjtf5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 bg_color = Color(0.13803375, 0.13803375, 0.13803372, 1)
@@ -28,13 +29,15 @@ alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=1536648507]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_jjtf5")
+theme_override_font_sizes/font_size = 50
 text = "Suspect fled..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="VBoxContainer" unique_id=47600490]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_jjtf5")
 theme_override_font_sizes/font_size = 20
 text = "Submit your case earlier next time!"
 horizontal_alignment = 1
@@ -44,4 +47,5 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_jjtf5")
 text = "Continue"

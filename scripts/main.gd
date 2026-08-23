@@ -47,11 +47,11 @@ func handle_promo(new_title: String):
 	generate_new_cases()
 
 func generate_new_cases():
-	var names := Vocab.suspect_names.duplicate()
-	names.shuffle()
 	var num_cases_to_generate = case_count - cases.size()
 	for i in range(0, num_cases_to_generate):
-		var suspect := Suspect.new(names[i % names.size()])
+		var avatar_type = Suspect.AvatarType.MALE if randi_range(0, 1) == 0 else Suspect.AvatarType.FEMALE
+		var suspect_names = Vocab.male_suspect_names if avatar_type == Suspect.AvatarType.MALE else Vocab.female_suspect_names
+		var suspect := Suspect.new(suspect_names[i % suspect_names.size()], avatar_type)
 		var c := Case.new(suspect)
 		c.refresh_evidence()
 		cases.append(c)

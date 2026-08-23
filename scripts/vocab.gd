@@ -18,7 +18,7 @@ var item_names: Array[String] = [
 ]
 
 var day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-var suspect_names = [
+var male_suspect_names = [
 	"James",
 	"John",
 	"Robert",
@@ -36,14 +36,42 @@ var suspect_names = [
 	"Mark",
 	"Donald",
 	"Steven",
-	"Paul",
 	"Andrew",
+	"Paul",
 	"Joshua",
 	"Kenneth",
 	"Kevin",
 	"Brian",
 	"George",
 	"Timothy",
+	"Ronald",
+	"Edward",
+	"Jason",
+	"Jeffrey",
+	"Ryan",
+	"Jacob",
+	"Gary",
+	"Nicholas",
+	"Eric",
+	"Jonathan",
+	"Stephen",
+	"Larry",
+	"Justin",
+	"Scott",
+	"Brandon",
+	"Benjamin",
+	"Samuel",
+	"Gregory",
+	"Alexander",
+	"Frank",
+	"Patrick",
+	"Raymond",
+	"Jack",
+	"Dennis",
+	"Jerry"
+]
+
+var female_suspect_names = [
 	"Mary",
 	"Patricia",
 	"Jennifer",
@@ -66,8 +94,34 @@ var suspect_names = [
 	"Michelle",
 	"Carol",
 	"Amanda",
+	"Dorothy",
 	"Melissa",
-	"Deborah"
+	"Deborah",
+	"Stephanie",
+	"Rebecca",
+	"Sharon",
+	"Laura",
+	"Cynthia",
+	"Kathleen",
+	"Amy",
+	"Angela",
+	"Shirley",
+	"Anna",
+	"Brenda",
+	"Pamela",
+	"Emma",
+	"Nicole",
+	"Helen",
+	"Samantha",
+	"Katherine",
+	"Christine",
+	"Debra",
+	"Rachel",
+	"Carolyn",
+	"Janet",
+	"Catherine",
+	"Maria",
+	"Heather"
 ]
 
 var items: Array[ItemDef] = []

@@ -28,6 +28,7 @@ const CLOSE_SOUND := preload("res://assets/sfx/paper2.wav")
 @onready var charge_label_background: NinePatchRect = %ChargeLabelBackground
 @onready var flight_risk_note: StickyNote = %FlightRiskNote
 @onready var success_rate_note: StickyNote = %SuccessRateNote
+@onready var case_view_profile: CaseViewProfile = $FolderView/CaseViewProfile
 
 var current_case: Case
 var charge_buttons := {}
@@ -58,6 +59,7 @@ func open_for(c: Case):
 		_build_charge_menu()
 	current_case = c
 	case_name_label.text = c.suspect.name
+	case_view_profile.configure_sprite(c.suspect.avatar_texture)
 	_sync_charge_selection()
 	_update_charge_prompt()
 	flight_risk_note.configure_text("Flight Risk", str(c.flight_risk_percentage) + "%")

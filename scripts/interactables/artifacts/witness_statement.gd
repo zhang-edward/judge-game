@@ -38,6 +38,7 @@ func _sentence_for(e: Evidence) -> String:
 func _eyewitness_name(data: ArtifactData) -> String:
 	if data.misc_data.has("eyewitness_name"):
 		return data.misc_data["eyewitness_name"]
-	var eyewitness_name: String = Vocab.suspect_names.pick_random()
+	var all_suspect_names = Vocab.male_suspect_names + Vocab.female_suspect_names
+	var eyewitness_name: String = all_suspect_names.pick_random()
 	data.misc_data["eyewitness_name"] = eyewitness_name
 	return eyewitness_name

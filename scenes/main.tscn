@@ -17,7 +17,7 @@
 [ext_resource type="FontFile" uid="uid://d36nyea33b4v3" path="res://assets/fonts/PixelOperator-Bold.ttf" id="12_jkv2x"]
 [ext_resource type="FontFile" uid="uid://dulwxkskumshb" path="res://assets/fonts/dogicabold.ttf" id="12_yc10j"]
 [ext_resource type="Texture2D" uid="uid://btf6ctpdwdo0t" path="res://folder_open.png" id="13_trceg"]
-[ext_resource type="PackedScene" uid="uid://cjrh108hk7tu1" path="res://prefabs/profile.tscn" id="15_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://cjrh108hk7tu1" path="res://prefabs/case_view_profile.tscn" id="15_jbj1t"]
 [ext_resource type="FontFile" uid="uid://1mhxsc0hbij8" path="res://assets/fonts/DePixelHalbfett.ttf" id="16_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://cd5bkms06yg7l" path="res://assets/sprites/tape.png" id="16_muem4"]
 [ext_resource type="PackedScene" uid="uid://lxje2xqpnef0" path="res://prefabs/sticky_note.tscn" id="17_dp3eg"]
@@ -246,7 +246,7 @@ text = "Bob Smith"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProfilePic" parent="CaseView/FolderView" unique_id=1592178397 instance=ExtResource("15_jbj1t")]
+[node name="CaseViewProfile" parent="CaseView/FolderView" unique_id=1592178397 instance=ExtResource("15_jbj1t")]
 position = Vector2(15.818649, -51.5625)
 scale = Vector2(1.0043592, 1)
 
@@ -353,6 +353,7 @@ theme_override_constants/separation = 8
 visible = false
 
 [node name="FadeOverlay" type="ColorRect" parent="CanvasLayer" unique_id=930112477]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -360,4 +361,3 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
-modulate = Color(1, 1, 1, 0)

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cltv5y8x6u08f" path="res://assets/sprites/law_library.png" id="3_bodal"]
 [ext_resource type="Texture2D" uid="uid://dpmfv7bj54r0v" path="res://assets/sprites/photo-small.png" id="4_8itgj"]
 [ext_resource type="Texture2D" uid="uid://nvvl4isntj1c" path="res://assets/sprites/lawbook_lg.png" id="4_kdmts"]
+[ext_resource type="Texture2D" uid="uid://n16io3ujxbpp" path="res://assets/sprites/book_sm.png" id="5_m8nf6"]
 [ext_resource type="Texture2D" uid="uid://b6b56a8e78swu" path="res://assets/sprites/receipt-small.png" id="5_tn317"]
 [ext_resource type="Texture2D" uid="uid://drfpw4cb43xx7" path="res://assets/sprites/document-small.png" id="6_m8nf6"]
 [ext_resource type="Texture2D" uid="uid://b5lpsvfd0lmfh" path="res://folder-sm.png" id="7_pgjjs"]
@@ -77,6 +78,12 @@ offset_top = -27.008453
 offset_right = 23.301392
 offset_bottom = 27.80281
 flat = true
+
+[node name="BookSm" type="Sprite2D" parent="CanvasLayer/LawbookLg" unique_id=1458323218]
+visible = false
+position = Vector2(-24.095787, -5.9604645e-06)
+scale = Vector2(0.37287635, 0.281338)
+texture = ExtResource("5_m8nf6")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1719520521]
 

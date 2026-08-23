@@ -71,6 +71,7 @@ scale = Vector2(3.7765958, 3.7765958)
 texture = ExtResource("4_kdmts")
 
 [node name="Button" type="Button" parent="CanvasLayer/LawbookLg" unique_id=1309343794]
+unique_name_in_owner = true
 offset_left = -24.095795
 offset_top = -27.008453
 offset_right = 23.301392

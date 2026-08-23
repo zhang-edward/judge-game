@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dva833lsnexe1" path="res://prefabs/law_book.tscn" id="18_lawbk"]
 [ext_resource type="FontFile" uid="uid://dmpv1r0rxapfy" path="res://assets/fonts/Magic Crush.otf" id="22_jscy8"]
 [ext_resource type="PackedScene" uid="uid://bd7rvag7bevwr" path="res://prefabs/calendar.tscn" id="24_y6deb"]
-[ext_resource type="PackedScene" path="res://prefabs/cutscene/cutscene.tscn" id="25_cut"]
+[ext_resource type="PackedScene" uid="uid://vxto6myqpgf" path="res://prefabs/cutscene/cutscene.tscn" id="25_cut"]
 [ext_resource type="PackedScene" uid="uid://cq2pwc83toxie" path="res://prefabs/rep_nameplate.tscn" id="26_2wyq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mod73"]
@@ -275,8 +275,8 @@ offset_bottom = 259.0
 rotation = -0.028386703
 theme_override_fonts/font = ExtResource("22_jscy8")
 theme_override_font_sizes/font_size = 18
-text = "the stronger your case is, the more likely
-the suspect will flee at the end of the day"
+text = "the suspect is more likely to flee
+with each passing day"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -351,3 +351,13 @@ theme_override_constants/separation = 8
 
 [node name="Cutscene" parent="CanvasLayer" unique_id=222806330 instance=ExtResource("25_cut")]
 visible = false
+
+[node name="FadeOverlay" type="ColorRect" parent="CanvasLayer" unique_id=930112477]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+modulate = Color(1, 1, 1, 0)

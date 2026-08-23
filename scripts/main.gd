@@ -12,6 +12,9 @@ extends Node
 @onready var rep_nameplate: RepNameplate = $BG/RepNameplate
 @onready var cutscene: Cutscene = $CanvasLayer/Cutscene
 @onready var promo_alert: PromotionAlert = $TempUI/PromotionAlert
+@onready var fade_overlay: ColorRect = $CanvasLayer/FadeOverlay
+
+const FADE_DURATION := 0.4
 
 var case_count = 1
 var reputation_score := 0
@@ -30,7 +33,7 @@ func _ready() -> void:
 		laws.append(Law.make_random())
 	generate_new_cases()
 	artifact_manager.init_law_book(laws)
-	calendar.next_day.connect(progress_day)
+	calendar.next_day.connect(on_next_day)
 	submit_case.pressed.connect(on_submit_case)
 	cutscene.finished.connect(on_cutscene_finished)
 	rep_nameplate.on_promo.connect(handle_promo)
@@ -81,6 +84,15 @@ func resolve_case(c: Case):
 	if case_view.visible and case_view.current_case == c:
 		case_view.close()
 	generate_new_cases()
+
+# Fade to black, advance the day behind the black, then fade back in.
+func on_next_day():
+	if suspect_fled_alert.visible or case_status.visible:
+		return
+	var tween := create_tween()
+	tween.tween_property(fade_overlay, "modulate:a", 1.0, FADE_DURATION)
+	tween.tween_callback(progress_day)
+	tween.tween_property(fade_overlay, "modulate:a", 0.0, FADE_DURATION)
 
 func progress_day():
 	if suspect_fled_alert.visible or case_status.visible:

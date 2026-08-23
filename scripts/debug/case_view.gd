@@ -70,13 +70,14 @@ func open_for(c: Case):
 	for child in folder_view.get_children():
 		if child is Artifact:
 			child.queue_free()
+
 	for data in c.filed_data:
 		var artifact = data.artifact_scene.instantiate() as Artifact
 		folder_view.add_child(artifact)
 		artifact.initialize(data, game.artifact_manager, false)
 		artifact.is_within_case_view = true
 		artifact.zone = folder_interior
-		var rand_x = randi_range(-65, 0)
+		var rand_x = randi_range(-65, -20)
 		var rand_y = randi_range(-40, 0)
 		artifact.position = Vector2(rand_x, rand_y)
 		artifact.entered_zone.connect(handle_zone_enter)

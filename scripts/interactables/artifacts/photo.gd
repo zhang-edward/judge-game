@@ -19,7 +19,7 @@ func render_evidence_into_artifact(data: ArtifactData):
 	if evidence.item != null:
 		template_string = template_string.replace("$item", evidence.item.name)
 	else:
-		template_string = template_string.replace(" a $item", "")
+		template_string = template_string.replace(" a $item", " something")
 	if evidence.location != null:
 		template_string = template_string.replace("$location", evidence.location.id)
 	else:

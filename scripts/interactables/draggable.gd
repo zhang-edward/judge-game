@@ -101,6 +101,10 @@ func _process(_delta: float) -> void:
 	if not dragging:
 		return
 	global_position = get_global_mouse_position() + _grab_offset
+	# Keep this node's origin (roughly the document center) on screen.
+	var rect := get_viewport_rect()
+	global_position.x = clamp(global_position.x, rect.position.x, rect.end.x)
+	global_position.y = clamp(global_position.y, rect.position.y, rect.end.y)
 	# Poll for release so a fast drag that leaves the hitbox still stops cleanly.
 	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		_end_drag()

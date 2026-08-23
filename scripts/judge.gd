@@ -24,14 +24,21 @@ static func make_law_book() -> Array[Law]:
 static func score(evidence: Array[Evidence], charge: Charge, suspect: Suspect = null) -> float:
 	if charge == null:
 		return 0.0
-	var law := charge.law
+	var result := build_buckets(evidence, charge.law, suspect)
+	var buckets: Dictionary = result["buckets"]
+	var total := 0.0
+	for time in buckets:
+		total += _bucket_points(buckets[time])
+	total -= result["irrelevant"] * IRRELEVANT_PENALTY
+	total -= result["mismatch"] * MISMATCH_PENALTY
+	return clampf(total * WIN_SCALE, 0.0, 100.0)
 
-	# time -> set of crime aspects proven at that time (union across evidence)
+static func build_buckets(evidence: Array[Evidence], law: Law, suspect: Suspect = null) -> Dictionary:
 	var buckets := {}
 	var irrelevant_count := 0
 	var mismatch_count := 0
 	for e in evidence:
-		# Evidence is about a different suspect 
+		# Evidence is about a different suspect
 		if suspect != null and e.suspect != suspect:
 			mismatch_count += 1
 			continue
@@ -43,12 +50,7 @@ static func score(evidence: Array[Evidence], charge: Charge, suspect: Suspect = 
 			if not buckets.has(e.time):
 				buckets[e.time] = {}
 			buckets[e.time][aspect] = true
-	var total := 0.0
-	for time in buckets:
-		total += _bucket_points(buckets[time])
-	total -= irrelevant_count * IRRELEVANT_PENALTY
-	total -= mismatch_count * MISMATCH_PENALTY
-	return clampf(total * WIN_SCALE, 0.0, 100.0)
+	return {"buckets": buckets, "irrelevant": irrelevant_count, "mismatch": mismatch_count}
 
 # Which crime aspects a single piece of evidence matches
 static func _matched_aspects(e: Evidence, law: Law) -> Array:

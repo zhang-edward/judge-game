@@ -10,6 +10,7 @@ extends Node
 @onready var submit_case: Button = %SubmitCase
 @onready var reputation_label: Label = $TempUI/TempGameUI/Reputation
 @onready var calendar: Calendar = $Calendar
+@onready var cutscene: Cutscene = $CanvasLayer/Cutscene
 
 const CASE_COUNT := 1
 
@@ -20,16 +21,20 @@ var reputation_score := 0
 var laws: Array[Law]
 var cases: Array[Case] = []
 
+var _pending_case: Case
+var _pending_success := false
+
 # Cases that fled on the current day, shown one alert at a time.
 var _fled_queue: Array[Case] = []
 
 func _ready() -> void:
-	for i in range(0, 5):
+	for i in range(0, 3):
 		laws.append(Law.make_random())
 	generate_new_cases()
 	artifact_manager.init_law_book(laws)
 	calendar.next_day.connect(progress_day)
 	submit_case.pressed.connect(on_submit_case)
+	cutscene.finished.connect(on_cutscene_finished)
 
 	case_view.opened.connect(func(): artifact_manager.toggle_hitbox_for_all_case_files(false))
 	case_view.closed.connect(func(): artifact_manager.toggle_hitbox_for_all_case_files(true))
@@ -49,11 +54,15 @@ func on_submit_case():
 	var c := case_view.current_case
 	if c == null:
 		return
-	var did_case_succeed = randi_range(1, 100) <= c.win_percentage
-	if did_case_succeed:
-		case_status.show_case_outcome(c, CaseStatus.CaseOutcome.VICTORY)
+	_pending_case = c
+	_pending_success = randi_range(1, 100) <= c.win_percentage
+	cutscene.play(CutsceneBuilder.build(c, _pending_success))
+
+func on_cutscene_finished():
+	if _pending_success:
+		case_status.show_case_outcome(_pending_case, CaseStatus.CaseOutcome.VICTORY)
 	else:
-		case_status.show_case_outcome(c, CaseStatus.CaseOutcome.DEFEAT)
+		case_status.show_case_outcome(_pending_case, CaseStatus.CaseOutcome.DEFEAT)
 
 func handle_case_outcome(c: Case, case_outcome: CaseStatus.CaseOutcome):
 	if case_outcome == CaseStatus.CaseOutcome.VICTORY:

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://cmnvvbx2lrw33"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_oqrf7"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_eonds"]
+[ext_resource type="Resource" uid="uid://dwo5tsbups0x1" path="res://resources/categories/food.tres" id="2_ya4wl"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_m7u38"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="5_bo28t"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_07hy7"]
+[ext_resource type="Resource" uid="uid://bdasanall4fda" path="res://resources/actions/eat.tres" id="7_ir7af"]
+
+[resource]
+script = ExtResource("2_eonds")
+id = &"pie"
+name = "pie"
+categories = Array[ExtResource("1_oqrf7")]([ExtResource("2_ya4wl")])
+supported_actions = Array[ExtResource("3_m7u38")]([ExtResource("5_bo28t"), ExtResource("6_07hy7"), ExtResource("7_ir7af")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

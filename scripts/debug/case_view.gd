@@ -55,8 +55,7 @@ func update_case_win_percentage():
 	success_rate_note.configure_text("Case Success", str(current_case.win_percentage) + "%")
 
 func open_for(c: Case):
-	if charge_buttons.is_empty():
-		_build_charge_menu()
+	_build_charge_menu()
 	current_case = c
 	case_name_label.text = c.suspect.name
 	case_view_profile.configure_sprite(c.suspect.avatar_texture)
@@ -129,6 +128,9 @@ func _on_charge_label_input(event: InputEvent):
 		charge_menu_panel.visible = not charge_menu_panel.visible
 
 func _build_charge_menu():
+	for c in charge_menu.get_children():
+		c.queue_free()
+	charge_buttons = {}
 	var group := ButtonGroup.new()
 	_add_charge_button("No charge", null, group)
 	for law in game.laws:

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://dnavpc3fn0a8y"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_rybi3"]
+[ext_resource type="Resource" uid="uid://dwo5tsbups0x1" path="res://resources/categories/food.tres" id="2_jbgo0"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_sjc4x"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_hqtpv"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="5_4xfam"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_r2fry"]
+[ext_resource type="Resource" uid="uid://bdasanall4fda" path="res://resources/actions/eat.tres" id="7_p0mfk"]
+
+[resource]
+script = ExtResource("2_sjc4x")
+id = &"broccoli"
+name = "broccoli"
+categories = Array[ExtResource("1_rybi3")]([ExtResource("2_jbgo0")])
+supported_actions = Array[ExtResource("3_hqtpv")]([ExtResource("5_4xfam"), ExtResource("6_r2fry"), ExtResource("7_p0mfk")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

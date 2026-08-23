@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://wgn1hf1xhatp"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_qjsl0"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_kyh3x"]
+[ext_resource type="Resource" uid="uid://dwo5tsbups0x1" path="res://resources/categories/food.tres" id="2_sr0u4"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_ehdfc"]
+[ext_resource type="Resource" uid="uid://bdasanall4fda" path="res://resources/actions/eat.tres" id="5_cqwi8"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="6_umwa4"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="7_y1bs4"]
+
+[resource]
+script = ExtResource("2_kyh3x")
+id = &"sandwich"
+name = "sandwich"
+categories = Array[ExtResource("1_qjsl0")]([ExtResource("2_sr0u4")])
+supported_actions = Array[ExtResource("3_ehdfc")]([ExtResource("5_cqwi8"), ExtResource("6_umwa4"), ExtResource("7_y1bs4")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

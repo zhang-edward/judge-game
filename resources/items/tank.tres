@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://bk5nt8i0n6fl7"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_lmdbn"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_6ysfl"]
+[ext_resource type="Resource" uid="uid://dddbe2e75gwkn" path="res://resources/categories/vehicle.tres" id="2_aegmj"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_78xi5"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="5_vi244"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_732vf"]
+[ext_resource type="Resource" uid="uid://cd1clsh5fdgh0" path="res://resources/actions/drive.tres" id="7_8mw1c"]
+
+[resource]
+script = ExtResource("2_6ysfl")
+id = &"tank"
+name = "tank"
+categories = Array[ExtResource("1_lmdbn")]([ExtResource("2_aegmj")])
+supported_actions = Array[ExtResource("3_78xi5")]([ExtResource("5_vi244"), ExtResource("6_732vf"), ExtResource("7_8mw1c")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

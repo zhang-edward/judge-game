@@ -3,12 +3,30 @@ class_name Timeline
 var facts: Array[Fact] = []
 var suspect: Suspect
 
-func _init(_suspect: Suspect):
+func _init(_suspect: Suspect, laws: Array[Law]):
 	suspect = _suspect
+	var num_crimes = randi_range(1, 3)
+	var times = Array(range(13))
+	times.shuffle()
+	var crime_times = times.slice(0, num_crimes)
+	var illegal_locations = laws.map(func (l): return l.location)
+	var legal_locations = Vocab.locations.filter(func (l): return !illegal_locations.has(l))
+	legal_locations.shuffle()
+	var all_locations = [suspect.crime.location] + legal_locations.slice(0, 2)
 	for i in range(0, 12):
-		var rand_item = Vocab.items.pick_random()
-		var rand_action = rand_item.supported_actions.pick_random()
-		var rand_loc = Vocab.locations.pick_random()
+		var rand_item
+		var rand_action
+		var rand_loc
+		if crime_times.has(i):
+			var crime = suspect.crime
+			rand_item = Vocab.random_item_in_category(crime.category)
+			rand_loc = crime.location
+			rand_action = crime.action
+			var fact = Fact.new(suspect, rand_action, rand_item, rand_loc, i)
+		else:
+			rand_item = Vocab.items.pick_random()
+			rand_action = rand_item.supported_actions.pick_random()
+			rand_loc = all_locations.pick_random()
 		facts.append(Fact.new(suspect, rand_action, rand_item, rand_loc, i))
 
 func generate_evidence_list() -> Array[Evidence]:

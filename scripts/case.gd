@@ -33,8 +33,8 @@ func remove_evidence(e: Evidence):
 	win_percentage = Judge.score(evidence_list, charge, suspect)
 
 # Regenerate this case's unfiled evidence pile from its own timeline.
-func refresh_evidence():
-	var timeline = Timeline.new(suspect)
+func refresh_evidence(laws: Array[Law]):
+	var timeline = Timeline.new(suspect, laws)
 	available_evidence = timeline.generate_evidence_list()
 
 func _to_string() -> String:

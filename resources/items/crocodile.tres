@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://hkg1dvdqi63h"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_j4xe0"]
+[ext_resource type="Resource" uid="uid://c0typltehv7u2" path="res://resources/categories/animal.tres" id="2_838jn"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_u2jsj"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_6my67"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="5_4gq3h"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="6_b2sj3"]
+[ext_resource type="Resource" uid="uid://cwr7xvug13p18" path="res://resources/actions/train.tres" id="7_38pju"]
+[ext_resource type="Resource" uid="uid://cq62ksb2ajv5p" path="res://resources/actions/walk.tres" id="8_havdv"]
+[ext_resource type="Resource" uid="uid://c21vokfbvcdx4" path="res://resources/actions/ride.tres" id="9_4gq3h"]
+
+[resource]
+script = ExtResource("2_u2jsj")
+id = &"crocodile"
+name = "crocodile"
+categories = Array[ExtResource("1_j4xe0")]([ExtResource("2_838jn")])
+supported_actions = Array[ExtResource("3_6my67")]([ExtResource("5_4gq3h"), ExtResource("6_b2sj3"), ExtResource("7_38pju"), ExtResource("8_havdv"), ExtResource("9_4gq3h")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionDef" format=3 uid="uid://bdasanall4fda"]
+
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="1_3e1t4"]
+
+[resource]
+script = ExtResource("1_3e1t4")
+id = &"eat"
+past = "ate"
+gerund = "eating"
+metadata/_custom_type_script = "uid://dwhgg7l1je8m8"

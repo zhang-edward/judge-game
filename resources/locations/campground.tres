@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LocationDef" format=3 uid="uid://dk1diqx7rtt0p"]
+
+[ext_resource type="Script" uid="uid://dgxbr1vv1xwna" path="res://scripts/location_def.gd" id="1_0mr70"]
+
+[resource]
+script = ExtResource("1_0mr70")
+id = &"campground"
+phrase = "at the campground"
+metadata/_custom_type_script = "uid://dgxbr1vv1xwna"

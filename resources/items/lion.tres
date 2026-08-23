@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://b4f3y75t320rv"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_hvvo4"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_m7e1v"]
+[ext_resource type="Resource" uid="uid://c0typltehv7u2" path="res://resources/categories/animal.tres" id="2_vjg7l"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_wheck"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="5_8cjxr"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="6_7upxd"]
+[ext_resource type="Resource" uid="uid://cq62ksb2ajv5p" path="res://resources/actions/walk.tres" id="7_7xniw"]
+[ext_resource type="Resource" uid="uid://c21vokfbvcdx4" path="res://resources/actions/ride.tres" id="8_yfpq6"]
+[ext_resource type="Resource" uid="uid://cwr7xvug13p18" path="res://resources/actions/train.tres" id="9_qx7mv"]
+
+[resource]
+script = ExtResource("2_m7e1v")
+id = &"lion"
+name = "lion"
+categories = Array[ExtResource("1_hvvo4")]([ExtResource("2_vjg7l")])
+supported_actions = Array[ExtResource("3_wheck")]([ExtResource("5_8cjxr"), ExtResource("6_7upxd"), ExtResource("7_7xniw"), ExtResource("8_yfpq6"), ExtResource("9_qx7mv")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

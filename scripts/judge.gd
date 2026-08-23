@@ -1,24 +1,13 @@
 class_name Judge
 
-const OBJECT_POINTS := 1
-const LOCATION_POINTS := 2
-const ACTION_POINTS := 4
-const TWO_ASPECT_POINTS := 5
-const THREE_ASPECT_POINTS := 12
+const OBJECT_POINTS := 2
+const LOCATION_POINTS := 3
+const ACTION_POINTS := 5
+const TWO_ASPECT_POINTS := 7
+const THREE_ASPECT_POINTS := 15
 const IRRELEVANT_PENALTY := 1 # penalty per piece that proves no crime aspect
 const MISMATCH_PENALTY := 4 # penalty per piece filed against the wrong suspect
 const WIN_SCALE := 3.0 # points -> % chance to win
-
-static func make_law_book() -> Array[Law]:
-	var laws: Array[Law] = [
-		Law.new(Vocab.action("sing"), null, Vocab.location("library")),
-		Law.new(Vocab.action("sleep"), null, Vocab.location("bank")),
-		Law.new(Vocab.action("shout"), null, Vocab.location("park")),
-		Law.new(Vocab.action("carry"), Vocab.category("weapon")),
-		Law.new(Vocab.action("possess"), Vocab.category("animal")),
-		Law.new(Vocab.action("sell"), Vocab.category("food"), Vocab.location("street")),
-	]
-	return laws
 
 # Score evidence against a charge, as a 0-100 % chance to win the case
 static func score(evidence: Array[Evidence], charge: Charge, suspect: Suspect = null) -> float:

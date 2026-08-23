@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://c074r3e2nsafx"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_i5bq6"]
+[ext_resource type="Resource" uid="uid://d08q4g8v8vt5w" path="res://resources/categories/weapon.tres" id="2_cbsus"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_e0cdj"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_2mufj"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="5_86w1i"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_d3m72"]
+[ext_resource type="Resource" uid="uid://bfyouew6ryhoj" path="res://resources/actions/use.tres" id="7_3c7rl"]
+
+[resource]
+script = ExtResource("2_e0cdj")
+id = &"bazooka"
+name = "bazooka"
+categories = Array[ExtResource("1_i5bq6")]([ExtResource("2_cbsus")])
+supported_actions = Array[ExtResource("3_2mufj")]([ExtResource("5_86w1i"), ExtResource("6_d3m72"), ExtResource("7_3c7rl")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

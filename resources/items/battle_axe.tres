@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://b4gviivryxb55"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_q7f8f"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_eakyc"]
+[ext_resource type="Resource" uid="uid://d08q4g8v8vt5w" path="res://resources/categories/weapon.tres" id="2_sl6xa"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_pp4gy"]
+[ext_resource type="Resource" uid="uid://bfyouew6ryhoj" path="res://resources/actions/use.tres" id="5_y0s5n"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_adwhy"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="7_cwlcr"]
+[ext_resource type="Resource" uid="uid://dc8ahmi0iayk1" path="res://resources/actions/swing.tres" id="8_y0s5n"]
+
+[resource]
+script = ExtResource("2_eakyc")
+id = &"battle_axe"
+name = "battle axe"
+categories = Array[ExtResource("1_q7f8f")]([ExtResource("2_sl6xa")])
+supported_actions = Array[ExtResource("3_pp4gy")]([ExtResource("5_y0s5n"), ExtResource("6_adwhy"), ExtResource("7_cwlcr"), ExtResource("8_y0s5n")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

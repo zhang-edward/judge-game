@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://upeenqmqie0o"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_swk2m"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_tectm"]
+[ext_resource type="Resource" uid="uid://d08q4g8v8vt5w" path="res://resources/categories/weapon.tres" id="2_w7rcp"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_bop21"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="5_prpgp"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_m5yth"]
+[ext_resource type="Resource" uid="uid://bfyouew6ryhoj" path="res://resources/actions/use.tres" id="7_ui5c8"]
+
+[resource]
+script = ExtResource("2_tectm")
+id = &"rocket_launcher"
+name = "rocket launcher"
+categories = Array[ExtResource("1_swk2m")]([ExtResource("2_w7rcp")])
+supported_actions = Array[ExtResource("3_bop21")]([ExtResource("5_prpgp"), ExtResource("6_m5yth"), ExtResource("7_ui5c8")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

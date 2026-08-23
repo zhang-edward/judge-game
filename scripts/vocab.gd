@@ -6,15 +6,66 @@ extends Node
 
 var location_names: Array[String] = [
 	"bank",
+	"beach",
+	"campground",
+	"city",
+	"farm",
+	"forest",
+	"lake",
+	"laundromat",
 	"library",
+	"motel",
 	"park",
-	"street"
+	"stadium",
+	"street",
+	"theater",
+	"zoo"
 ]
 
 var item_names: Array[String] = [
+	"airplane",
+	"banana",
+	"battle_axe",
+	"bazooka",
+	"broccoli",
+	"cannon",
+	"canteloupe",
+	"car",
+	"cat",
+	"cheese",
+	"crocodile",
 	"dog",
+	"elephant",
+	"e_scooter",
+	"giraffe",
+	"gorilla",
+	"grenade",
 	"gun",
-	"sword"
+	"hamburger",
+	"helicopter",
+	"horse",
+	"jaguar",
+	"jeep",
+	"jetski",
+	"lion",
+	"meatball",
+	"monkey",
+	"mortar_launcher",
+	"motorboat",
+	"motorcycle",
+	"pie",
+	"pizza",
+	"rat",
+	"rhino",
+	"rocket_launcher",
+	"salad",
+	"sandwich",
+	"shark",
+	"skateboard",
+	"sword",
+	"tank",
+	"tiger",
+	"truck"
 ]
 
 var day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]

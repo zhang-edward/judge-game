@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionDef" format=3 uid="uid://dc8ahmi0iayk1"]
+
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="1_e7vfl"]
+
+[resource]
+script = ExtResource("1_e7vfl")
+id = &"swing"
+past = "swung"
+gerund = "swinging"
+metadata/_custom_type_script = "uid://dwhgg7l1je8m8"

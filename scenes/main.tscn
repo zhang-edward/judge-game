@@ -42,6 +42,9 @@ size = Vector2(908, 648)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_muem4"]
 size = Vector2(241, 648)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3su7l"]
+bg_color = Color(0.020950722, 0.020950722, 0.020950722, 0.9098039)
+
 [node name="Main" type="Node2D" unique_id=383367928]
 script = ExtResource("1_main")
 
@@ -163,7 +166,7 @@ desk_mask = NodePath("../BG/DeskMask")
 workspace_mask = NodePath("../BG/WorkspaceMask")
 
 [node name="Background" type="ColorRect" parent="CaseView" unique_id=2030377141]
-self_modulate = Color(0, 0, 0, 0.42352942)
+self_modulate = Color(0, 0, 0, 0.62352943)
 offset_left = -168.0
 offset_top = -106.0
 offset_right = 1304.0
@@ -329,6 +332,7 @@ offset_left = 500.0
 offset_top = 76.0
 offset_right = 848.0
 offset_bottom = 526.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3su7l")
 
 [node name="Margin" type="MarginContainer" parent="CaseView/ChargeMenuPanel" unique_id=5759170]
 layout_mode = 2
@@ -342,16 +346,10 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Header" type="Label" parent="CaseView/ChargeMenuPanel/Margin/ChargeMenu" unique_id=324147639]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("16_jbj1t")
-theme_override_font_sizes/font_size = 12
-text = "CHARGE"
-horizontal_alignment = 1
-
 [node name="Calendar" parent="." unique_id=2118279971 instance=ExtResource("24_y6deb")]
 position = Vector2(1065, 64)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1571221079]
 
 [node name="Cutscene" parent="CanvasLayer" unique_id=222806330 instance=ExtResource("25_cut")]
+visible = false

@@ -74,7 +74,7 @@ static func _irrelevant_artifacts(c: Case, sections: Dictionary) -> Array[Artifa
 static func _irrelevant_text(suspect_name: String, count: int) -> String:
 	if count <= 1:
 		return "The defense raises a small point, Your Honor: this document proves nothing against %s." % suspect_name
-	if count == 2:
+	if count <= 3:
 		return "The defense objects. Several of these documents prove nothing against %s." % suspect_name
 	return "The defense objects strongly, Your Honor! This case is padded with %d documents that prove nothing against %s!" % [count, suspect_name]
 

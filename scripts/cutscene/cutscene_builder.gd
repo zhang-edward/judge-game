@@ -2,6 +2,16 @@ class_name CutsceneBuilder
 
 const SECTION_ORDER := ["l", "a", "o", "ol", "al", "ao", "aol"]
 
+const OPENERS := [
+	"As you can see, Your Honor,",
+	"We have substantive proof that",
+	"The record clearly shows that",
+	"It is beyond all doubt that",
+	"Let the court note that",
+	"The prosecution submits that",
+	"Witness after witness confirms that",
+]
+
 static func build(c: Case, success: bool) -> Array[CutsceneBeat]:
 	var beats: Array[CutsceneBeat] = []
 	var suspect_name := c.suspect.name
@@ -10,13 +20,16 @@ static func build(c: Case, success: bool) -> Array[CutsceneBeat]:
 
 	if c.charge != null:
 		var sections := _group_artifacts_by_section(c, c.charge.law)
+		var openers := OPENERS.duplicate()
+		openers.shuffle()
 		for key in SECTION_ORDER:
 			if not sections.has(key) or sections[key].is_empty():
 				continue
-			beats.append(CutsceneBeat.new(_section_text(key, suspect_name, c.charge.law), sections[key]))
+			var line := _next_opener(openers) + " " + _claim_for(key, suspect_name, c.charge.law) + "."
+			beats.append(CutsceneBeat.new(line, sections[key]))
 		var irrelevant := _irrelevant_artifacts(c, sections)
 		if not irrelevant.is_empty():
-			beats.append(CutsceneBeat.new(_irrelevant_text(suspect_name), irrelevant))
+			beats.append(CutsceneBeat.new(_irrelevant_text(suspect_name, irrelevant.size()), irrelevant))
 
 	beats.append(CutsceneBeat.new("..."))
 	beats.append(CutsceneBeat.new("..."))
@@ -58,8 +71,12 @@ static func _irrelevant_artifacts(c: Case, sections: Dictionary) -> Array[Artifa
 			result.append(data)
 	return result
 
-static func _irrelevant_text(suspect_name: String) -> String:
-	return "The defense objects, Your Honor. This evidence proves nothing against %s." % suspect_name
+static func _irrelevant_text(suspect_name: String, count: int) -> String:
+	if count <= 1:
+		return "The defense raises a small point, Your Honor: this document proves nothing against %s." % suspect_name
+	if count == 2:
+		return "The defense objects. Several of these documents prove nothing against %s." % suspect_name
+	return "The defense objects strongly, Your Honor! This case is padded with %d documents that prove nothing against %s!" % [count, suspect_name]
 
 static func _section_key(aspects: Dictionary) -> String:
 	var key := ""
@@ -71,26 +88,63 @@ static func _section_key(aspects: Dictionary) -> String:
 		key += "l"
 	return key
 
-static func _section_text(key: String, suspect_name: String, law: Law) -> String:
+static func _next_opener(pool: Array) -> String:
+	if pool.is_empty():
+		pool.append_array(OPENERS)
+		pool.shuffle()
+	return pool.pop_back()
+
+static func _claim_for(key: String, suspect_name: String, law: Law) -> String:
 	var loc := _location_name(law.location)
 	var act := law.action.gerund if law.action != null else ""
 	var obj := law.category.plural if law.category != null else ""
+	var options: Array[String] = []
 	match key:
 		"l":
-			return "As you can see, Your Honor, the suspect, %s, has been proven to frequent %s." % [suspect_name, loc]
+			options = [
+				"%s frequents %s" % [suspect_name, loc],
+				"%s is a regular at %s" % [suspect_name, loc],
+				"%s is often seen around %s" % [suspect_name, loc],
+			]
 		"a":
-			return "We have substantive proof that %s frequently engages in %s." % [suspect_name, act]
+			options = [
+				"%s frequently engages in %s" % [suspect_name, act],
+				"%s has made a habit of %s" % [suspect_name, act],
+				"%s is no stranger to %s" % [suspect_name, act],
+			]
 		"o":
-			return "The suspect, %s, associates heavily with %s." % [suspect_name, obj]
+			options = [
+				"%s associates with %s" % [suspect_name, obj],
+				"%s surrounds themself with %s" % [suspect_name, obj],
+				"%s is rarely seen without %s" % [suspect_name, obj],
+			]
 		"ol":
-			return "Records place %s with %s at %s, time and again." % [suspect_name, obj, loc]
+			options = [
+				"%s keeps %s at %s" % [suspect_name, obj, loc],
+				"%s brings %s to %s" % [suspect_name, obj, loc],
+				"%s is seen with %s at %s" % [suspect_name, obj, loc],
+			]
 		"al":
-			return "Witnesses confirm %s was repeatedly %s at %s." % [suspect_name, act, loc]
+			options = [
+				"%s is repeatedly %s at %s" % [suspect_name, act, loc],
+				"%s makes a habit of %s at %s" % [suspect_name, act, loc],
+				"%s is caught %s at %s" % [suspect_name, act, loc],
+			]
 		"ao":
-			return "We can show %s %s while handling %s." % [suspect_name, act, obj]
+			options = [
+				"%s is %s %s" % [suspect_name, act, obj],
+				"%s is frequently %s %s" % [suspect_name, act, obj],
+				"%s makes a habit of %s %s" % [suspect_name, act, obj],
+			]
 		"aol":
-			return "Most damning of all, %s was caught %s %s at %s." % [suspect_name, act, obj, loc]
-	return ""
+			options = [
+				"%s is %s %s at %s" % [suspect_name, act, obj, loc],
+				"%s was caught %s %s at %s" % [suspect_name, act, obj, loc],
+				"%s is brazenly %s %s at %s" % [suspect_name, act, obj, loc],
+			]
+	if options.is_empty():
+		return ""
+	return options.pick_random()
 
 static func _location_name(loc: LocationDef) -> String:
 	if loc == null:

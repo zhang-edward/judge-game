@@ -29,8 +29,16 @@ func show_case_outcome(c: Case, outcome: CaseOutcome):
 		outcome_title.text = "Case Lost..."
 		reputation_gain.text = "-" + str(REP_PENALTY) + " Reputation"
 	show()
+	
+func is_game_over():
+	var rn = game.rep_nameplate
+	var will_surpass_threshold = rn.rep_progress_bar.value + REP_REWARD >= rn.rep_progress_bar.max_value
+	return will_surpass_threshold and rn.curr_rank == RepNameplate.LawyerRank.ACE_ATTORNEY
 
 func on_case_complete():
 	hide()
-	game.handle_case_outcome(current_case, case_outcome)
-	game.resolve_case(current_case)
+	if is_game_over():
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	else:
+		game.handle_case_outcome(current_case, case_outcome)
+		game.resolve_case(current_case)

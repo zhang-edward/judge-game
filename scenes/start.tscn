@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://b7qisp1wc6tdr"]
+
+[ext_resource type="FontFile" uid="uid://cbl12pbc5rma5" path="res://assets/fonts/alagard.ttf" id="1_jaeev"]
+[ext_resource type="Script" uid="uid://b4d5i50af1jil" path="res://scripts/start.gd" id="1_u80x2"]
+
+[node name="Start" type="Node2D" unique_id=318285773]
+script = ExtResource("1_u80x2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=539756740]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=192371803]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -155.5
+offset_top = -138.5
+offset_right = 155.5
+offset_bottom = -71.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_font_sizes/font_size = 100
+text = "CaseCraft"
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=953725961]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.75
+offset_top = -23.0
+offset_right = 84.75
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_font_sizes/font_size = 40
+text = "Play"

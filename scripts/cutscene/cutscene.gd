@@ -48,7 +48,8 @@ func _spawn_artifacts(artifacts: Array[ArtifactData]) -> void:
 		var artifact := data.artifact_scene.instantiate() as Artifact
 		stage.add_child(artifact)
 		artifact.data = data
-		artifact.position = Vector2(start_x + i * STAGE_SPACING, 0)
+		artifact.position = Vector2(start_x + i * STAGE_SPACING, randf_range(-20, 20))
+		artifact.rotation_degrees = randf_range(-5, 5)
 		artifact.scale = Vector2(1, 1)
 		artifact.render_evidence_into_artifact(data)
 		artifact.set_grabbable(false)

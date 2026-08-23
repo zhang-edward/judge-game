@@ -32,6 +32,7 @@ func on_next_page() -> void:
 
 	next_page_button.visible = page_index != 1
 	prev_page_button.visible = page_index != 0
+	_play(PICKUP_SOUNDS)
 
 func on_prev_page() -> void:
 	var cur_page = get_node("Page" + str(page_index))
@@ -42,6 +43,7 @@ func on_prev_page() -> void:
 
 	next_page_button.visible = page_index != 1
 	prev_page_button.visible = page_index != 0
+	_play(PICKUP_SOUNDS)
 
 func initialize(laws: Array[Law], desk_parent: Node, workspace_zone: Area2D, desk_zone: Area2D) -> void:
 	populate(laws)

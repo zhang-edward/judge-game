@@ -1,0 +1,331 @@
+[gd_scene format=3 uid="uid://b7qisp1wc6tdr"]
+
+[ext_resource type="FontFile" uid="uid://cbl12pbc5rma5" path="res://assets/fonts/alagard.ttf" id="1_jaeev"]
+[ext_resource type="Script" uid="uid://b4d5i50af1jil" path="res://scripts/start.gd" id="1_u80x2"]
+[ext_resource type="Texture2D" uid="uid://cltv5y8x6u08f" path="res://assets/sprites/law_library.png" id="3_bodal"]
+[ext_resource type="Texture2D" uid="uid://dpmfv7bj54r0v" path="res://assets/sprites/photo-small.png" id="4_8itgj"]
+[ext_resource type="Texture2D" uid="uid://nvvl4isntj1c" path="res://assets/sprites/lawbook_lg.png" id="4_kdmts"]
+[ext_resource type="Texture2D" uid="uid://b6b56a8e78swu" path="res://assets/sprites/receipt-small.png" id="5_tn317"]
+[ext_resource type="Texture2D" uid="uid://drfpw4cb43xx7" path="res://assets/sprites/document-small.png" id="6_m8nf6"]
+[ext_resource type="Texture2D" uid="uid://b5lpsvfd0lmfh" path="res://folder-sm.png" id="7_pgjjs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8itgj"]
+bg_color = Color(0.12941177, 0.12941177, 0.12941177, 0.83137256)
+
+[node name="Start" type="Node2D" unique_id=318285773]
+script = ExtResource("1_u80x2")
+
+[node name="LawLibrary" type="Sprite2D" parent="." unique_id=1683509844]
+position = Vector2(575.5, 323.5)
+scale = Vector2(4, 4)
+texture = ExtResource("3_bodal")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=539756740]
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=1043723863]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8itgj")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=192371803]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -445.0
+offset_top = -244.0
+offset_right = 443.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_font_sizes/font_size = 200
+text = "CaseCraft"
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=171374730]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -108.0
+offset_top = -146.0
+offset_right = 108.0
+offset_bottom = -99.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_jaeev")
+theme_override_font_sizes/font_size = 20
+text = "Click the book to play!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LawbookLg" type="Sprite2D" parent="CanvasLayer" unique_id=72809844]
+position = Vector2(578.00006, 391.00003)
+scale = Vector2(3.7765958, 3.7765958)
+texture = ExtResource("4_kdmts")
+
+[node name="Button" type="Button" parent="CanvasLayer/LawbookLg" unique_id=1309343794]
+offset_left = -24.095795
+offset_top = -27.008453
+offset_right = 23.301392
+offset_bottom = 27.80281
+flat = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1719520521]
+
+[node name="PhotoSmall" type="Sprite2D" parent="Node2D" unique_id=1724234062]
+position = Vector2(263, 473)
+rotation = -0.1400352
+scale = Vector2(5.5182056, 5.5182056)
+texture = ExtResource("4_8itgj")
+
+[node name="PhotoSmall2" type="Sprite2D" parent="Node2D" unique_id=1504392537]
+position = Vector2(836, 475)
+rotation = 0.24768592
+scale = Vector2(5.518206, 5.518206)
+texture = ExtResource("4_8itgj")
+
+[node name="PhotoSmall4" type="Sprite2D" parent="Node2D" unique_id=1374666154]
+position = Vector2(641, 504.99997)
+rotation = 0.24768592
+scale = Vector2(5.518206, 5.518206)
+texture = ExtResource("4_8itgj")
+
+[node name="PhotoSmall5" type="Sprite2D" parent="Node2D" unique_id=1827403097]
+position = Vector2(422.00006, 530)
+rotation = -0.15014173
+scale = Vector2(5.518206, 5.518206)
+texture = ExtResource("4_8itgj")
+
+[node name="PhotoSmall3" type="Sprite2D" parent="Node2D" unique_id=675653899]
+position = Vector2(910.00006, 468.00006)
+rotation = 0.3507678
+scale = Vector2(5.518206, 5.518206)
+texture = ExtResource("4_8itgj")
+
+[node name="ReceiptSmall" type="Sprite2D" parent="Node2D" unique_id=96284137]
+position = Vector2(328, 534)
+rotation = -0.080816135
+scale = Vector2(7.0625, 7.0625)
+texture = ExtResource("5_tn317")
+
+[node name="ReceiptSmall2" type="Sprite2D" parent="Node2D" unique_id=241153171]
+position = Vector2(378.99997, 507)
+rotation = 0.20198536
+scale = Vector2(7.0625, 7.0625)
+texture = ExtResource("5_tn317")
+
+[node name="ReceiptSmall7" type="Sprite2D" parent="Node2D" unique_id=31454465]
+position = Vector2(148.99997, 468.99994)
+rotation = 0.20198536
+scale = Vector2(7.0625, 7.0625)
+texture = ExtResource("5_tn317")
+
+[node name="ReceiptSmall8" type="Sprite2D" parent="Node2D" unique_id=619122466]
+position = Vector2(239.00002, 462.00003)
+rotation = -0.27458113
+scale = Vector2(7.0625, 7.0625)
+texture = ExtResource("5_tn317")
+
+[node name="ReceiptSmall9" type="Sprite2D" parent="Node2D" unique_id=1423023068]
+position = Vector2(491.00003, 578.00006)
+rotation = 0.3027333
+scale = Vector2(7.0625, 7.0625)
+texture = ExtResource("5_tn317")
+
+[node name="ReceiptSmall3" type="Sprite2D" parent="Node2D" unique_id=556264679]
+position = Vector2(764.99994, 527.99994)
+rotation = -0.8023178
+scale = Vector2(7.0625005, 7.0625005)
+texture = ExtResource("5_tn317")
+
+[node name="ReceiptSmall4" type="Sprite2D" parent="Node2D" unique_id=877063696]
+position = Vector2(711, 484)
+rotation = -0.12967205
+scale = Vector2(7.0625, 7.0625)
+texture = ExtResource("5_tn317")
+
+[node name="DocumentSmall" type="Sprite2D" parent="Node2D" unique_id=129686041]
+position = Vector2(172.5, 519.5)
+rotation = 0.20443107
+scale = Vector2(5.785714, 5.785714)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall2" type="Sprite2D" parent="Node2D" unique_id=368666262]
+position = Vector2(121.99999, 480.99994)
+scale = Vector2(5.785714, 5.785714)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall3" type="Sprite2D" parent="Node2D" unique_id=1001344522]
+position = Vector2(86.999985, 545)
+rotation = -0.259163
+scale = Vector2(5.7857146, 5.7857146)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall4" type="Sprite2D" parent="Node2D" unique_id=1629948833]
+position = Vector2(980.63794, 537.49365)
+rotation = 0.7094036
+scale = Vector2(5.785714, 5.785714)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall8" type="Sprite2D" parent="Node2D" unique_id=409097123]
+position = Vector2(1052.0001, 541.0001)
+rotation = 0.16665608
+scale = Vector2(5.7857146, 5.7857146)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall9" type="Sprite2D" parent="Node2D" unique_id=1134321362]
+position = Vector2(218, 562)
+rotation = 0.16665608
+scale = Vector2(4.6638727, 7.1168065)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall18" type="Sprite2D" parent="Node2D" unique_id=1817697130]
+position = Vector2(141, 585.00006)
+rotation = 0.16665608
+scale = Vector2(4.6638727, 7.1168065)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall10" type="Sprite2D" parent="Node2D" unique_id=2098742215]
+position = Vector2(443, 449.99997)
+rotation = -0.21686405
+scale = Vector2(4.663873, 7.116807)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall11" type="Sprite2D" parent="Node2D" unique_id=343131591]
+position = Vector2(833, 571.00006)
+rotation = 0.012316942
+scale = Vector2(4.663873, 7.116807)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall12" type="Sprite2D" parent="Node2D" unique_id=1431054981]
+position = Vector2(781, 449)
+rotation = 0.26160342
+scale = Vector2(4.663873, 7.116807)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall5" type="Sprite2D" parent="Node2D" unique_id=2123873958]
+position = Vector2(930.13794, 498.99365)
+rotation = 0.5049725
+scale = Vector2(5.785714, 5.785714)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall6" type="Sprite2D" parent="Node2D" unique_id=168874060]
+position = Vector2(895.13794, 562.99365)
+rotation = 0.24580953
+scale = Vector2(5.785714, 5.785714)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall7" type="Sprite2D" parent="Node2D" unique_id=1453901481]
+position = Vector2(743.99994, 564)
+rotation = -0.0028754175
+scale = Vector2(5.7857146, 5.7857146)
+texture = ExtResource("6_m8nf6")
+
+[node name="PhotoSmall6" type="Sprite2D" parent="Node2D" unique_id=524501947]
+position = Vector2(836, 475)
+rotation = 0.24768592
+scale = Vector2(5.518206, 5.518206)
+texture = ExtResource("4_8itgj")
+
+[node name="PhotoSmall7" type="Sprite2D" parent="Node2D" unique_id=858892197]
+position = Vector2(910.00006, 468.00006)
+rotation = 0.3507678
+scale = Vector2(5.518206, 5.518206)
+texture = ExtResource("4_8itgj")
+
+[node name="PhotoSmall8" type="Sprite2D" parent="Node2D" unique_id=2112583995]
+position = Vector2(983.00006, 597.00006)
+rotation = -0.4389718
+scale = Vector2(5.5182066, 5.5182066)
+texture = ExtResource("4_8itgj")
+
+[node name="PhotoSmall9" type="Sprite2D" parent="Node2D" unique_id=50287250]
+position = Vector2(277, 553)
+rotation = -0.38423085
+scale = Vector2(5.5182056, 5.5182056)
+texture = ExtResource("4_8itgj")
+
+[node name="ReceiptSmall5" type="Sprite2D" parent="Node2D" unique_id=1846161487]
+position = Vector2(764.99994, 527.99994)
+rotation = -0.8023178
+scale = Vector2(7.0625005, 7.0625005)
+texture = ExtResource("5_tn317")
+
+[node name="ReceiptSmall6" type="Sprite2D" parent="Node2D" unique_id=1891457850]
+position = Vector2(711, 484)
+rotation = -0.12967205
+scale = Vector2(7.0625, 7.0625)
+texture = ExtResource("5_tn317")
+
+[node name="DocumentSmall13" type="Sprite2D" parent="Node2D" unique_id=593771613]
+position = Vector2(833, 571.00006)
+rotation = 0.012316942
+scale = Vector2(4.663873, 7.116807)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall14" type="Sprite2D" parent="Node2D" unique_id=606055542]
+position = Vector2(781, 449)
+rotation = 0.26160342
+scale = Vector2(4.663873, 7.116807)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall15" type="Sprite2D" parent="Node2D" unique_id=478098810]
+position = Vector2(930.13794, 498.99365)
+rotation = 0.5049725
+scale = Vector2(5.785714, 5.785714)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall16" type="Sprite2D" parent="Node2D" unique_id=543366132]
+position = Vector2(895.13794, 562.99365)
+rotation = 0.24580953
+scale = Vector2(5.785714, 5.785714)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall17" type="Sprite2D" parent="Node2D" unique_id=962794893]
+position = Vector2(743.99994, 564)
+rotation = -0.0028754175
+scale = Vector2(5.7857146, 5.7857146)
+texture = ExtResource("6_m8nf6")
+
+[node name="DocumentSmall19" type="Sprite2D" parent="Node2D" unique_id=1455066609]
+position = Vector2(658, 593)
+rotation = -0.2811213
+scale = Vector2(5.785714, 5.785714)
+texture = ExtResource("6_m8nf6")
+
+[node name="FolderSm" type="Sprite2D" parent="Node2D" unique_id=1823967514]
+position = Vector2(1068, 435)
+rotation = -0.14785312
+scale = Vector2(4.5769234, 4.576923)
+texture = ExtResource("7_pgjjs")
+
+[node name="FolderSm2" type="Sprite2D" parent="Node2D" unique_id=744494987]
+position = Vector2(26.999985, 442)
+rotation = 0.16849966
+scale = Vector2(4.5769234, 4.576923)
+texture = ExtResource("7_pgjjs")
+
+[node name="FolderSm3" type="Sprite2D" parent="Node2D" unique_id=187320362]
+position = Vector2(331, 633)
+rotation = -0.21218051
+scale = Vector2(4.5769234, 4.576923)
+texture = ExtResource("7_pgjjs")
+
+[node name="FolderSm4" type="Sprite2D" parent="Node2D" unique_id=1408503346]
+position = Vector2(1137, 637.00006)
+rotation = 0.28217873
+scale = Vector2(4.5769234, 4.576923)
+texture = ExtResource("7_pgjjs")
+
+[node name="FolderSm5" type="Sprite2D" parent="Node2D" unique_id=1853472137]
+position = Vector2(558, 493)
+rotation = -0.03217061
+scale = Vector2(4.576923, 4.576923)
+texture = ExtResource("7_pgjjs")

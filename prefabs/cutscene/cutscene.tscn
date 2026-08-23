@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://vxto6myqpgf"]
 
-[ext_resource type="Script" path="res://scripts/cutscene/cutscene.gd" id="1_cut"]
-[ext_resource type="PackedScene" path="res://prefabs/cutscene/dialogue_box.tscn" id="2_dlg"]
+[ext_resource type="Script" uid="uid://cq88ysy3kstkc" path="res://scripts/cutscene/cutscene.gd" id="1_cut"]
+[ext_resource type="PackedScene" uid="uid://bet7g6e1o5chk" path="res://prefabs/cutscene/dialogue_box.tscn" id="2_dlg"]
 
-[node name="Cutscene" type="Control"]
+[node name="Cutscene" type="Control" unique_id=1449872931]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_cut")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=1286854187]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,10 +21,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Stage" type="Node2D" parent="."]
+[node name="Stage" type="Node2D" parent="." unique_id=1237135195]
 unique_name_in_owner = true
 position = Vector2(576, 300)
 
-[node name="DialogueBox" parent="." instance=ExtResource("2_dlg")]
+[node name="DialogueBox" parent="." unique_id=1839861017 instance=ExtResource("2_dlg")]
 unique_name_in_owner = true
 layout_mode = 1

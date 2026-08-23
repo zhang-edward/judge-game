@@ -77,13 +77,13 @@ offset_top = 7.5
 offset_right = 220.0
 offset_bottom = 260.0
 theme_override_fonts/font = ExtResource("4_80xwo")
-text = "* Inspect documents and identify incriminating evidence.
+theme_override_font_sizes/font_size = 15
+text = "Controls:
+* Drag documents from your desk (left) to your workspace (right) to inspect them
 
-* Drag documents into the folder to build your case
+* Drag the folder to the workspace, and drop a document into it to file evidence
 
-* Right-click on the folder to inspect the case and add a charge
-
-* Submit when you've built a strong case"
+* Right-click the folder to review the case and choose a charge"
 autowrap_mode = 2
 
 [node name="InstructionsLabel2" type="Label" parent="Page0" unique_id=1181162829]
@@ -94,9 +94,13 @@ offset_top = 7.5
 offset_right = 462.0
 offset_bottom = 260.0
 theme_override_fonts/font = ExtResource("4_80xwo")
-text = "* Suspects are guaranteed to have committed some crime at a specific time
+theme_override_font_sizes/font_size = 15
+text = "How a case works:
+* Every suspect is guilty of at least 1 specific crime, committed at a specific time
 
-* Relevant evidence will prove that a suspect frequented an incriminating location, has a history of performing some action, or is commonly seen associating with some object"
+* A crime has up to 3 parts - an ACTION, an OBJECT, and a LOCATION
+
+* Evidence will show pieces of what a suspect did. Some prove one part, some prove more."
 autowrap_mode = 2
 
 [node name="NextPageLabel" type="Label" parent="Page0" unique_id=583575353]
@@ -107,10 +111,11 @@ offset_top = 252.0
 offset_right = 472.0
 offset_bottom = 268.0
 theme_override_fonts/font = ExtResource("4_80xwo")
+theme_override_font_sizes/font_size = 15
 text = "click for next page >"
 autowrap_mode = 2
 
-[node name="Page1" type="Control" parent="." unique_id=798059752]
+[node name="Page1" type="Control" parent="." unique_id=1994128228]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -119,7 +124,59 @@ offset_top = -140.0
 offset_right = -148.0
 offset_bottom = -100.0
 
-[node name="LawsContainerTitle" type="Label" parent="Page1" unique_id=1565223331]
+[node name="InstructionsLabel" type="Label" parent="Page1" unique_id=1006663778]
+modulate = Color(0, 0, 0, 0.6745098)
+layout_mode = 0
+offset_left = 14.0
+offset_top = 7.5
+offset_right = 220.0
+offset_bottom = 260.0
+theme_override_fonts/font = ExtResource("4_80xwo")
+theme_override_font_sizes/font_size = 15
+text = "Winning a case:
+* Proving the action, object, and location all at one time makes the strongest case.
+
+* Irrelevant evidence will weaken your case."
+autowrap_mode = 2
+
+[node name="InstructionsLabel2" type="Label" parent="Page1" unique_id=1766033922]
+modulate = Color(0, 0, 0, 0.6745098)
+layout_mode = 0
+offset_left = 256.0
+offset_top = 7.5
+offset_right = 462.0
+offset_bottom = 260.0
+theme_override_fonts/font = ExtResource("4_80xwo")
+theme_override_font_sizes/font_size = 15
+text = "Tips:
+* Click on the calendar on the top right to progress to the next day, and get new evidence.
+
+* The suspect has a chance to flee each day! It may not be worth it to wait for the perfect piece of evidence."
+autowrap_mode = 2
+
+[node name="NextPageLabel2" type="Label" parent="Page1" unique_id=1435141861]
+modulate = Color(0, 0, 0, 0.6745098)
+layout_mode = 0
+offset_left = 304.0
+offset_top = 252.0
+offset_right = 452.0
+offset_bottom = 268.0
+theme_override_fonts/font = ExtResource("4_80xwo")
+theme_override_font_sizes/font_size = 15
+text = "laws >"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="Page2" type="Control" parent="." unique_id=798059752]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -188.0
+offset_top = -140.0
+offset_right = -148.0
+offset_bottom = -100.0
+
+[node name="LawsContainerTitle" type="Label" parent="Page2" unique_id=1565223331]
 modulate = Color(0, 0, 0, 0.7411765)
 layout_mode = 0
 offset_left = 92.0
@@ -131,7 +188,7 @@ text = "- LAWS -"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LawsContainer" type="VBoxContainer" parent="Page1" unique_id=903882333]
+[node name="LawsContainer" type="VBoxContainer" parent="Page2" unique_id=903882333]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 12.0

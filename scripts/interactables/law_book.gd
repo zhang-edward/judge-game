@@ -30,7 +30,7 @@ func on_next_page() -> void:
 	var new_page = get_node("Page" + str(page_index))
 	new_page.visible = true
 
-	next_page_button.visible = page_index != 1
+	next_page_button.visible = page_index != 2
 	prev_page_button.visible = page_index != 0
 	_play(PICKUP_SOUNDS)
 
@@ -41,7 +41,7 @@ func on_prev_page() -> void:
 	var new_page = get_node("Page" + str(page_index))
 	new_page.visible = true
 
-	next_page_button.visible = page_index != 1
+	next_page_button.visible = page_index != 2
 	prev_page_button.visible = page_index != 0
 	_play(PICKUP_SOUNDS)
 

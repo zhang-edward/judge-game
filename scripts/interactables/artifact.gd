@@ -47,7 +47,19 @@ func _ready() -> void:
 
 func try_add_to_case():
 	if case_file_ref != null:
-		added_to_case.emit(case_file_ref)
+		var target := case_file_ref
+		_set_case_file_ref(null)
+		added_to_case.emit(target)
+
+# Set the case file this artifact would be filed into, and highlight it as a drop target.
+func _set_case_file_ref(cf: CaseFile) -> void:
+	if cf == case_file_ref:
+		return
+	if case_file_ref != null and is_instance_valid(case_file_ref):
+		case_file_ref.set_drop_highlight(false)
+	case_file_ref = cf
+	if case_file_ref != null:
+		case_file_ref.set_drop_highlight(true)
 
 func _on_zone_entered(area: Area2D) -> void:
 	print("Entered new zone: " + str(area))
@@ -55,17 +67,17 @@ func _on_zone_entered(area: Area2D) -> void:
 		hovered_zone = area
 		entered_zone.emit(area, self)
 	else:
-		if area.get_parent() is CaseFile:
-			case_file_ref = area.get_parent() as CaseFile
+		if area.get_parent() is CaseFile && self is not CaseFile:
+			_set_case_file_ref(area.get_parent() as CaseFile)
 		else:
-			case_file_ref = null
+			_set_case_file_ref(null)
 	if small_form != null and area == small_form.zone:
 		_hand_off()
 
 func _on_zone_exited(area: Area2D) -> void:
 	print("Exited zone:", area)
 	if area.get_parent() is CaseFile:
-		case_file_ref = null
+		_set_case_file_ref(null)
 
 
 func _hand_off() -> void:

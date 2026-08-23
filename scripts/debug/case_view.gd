@@ -5,6 +5,8 @@ signal opened()
 signal closed()
 
 const MENU_FONT := preload("res://assets/fonts/DePixelHalbfett.ttf")
+const OPEN_SOUND := preload("res://assets/sfx/paper.wav")
+const CLOSE_SOUND := preload("res://assets/sfx/paper2.wav")
 
 @export var game: Main
 @export var desk_mask: ColorRect
@@ -30,13 +32,22 @@ const MENU_FONT := preload("res://assets/fonts/DePixelHalbfett.ttf")
 var current_case: Case
 var charge_buttons := {}
 var pulse_tween: Tween
+var _sfx: AudioStreamPlayer
 
 func _ready() -> void:
 	back_button.pressed.connect(close)
 	charge_label_background.gui_input.connect(_on_charge_label_input)
 	folder_interior_collider.disabled = true
 	folder_exterior_collider.disabled = true
-	
+	_sfx = AudioStreamPlayer.new()
+	add_child(_sfx)
+	opened.connect(func(): _play(OPEN_SOUND))
+	closed.connect(func(): _play(CLOSE_SOUND))
+
+func _play(stream: AudioStream) -> void:
+	_sfx.stream = stream
+	_sfx.play()
+
 func update_case_win_percentage():
 	if current_case == null:
 		return

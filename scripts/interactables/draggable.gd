@@ -3,6 +3,16 @@ class_name Draggable
 
 @export var zone_group := "zone"
 
+const PICKUP_SOUNDS: Array[AudioStream] = [
+	preload("res://assets/sfx/paper.wav"),
+	preload("res://assets/sfx/paper2.wav"),
+]
+const PUTDOWN_SOUNDS: Array[AudioStream] = [
+	preload("res://assets/sfx/paper_down.wav"),
+	preload("res://assets/sfx/paper_down2.wav"),
+]
+const PITCH_VARIATION := 0.1
+
 signal grabbed
 signal dropped
 signal zone_entered(area: Area2D)
@@ -20,11 +30,24 @@ static var _click_candidates: Array[Draggable] = []
 
 @onready var _hitbox: Area2D = $Hitbox
 
+var _sfx: AudioStreamPlayer
+
 
 func _ready() -> void:
 	# Required so the Area2D hitbox receives mouse clicks.
 	get_viewport().physics_object_picking = true
 	_hitbox.input_event.connect(_on_hitbox_input)
+	_sfx = AudioStreamPlayer.new()
+	add_child(_sfx)
+	dropped.connect(func(): _play(PUTDOWN_SOUNDS))
+
+
+func _play(streams: Array[AudioStream]) -> void:
+	if streams.is_empty():
+		return
+	_sfx.stream = streams.pick_random()
+	_sfx.pitch_scale = randf_range(1.0 - PITCH_VARIATION, 1.0 + PITCH_VARIATION)
+	_sfx.play()
 
 
 func _on_hitbox_input(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -60,6 +83,8 @@ func begin_drag(center_on_cursor := false) -> void:
 		_grab_offset = global_position - get_global_mouse_position()
 	get_parent().move_child(self, -1) # draw on top of its siblings
 	grabbed.emit()
+	if not center_on_cursor: # a handoff snaps to the cursor; don't replay the pickup sound
+		_play(PICKUP_SOUNDS)
 
 
 # Stop dragging without emitting `dropped` (used by a subclass handing off).

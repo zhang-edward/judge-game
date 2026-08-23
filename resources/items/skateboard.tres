@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://dlounpbn1gukj"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_cyb2w"]
+[ext_resource type="Resource" uid="uid://dddbe2e75gwkn" path="res://resources/categories/vehicle.tres" id="2_74dnp"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_dhs6d"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_sfm8a"]
+[ext_resource type="Resource" uid="uid://c21vokfbvcdx4" path="res://resources/actions/ride.tres" id="5_wnpa0"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_f87s2"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="7_f2nfi"]
+
+[resource]
+script = ExtResource("2_dhs6d")
+id = &"skateboard"
+name = "skateboard"
+categories = Array[ExtResource("1_cyb2w")]([ExtResource("2_74dnp")])
+supported_actions = Array[ExtResource("3_sfm8a")]([ExtResource("5_wnpa0"), ExtResource("6_f87s2"), ExtResource("7_f2nfi")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

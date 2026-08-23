@@ -27,9 +27,9 @@ func render_evidence_into_artifact(data: ArtifactData):
 		evidence_item_name = e.item.name
 		var evidence_row = generate_receipt_item_row(evidence_item_name)
 		total_price += evidence_row.price_val
-	# Don't include other items of the same category
+	# Only include items of the same category
 	var c = Vocab.get_item_categories(evidence_item_name)
-	var valid_items = Vocab.items.filter(func (def): return get_intersection(c, def.categories).is_empty())
+	var valid_items = Vocab.items.filter(func (def): return !get_intersection(c, def.categories).is_empty())
 	var num_items = randi_range(4, 9)
 	for i in range(0, num_items):
 		var random_item: ItemDef = valid_items.pick_random()

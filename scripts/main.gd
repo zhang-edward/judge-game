@@ -42,18 +42,24 @@ func _ready() -> void:
 	case_view.closed.connect(func(): artifact_manager.toggle_hitbox_for_all_case_files(true))
 	
 func handle_promo(new_title: String):
+	# Add new laws every time you get promo'd
+	for i in range(0, 2):
+		laws.append(Law.make_random())
+	artifact_manager.init_law_book(laws)
 	case_count += 1
 	promo_alert.show_promo_alert(new_title)
 	generate_new_cases()
 
 func generate_new_cases():
-	var names := Vocab.suspect_names.duplicate()
-	names.shuffle()
 	var num_cases_to_generate = case_count - cases.size()
 	for i in range(0, num_cases_to_generate):
-		var suspect := Suspect.new(names[i % names.size()])
+		var avatar_type = Suspect.AvatarType.MALE if randi_range(0, 1) == 0 else Suspect.AvatarType.FEMALE
+		var suspect_names = Vocab.male_suspect_names if avatar_type == Suspect.AvatarType.MALE else Vocab.female_suspect_names
+		suspect_names.shuffle()
+		var rand_crime = laws.pick_random()
+		var suspect := Suspect.new(suspect_names[i % suspect_names.size()], avatar_type, rand_crime)
 		var c := Case.new(suspect)
-		c.refresh_evidence()
+		c.refresh_evidence(laws)
 		cases.append(c)
 	artifact_manager.render_artifacts()
 
@@ -62,8 +68,7 @@ func on_submit_case():
 	if c == null:
 		return
 	_pending_case = c
-	#_pending_success = randi_range(1, 100) <= c.win_percentage
-	_pending_success = true
+	_pending_success = randi_range(1, 100) <= c.win_percentage
 	cutscene.play(CutsceneBuilder.build(c, _pending_success))
 
 func on_cutscene_finished():
@@ -104,7 +109,7 @@ func progress_day():
 			fled.append(c)
 		else:
 			c.flight_risk_percentage += 5 # todo: make this scale based on case strength
-			c.refresh_evidence()
+			c.refresh_evidence(laws)
 	artifact_manager.render_artifacts()
 	_fled_queue = fled
 	_show_next_fled()

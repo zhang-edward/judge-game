@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://bujwgig6xinni"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_c8qm5"]
+[ext_resource type="Resource" uid="uid://c0typltehv7u2" path="res://resources/categories/animal.tres" id="2_qmy5i"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_xo6yb"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_wrb2a"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="5_h7lks"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_c75e6"]
+[ext_resource type="Resource" uid="uid://cwr7xvug13p18" path="res://resources/actions/train.tres" id="7_m36a2"]
+[ext_resource type="Resource" uid="uid://cq62ksb2ajv5p" path="res://resources/actions/walk.tres" id="8_acrrj"]
+
+[resource]
+script = ExtResource("2_xo6yb")
+id = &"rat"
+name = "rat"
+categories = Array[ExtResource("1_c8qm5")]([ExtResource("2_qmy5i")])
+supported_actions = Array[ExtResource("3_wrb2a")]([ExtResource("5_h7lks"), ExtResource("6_c75e6"), ExtResource("7_m36a2"), ExtResource("8_acrrj")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

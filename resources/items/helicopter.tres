@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://i66in67qp5mj"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_8afxc"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_pai16"]
+[ext_resource type="Resource" uid="uid://dddbe2e75gwkn" path="res://resources/categories/vehicle.tres" id="2_tenli"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_t4hr2"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="5_2w7xx"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_jhxkl"]
+[ext_resource type="Resource" uid="uid://bfteqrn02bur1" path="res://resources/actions/fly.tres" id="7_ockwn"]
+
+[resource]
+script = ExtResource("2_pai16")
+id = &"helicopter"
+name = "helicopter"
+categories = Array[ExtResource("1_8afxc")]([ExtResource("2_tenli")])
+supported_actions = Array[ExtResource("3_t4hr2")]([ExtResource("5_2w7xx"), ExtResource("6_jhxkl"), ExtResource("7_ockwn")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ActionDef" format=3 uid="uid://bfteqrn02bur1"]
+
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="1_nseqd"]
+
+[resource]
+script = ExtResource("1_nseqd")
+id = &"fly"
+past = "flew"
+gerund = "flying"
+metadata/_custom_type_script = "uid://dwhgg7l1je8m8"

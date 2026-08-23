@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://kki7fkc882rk"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_d00el"]
+[ext_resource type="Resource" uid="uid://c0typltehv7u2" path="res://resources/categories/animal.tres" id="2_4m70k"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_ih71o"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_xnb7h"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="5_4ov55"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_t81p5"]
+[ext_resource type="Resource" uid="uid://cwr7xvug13p18" path="res://resources/actions/train.tres" id="7_wgab1"]
+[ext_resource type="Resource" uid="uid://c21vokfbvcdx4" path="res://resources/actions/ride.tres" id="8_4jl1x"]
+
+[resource]
+script = ExtResource("2_ih71o")
+id = &"rhino"
+name = "rhino"
+categories = Array[ExtResource("1_d00el")]([ExtResource("2_4m70k")])
+supported_actions = Array[ExtResource("3_xnb7h")]([ExtResource("5_4ov55"), ExtResource("6_t81p5"), ExtResource("7_wgab1"), ExtResource("8_4jl1x")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"

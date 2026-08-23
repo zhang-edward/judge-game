@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://cjrh108hk7tu1"]
 
+[ext_resource type="Script" uid="uid://cv0otfg6onndj" path="res://scripts/case_view_profile.gd" id="1_gmwj0"]
 [ext_resource type="Texture2D" uid="uid://c7x1bsgkpmn8i" path="res://assets/sprites/document2.png" id="2_gmwj0"]
 [ext_resource type="Texture2D" uid="uid://db4c23mhmi1xf" path="res://assets/sprites/male-avatar-1.png" id="3_2kews"]
 
-[node name="ProfilePic" type="Node2D" unique_id=1592178397]
+[node name="CaseViewProfile" type="Node2D" unique_id=1592178397]
+script = ExtResource("1_gmwj0")
 
 [node name="Photo" type="NinePatchRect" parent="." unique_id=588281907]
 offset_right = 40.0

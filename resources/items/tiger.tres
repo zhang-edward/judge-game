@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemDef" format=3 uid="uid://bmsj7022iceqx"]
+
+[ext_resource type="Script" uid="uid://b06g7tni33vq" path="res://scripts/category_def.gd" id="1_gu4kn"]
+[ext_resource type="Script" uid="uid://dwn0vo12iu7ky" path="res://scripts/item_def.gd" id="2_akk35"]
+[ext_resource type="Resource" uid="uid://c0typltehv7u2" path="res://resources/categories/animal.tres" id="2_xwlpe"]
+[ext_resource type="Script" uid="uid://dwhgg7l1je8m8" path="res://scripts/action_def.gd" id="3_r3l7o"]
+[ext_resource type="Resource" uid="uid://c21vokfbvcdx4" path="res://resources/actions/ride.tres" id="5_lqxhq"]
+[ext_resource type="Resource" uid="uid://erto1qjihxqj" path="res://resources/actions/sell.tres" id="6_d342n"]
+[ext_resource type="Resource" uid="uid://b4oyeotijnn2h" path="res://resources/actions/purchase.tres" id="7_qwire"]
+[ext_resource type="Resource" uid="uid://cq62ksb2ajv5p" path="res://resources/actions/walk.tres" id="8_bc4hl"]
+
+[resource]
+script = ExtResource("2_akk35")
+id = &"tiger"
+name = "tiger"
+categories = Array[ExtResource("1_gu4kn")]([ExtResource("2_xwlpe")])
+supported_actions = Array[ExtResource("3_r3l7o")]([ExtResource("5_lqxhq"), ExtResource("6_d342n"), ExtResource("7_qwire"), ExtResource("6_d342n"), ExtResource("8_bc4hl")])
+metadata/_custom_type_script = "uid://dwn0vo12iu7ky"
